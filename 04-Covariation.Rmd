@@ -1,0 +1,120 @@
+# Covariation
+
+If variation describes the behaviors within a variable, covariation describes the behavior between variables.
+
+Covariation is the tendency for the values of two or more variables to vary together in a related way.
+
+
+
+## Categorical + continuous variable
+
+```{r}
+library(tidyverse)
+
+ggplot(diamonds, aes(price))+
+  geom_freqpoly(binwidth = 500)
+
+ggplot(diamonds, aes(price))+
+  geom_freqpoly(aes(color = cut), binwidth = 500)
+
+# standardized count where the area under each frequency polygon is one
+
+ggplot(diamonds, aes(x = price, y =  ..density..))+
+  geom_freqpoly(aes(color = cut), binwidth = 500)
+
+# boxplot
+
+ggplot(diamonds, aes(cut, price))+
+  geom_boxplot()
+
+
+```
+
+model = model name
+
+displ = engine displacement, in litres
+
+year = year of manufacture
+
+cyl = number of cylinders
+
+trans = type of transmission
+
+drv => f = front-wheel drive, r = rear wheel drive, 4 = 4wd
+
+cty = city miles per gallon
+
+hwy = highway miles per gallon
+
+fl = fuel type
+
+class = "type" of car
+
+
+```{r}
+summary(mpg)
+
+ggplot(mpg)+
+  geom_boxplot(aes(x = reorder(class, hwy, FUN = median), y = hwy))
+
+ggplot(mpg)+
+  geom_boxplot(aes(x = reorder(class, hwy, FUN = median), y = hwy))+
+  coord_flip()
+
+```
+
+## Two categorical variables
+
+```{r}
+ggplot(diamonds)+
+  geom_count(aes(cut, color))
+
+diamonds%>% 
+  count(color, cut)
+
+diamonds%>% 
+  count(color, cut)%>%
+  ggplot(aes(color, cut))+
+  geom_tile(aes(fill=n))
+
+#install.packages("seriation")
+
+
+```
+## Two continuous variables
+
+```{r}
+ggplot(diamonds)+
+  geom_point(aes(carat, price))
+
+# add transparency
+ggplot(diamonds)+
+  geom_point(aes(carat, price), alpha = 1/100)
+
+# bin two variables
+ggplot(diamonds)+
+  geom_bin2d(aes(carat, price))
+
+#install.packages("hexbin")
+ggplot(diamonds)+
+  geom_hex(aes(carat, price))
+
+#bin one variable
+ggplot(diamonds,aes(carat, price))+
+  geom_boxplot(aes(group = cut_width(carat, 0.1)))
+
+ggplot(diamonds,aes(carat, price))+
+  geom_boxplot(aes(group = cut_width(carat, 0.5)))
+
+
+```
+
+
+
+
+
+
+
+
+
+

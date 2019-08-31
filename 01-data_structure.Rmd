@@ -1,0 +1,208 @@
+
+# Basic data structures in R {#intro}
+
+Before we get our hands dirty in doing actual data analysis, it is desirable to first think about what types of variables and data structures we are dealing with. 
+
+Before we talk about data structures in R, let's first think about how data can be categorized. 
+
+## Nominal, ordinal, interval/ratio variables
+
+
+- **Nominal variables** are the data whose levels are labels or descriptions, which cannot be ordered.  (e.g. sex, school, or nationality).  They are categorical in nature.
+
+- **Ordinal variables** can be ordered, or ranked in logical order, but the interval between levels of the variables are unknown.  
+
+> For example, when doing a survey, participants will be asked to rate. The subjective measurements of this kind are often ordinal variables. E.g. a Likert ranking scale; level of education (“< high school”, “high school”, “associate’s degree”). 
+
+We can assign numbers to levels of an ordinal variable, and can order them, but we should bear in mind that these variable are not numeric. For example, “strongly agree” and “neutral” cannot average out to an “agree.”, even though you can assign 5 to "strong agree" and 3 to "neutral".
+
+- **Interval/ratio variables** are measured or counted values: age, height, weight or number of students. The interval between numbers is equal:  the interval between 1 kg and 2 kg is the same as between 3 kg and 4 kg. Interval/ratio variables can be *discrete values*, such as population (1332) or counts of items, or they can be *continuous variables* values that can take on any value within an interval, and can be expressed as decimals (1.009 kg).   
+
+The variable type will determine (1) statistical analysis; (2) the way we summarize data with statistics and plots. We will be elaborating on this in the *Explorative Data Analysis course*.
+
+Variables can be stored in R in different data types. 
+
+- Normial and ordinal variables can be stored as *character* or *factors* (with levels).
+
+- Interval data are stored as numbers either as *integer* or *numeric* (real or decimal). 
+
+If you have only one variable, you can store it in a vector. However, more often than not, you have a bunch of variables that should be stored or imported as a matrix or data frame.
+
+## 1D data structure: vectors
+
+A vector is a sequence of data elements of the same basic type: integer, double, logical or character. All elements of a vector must be the same type.
+
+### Creating vectors
+
+```{r}
+a = 8:17
+
+b <- c(9, 10, 100, 38)
+
+c = c (TRUE, FALSE, TRUE, FALSE)
+
+c = c (T, F, T, F)
+
+d = c ("TRUE", "FALSE", "FALSE")
+
+# You can change the type of a vector with as.vector function.
+
+as.vector(b, mode = "character")
+
+# When you put elements of different types in one vector, R will automatically change the type of some elements to keep the whole vector homogenous.
+
+e = c(9,10, "ab", "cd")
+
+f = c(10, 11, T, F)
+
+```
+c () is a function in R.
+
+
+There are some other basic functions in R that you can play with to generate vectors.
+
+```{r}
+
+A = 9:20 + 1
+
+B = seq (1, 10)
+
+C = seq (1, 20, by= 2)
+
+D = rep (5, 4)
+
+E = rep (c(1,2,3), 4)
+
+G = rep (c(1,2,3), each = 4)
+
+# Now that you have a vector, you can do some Maths.
+
+max(a)
+
+min(a)
+
+range(a)
+
+sum(a)
+
+mean(a)
+
+median(a)
+
+quantile(a)
+
+sd(a)
+
+round(sd(a), 2)
+
+```
+
+### creating list objects
+
+We can put vectors of different types (e.g., number, logic or character) and lengths in a list object.
+
+```{r}
+
+list1 = list(a, b, c, d, e, f)
+
+list1
+
+# More often than not, we do not make list ourselves but have to deal with lists when we get outputs from stats models.
+
+```
+
+
+## 2D data structures: matrice and data frames
+
+Most of us have had some experience with the Excel spreadsheet. Data in a spreadsheet are arranged by rows and columns in a rectangular space. This is a typical 2 dimensional data structure. In R, we can have two ways of forming tabular data like a spreadsheet: the matrix and dataframe.
+
+**A matrix **is a collection of data elements arranged in a two-dimensional rectangular layout in which all the elements must be of the same type (e.g., numeric or character). 
+
+**Dataframe** is similar to matrix in shape but only differs in that different types of data can co-exist in different columns. Thus, in data analysis, we use dataframes more often than matrix.
+
+
+
+```{r}
+# Let's generate a dataframe from scratch.
+
+id = seq(1, 40)
+
+gender = rep(c("male", "female"), 5)
+
+maths = rnorm(40, mean = 70, sd = 5)
+
+english = rnorm(40, mean = 80, sd = 9)
+
+music = rnorm(40, mean = 75, sd = 10)
+
+pe = rnorm(40, mean = 86, sd = 12)
+
+df1 = data.frame (id, gender, maths, english)
+
+
+```
+
+Now let's explore the data frame we just created.
+
+```{r}
+
+str(df1)
+
+summary(df1)
+
+nrow(df1)
+
+ncol(df1)
+
+attributes(df1)
+
+
+```
+
+### what if I want to change column names or add variable to the df?
+
+```{r}
+
+df2 = data.frame (id = id, gender = gender, maths = maths, english = english)
+
+df2 = cbind(df2, pe)
+
+colnames(df2) = c("ID", "SEX","MATHS","ENGLISH","PE")
+
+head(df2)
+
+```
+
+
+### Subsetting dataframes
+
+We all know how to select part of an Excel spreadsheet by clicking and moving our mouse. In R, when we want to select part of a dataframe, we use this formula, **dataframe[row, column]**.
+
+There are various ways we can use this formula and believe it or not, you will love them!
+
+
+```{r}
+
+# the complete dataset
+
+df2
+
+df2[2:5, ] # from row 2 to row 5
+
+df2[ , 1:2] # select column 1 to 2
+
+df2[ , c("ENGLISH", "PE")] # select by column names
+
+df2[c(1,2,3), ] #select the first three rows
+
+df2[seq(1, 40, 2), ] #select every other rows from 1 to 40 rows 
+
+```
+## summary
+
+| Dimensions | Homogenous | Heterogeneous |
+|-----------:|:----------:|:--------------|
+| 1D | Atomic Vector | List |
+| 2D | Matrix| Data frame |
+| nD | Array |   |
+

@@ -1,0 +1,218 @@
+# Variation
+
+Variation is the tendency of the values of a variable to change from measurement to measurement. (Wickham & Grolemund)
+
+It it important for us to explore the distribution of the variable before we do any stats modeling.
+
+## Categorical variable
+
+Which variables are categorical?
+```{r }
+library(tidyverse)
+summary(diamonds)
+
+str(diamonds)
+
+library(Hmisc)
+
+describe(diamonds)
+
+contents(diamonds)
+
+```
+
+Categorical variables are usually stored as factors or characters. You can use count() function or bar chart to explore the distribution.
+
+```{r}
+count(diamonds, cut)
+
+count(diamonds, color)
+
+ggplot(diamonds)+
+  geom_bar(aes(x = cut))
+
+
+ggplot(diamonds)+
+  geom_bar(aes(x = color))
+```
+Try this with clarity!
+
+```{r}
+library(languageR)
+summary(lexdec)
+summary(iris)
+
+```
+
+## Continous variable
+A continuous variable can take any of an infinite set of ordered values. You can use a histogram and other descriptive stats to characterize its distribution.
+
+```{r}
+# histogram
+ggplot(diamonds)+
+  geom_histogram(aes(carat), binwidth = 0.1)
+
+# histogram zoom in y axsis
+ggplot(diamonds)+
+  geom_histogram(aes(carat), binwidth = 0.1)+
+  coord_cartesian(ylim = c(0,50))
+
+# histogram zoom in x axsis
+ggplot(diamonds[ which(diamonds$carat < 3), ])+
+  geom_histogram(aes(carat), binwidth = 0.1)
+
+diamonds%>%
+  filter(carat <3)%>%
+  ggplot()+
+  geom_histogram(aes(carat), binwidth = 0.1)
+
+# density plot
+ggplot(diamonds,aes(carat))+
+  geom_density(kernel = "gaussian")
+
+# area
+ggplot(diamonds,aes(carat))+
+  geom_area(stat = "bin")
+
+# dotplot
+ggplot(diamonds,aes(carat))+
+  geom_dotplot()
+
+# freqpoly
+ggplot(diamonds, aes(carat))+
+  geom_freqpoly()
+
+
+```
+
+### Five-number summary
+The five-number summary is a set of descriptive statistics that provide information about a dataset. It consists of the five most important sample percentiles:
+
+- the sample minimum (smallest observation)
+
+- the lower quartile or first quartile
+
+- the median (the middle value)
+
+- the upper quartile or third quartile
+
+- the sample maximum (largest observation)
+
+The five-number summary provides a concise summary of the distribution of the observations. Reporting five numbers avoids the need to decide on the most appropriate summary statistic. The five-number summary gives information about the location (from the median), spread (from the quartiles) and range (from the sample minimum and maximum) of the observations. Since it reports order statistics (rather than, say, the mean) the five-number summary is appropriate for *ordinal measurements*, as well as *interval and ratio measurements*. (from wikipedia)
+
+```{r}
+
+summary(diamonds$carat)
+
+```
+
+
+### Boxplot & violin plot
+
+It is possible to quickly compare several sets of observations by comparing their five-number summaries, which can be represented graphically using a boxplot.
+
+
+In descriptive statistics, a **boxplot** is a method for graphically depicting groups of numerical data through their quartiles. 
+
+Boxplots may also have lines extending vertically from the boxes (whiskers) indicating variability outside the upper and lower quartiles, hence the terms box-and-whisker plot and box-and-whisker diagram. 
+
+Outliers may be plotted as individual points. 
+
+The spacings between the different parts of the box indicate the degree of dispersion (spread) and skewness in the data, and show outliers. 
+
+Box plots can be drawn either horizontally or vertically. Box plots received their name from the box in the middle.
+
+box plots typically graph six data points:
+
+- The lowest value, excluding outliers
+
+- The first quartile (this is the 25th percentile, or median of all the numbers below the median)
+
+- The median value (equivalent to the 50th percentile)
+
+- The third quartile (this is the 75th percentile, or median of all the numbers above the median)
+
+- The highest value, excluding outliers
+
+- Outliers
+
+```{r figure3, fig.cap='Boxplot', out.width='100%', fig.asp=.75, fig.align='center'}
+
+knitr::include_graphics("img/whatsaboxplot.png")
+
+#source:https://mode.com/blog/how-to-make-box-and-whisker-plot-sql
+```
+
+```{r}
+# r base function
+boxplot(diamonds$carat)
+
+#ggplot version
+ggplot(diamonds, aes(x="carat", y=carat))+
+  geom_boxplot()
+
+
+```
+
+A *violin plot* is a method of plotting numeric data. It is similar to a boxplot, with the addition of a *rotated kernel density* plot on each side.
+
+Violin plots are similar to boxplots. Typically a violin plot will include all the data that is in a box plot: a marker for the median of the data; a box or marker indicating the interquartile range; and possibly all sample points, if the number of samples is not too high.
+
+```{r figure4, fig.cap='Violin plot', out.width='100%', fig.asp=.75, fig.align='center'}
+
+knitr::include_graphics("img/violinplot.png")
+
+#source:https://mode.com/blog/violin-plot-examples
+```
+
+
+So a violin plot is more informative than a plain box plot. While a box plot only shows summary statistics such as mean/median and interquartile ranges, the violin plot shows the full distribution of the data. The difference is particularly useful when the data distribution is multimodal (more than one peak). In this case a violin plot shows the presence of different peaks, their position and relative amplitude.
+
+```{r}
+#violin plot
+ggplot(diamonds, aes(x="carat", y=carat))+
+  geom_violin()
+
+ggplot(diamonds, aes(x="price", y=price))+
+  geom_violin()
+```
+
+### QQ Plots 
+QQ Plots (Quantile-Quantile plots) are plots of two quantiles against each other. A quantile is a fraction where certain values fall below that quantile. For example, the median is a quantile where 50% of the data fall below that point and 50% lie above it. The purpose of QQ plots is to find out *if two sets of data come from the same distribution*. 
+
+A 45 degree angle is plotted on the Q Q plot; if the two data sets come from a common distribution, the points will fall on that reference line.(from Wikipedia)
+
+
+```{r}
+# Solution 1
+qplot(sample = carat, data = diamonds)
+
+# solution 2
+ggplot(diamonds)+
+  geom_qq(aes(sample = carat))+
+  geom_qq_line(aes(sample = carat))
+
+
+```
+
+### Unusual values
+```{r}
+unusual = diamonds %>%
+  filter(y < 3 | y > 20)%>%
+  arrange(y)
+
+unusual
+
+# drop the entire row with the strange values
+diamonds_new = diamonds%>%
+  filter(between(y,3,20))
+
+head(arrange(diamonds_new,y))
+
+# replace the unusual values with missing values
+diamonds_replace = diamonds %>%
+  mutate(y2 = ifelse(y<3 | y> 20, NA, y))
+
+head(arrange(diamonds_replace, y ))
+
+```

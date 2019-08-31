@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 4 Variation | A Introduction to Eploratory Data Analysis with R</title>
+  <meta name="description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 4 Variation | A Introduction to Eploratory Data Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Variation | A Introduction to Eploratory Data Analysis with R" />
+  
+  <meta name="twitter:description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle." />
+  
+
+<meta name="author" content="Juqiang Chen">
+
+
+<meta name="date" content="2019-09-01">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="what-is-eda.html">
+<link rel="next" href="covariation.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>1.1</b> Installing R and R studio</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-libraries-in-r"><i class="fa fa-check"></i><b>1.2</b> Installing libraries in R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#install-packages-and-library-packages"><i class="fa fa-check"></i><b>1.3</b> Install packages and library packages</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#programme"><i class="fa fa-check"></i><b>1.4</b> Programme</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Basic data structures in R</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#nominal-ordinal-intervalratio-variables"><i class="fa fa-check"></i><b>2.1</b> Nominal, ordinal, interval/ratio variables</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#d-data-structure-vectors"><i class="fa fa-check"></i><b>2.2</b> 1D data structure: vectors</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#creating-vectors"><i class="fa fa-check"></i><b>2.2.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> creating list objects</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#d-data-structures-matrice-and-data-frames"><i class="fa fa-check"></i><b>2.3</b> 2D data structures: matrice and data frames</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#what-if-i-want-to-change-column-names-or-add-variable-to-the-df"><i class="fa fa-check"></i><b>2.3.1</b> what if I want to change column names or add variable to the df?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Subsetting dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.4</b> summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>3</b> What is EDA?</a><ul>
+<li class="chapter" data-level="3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#data-analysis-workflow"><i class="fa fa-check"></i><b>3.1</b> Data analysis workflow</a></li>
+<li class="chapter" data-level="3.2" data-path="what-is-eda.html"><a href="what-is-eda.html#data-wrangling"><i class="fa fa-check"></i><b>3.2</b> Data wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>4</b> Variation</a><ul>
+<li class="chapter" data-level="4.1" data-path="variation.html"><a href="variation.html#categorical-variable"><i class="fa fa-check"></i><b>4.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="4.2" data-path="variation.html"><a href="variation.html#continous-variable"><i class="fa fa-check"></i><b>4.2</b> Continous variable</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#five-number-summary"><i class="fa fa-check"></i><b>4.2.1</b> Five-number summary</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#boxplot-violin-plot"><i class="fa fa-check"></i><b>4.2.2</b> Boxplot &amp; violin plot</a></li>
+<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#qq-plots"><i class="fa fa-check"></i><b>4.2.3</b> QQ Plots</a></li>
+<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.4</b> Unusual values</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
+<li class="chapter" data-level="5.1" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>5.1</b> Categorical + continuous variable</a></li>
+<li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.2</b> Two categorical variables</a></li>
+<li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="simple-modeling.html"><a href="simple-modeling.html"><i class="fa fa-check"></i><b>6</b> Simple modeling</a></li>
+<li class="chapter" data-level="7" data-path="build-your-own-function.html"><a href="build-your-own-function.html"><i class="fa fa-check"></i><b>7</b> Build your own function</a></li>
+<li class="chapter" data-level="8" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>8</b> Resources</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Introduction to Eploratory Data Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variation" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Variation</h1>
+<p>Variation is the tendency of the values of a variable to change from measurement to measurement. (Wickham &amp; Grolemund)</p>
+<p>It it important for us to explore the distribution of the variable before we do any stats modeling.</p>
+<div id="categorical-variable" class="section level2">
+<h2><span class="header-section-number">4.1</span> Categorical variable</h2>
+<p>Which variables are categorical?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<pre><code>## -- Attaching packages ----------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.1.0       v purrr   0.3.2  
+## v tibble  2.1.1       v dplyr   0.8.0.1
+## v tidyr   0.8.3       v stringr 1.4.0  
+## v readr   1.3.1       v forcats 0.4.0</code></pre>
+<pre><code>## -- Conflicts -------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(diamonds)</code></pre></div>
+<pre><code>##      carat               cut        color        clarity     
+##  Min.   :0.2000   Fair     : 1610   D: 6775   SI1    :13065  
+##  1st Qu.:0.4000   Good     : 4906   E: 9797   VS2    :12258  
+##  Median :0.7000   Very Good:12082   F: 9542   SI2    : 9194  
+##  Mean   :0.7979   Premium  :13791   G:11292   VS1    : 8171  
+##  3rd Qu.:1.0400   Ideal    :21551   H: 8304   VVS2   : 5066  
+##  Max.   :5.0100                     I: 5422   VVS1   : 3655  
+##                                     J: 2808   (Other): 2531  
+##      depth           table           price             x         
+##  Min.   :43.00   Min.   :43.00   Min.   :  326   Min.   : 0.000  
+##  1st Qu.:61.00   1st Qu.:56.00   1st Qu.:  950   1st Qu.: 4.710  
+##  Median :61.80   Median :57.00   Median : 2401   Median : 5.700  
+##  Mean   :61.75   Mean   :57.46   Mean   : 3933   Mean   : 5.731  
+##  3rd Qu.:62.50   3rd Qu.:59.00   3rd Qu.: 5324   3rd Qu.: 6.540  
+##  Max.   :79.00   Max.   :95.00   Max.   :18823   Max.   :10.740  
+##                                                                  
+##        y                z         
+##  Min.   : 0.000   Min.   : 0.000  
+##  1st Qu.: 4.720   1st Qu.: 2.910  
+##  Median : 5.710   Median : 3.530  
+##  Mean   : 5.735   Mean   : 3.539  
+##  3rd Qu.: 6.540   3rd Qu.: 4.040  
+##  Max.   :58.900   Max.   :31.800  
+## </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(diamonds)</code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    53940 obs. of  10 variables:
+##  $ carat  : num  0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...
+##  $ cut    : Ord.factor w/ 5 levels &quot;Fair&quot;&lt;&quot;Good&quot;&lt;..: 5 4 2 4 2 3 3 3 1 3 ...
+##  $ color  : Ord.factor w/ 7 levels &quot;D&quot;&lt;&quot;E&quot;&lt;&quot;F&quot;&lt;&quot;G&quot;&lt;..: 2 2 2 6 7 7 6 5 2 5 ...
+##  $ clarity: Ord.factor w/ 8 levels &quot;I1&quot;&lt;&quot;SI2&quot;&lt;&quot;SI1&quot;&lt;..: 2 3 5 4 2 6 7 3 4 5 ...
+##  $ depth  : num  61.5 59.8 56.9 62.4 63.3 62.8 62.3 61.9 65.1 59.4 ...
+##  $ table  : num  55 61 65 58 58 57 57 55 61 61 ...
+##  $ price  : int  326 326 327 334 335 336 336 337 337 338 ...
+##  $ x      : num  3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...
+##  $ y      : num  3.98 3.84 4.07 4.23 4.35 3.96 3.98 4.11 3.78 4.05 ...
+##  $ z      : num  2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Hmisc)</code></pre></div>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## Loading required package: survival</code></pre>
+<pre><code>## Loading required package: Formula</code></pre>
+<pre><code>## 
+## Attaching package: &#39;Hmisc&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     src, summarize</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     format.pval, units</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">describe</span>(diamonds)</code></pre></div>
+<pre><code>## diamonds 
+## 
+##  10  Variables      53940  Observations
+## ---------------------------------------------------------------------------
+## carat 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##    53940        0      273    0.999   0.7979   0.5122     0.30     0.31 
+##      .25      .50      .75      .90      .95 
+##     0.40     0.70     1.04     1.51     1.70 
+## 
+## lowest : 0.20 0.21 0.22 0.23 0.24, highest: 4.00 4.01 4.13 4.50 5.01
+## ---------------------------------------------------------------------------
+## cut 
+##        n  missing distinct 
+##    53940        0        5 
+##                                                             
+## Value           Fair      Good Very Good   Premium     Ideal
+## Frequency       1610      4906     12082     13791     21551
+## Proportion     0.030     0.091     0.224     0.256     0.400
+## ---------------------------------------------------------------------------
+## color 
+##        n  missing distinct 
+##    53940        0        7 
+##                                                     
+## Value          D     E     F     G     H     I     J
+## Frequency   6775  9797  9542 11292  8304  5422  2808
+## Proportion 0.126 0.182 0.177 0.209 0.154 0.101 0.052
+## ---------------------------------------------------------------------------
+## clarity 
+##        n  missing distinct 
+##    53940        0        8 
+##                                                           
+## Value         I1   SI2   SI1   VS2   VS1  VVS2  VVS1    IF
+## Frequency    741  9194 13065 12258  8171  5066  3655  1790
+## Proportion 0.014 0.170 0.242 0.227 0.151 0.094 0.068 0.033
+## ---------------------------------------------------------------------------
+## depth 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##    53940        0      184    0.999    61.75    1.515     59.3     60.0 
+##      .25      .50      .75      .90      .95 
+##     61.0     61.8     62.5     63.3     63.8 
+## 
+## lowest : 43.0 44.0 50.8 51.0 52.2, highest: 72.2 72.9 73.6 78.2 79.0
+## ---------------------------------------------------------------------------
+## table 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##    53940        0      127     0.98    57.46    2.448       54       55 
+##      .25      .50      .75      .90      .95 
+##       56       57       59       60       61 
+## 
+## lowest : 43.0 44.0 49.0 50.0 50.1, highest: 71.0 73.0 76.0 79.0 95.0
+## ---------------------------------------------------------------------------
+## price 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##    53940        0    11602        1     3933     4012      544      646 
+##      .25      .50      .75      .90      .95 
+##      950     2401     5324     9821    13107 
+## 
+## lowest :   326   327   334   335   336, highest: 18803 18804 18806 18818 18823
+## ---------------------------------------------------------------------------
+## x 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##    53940        0      554        1    5.731    1.276     4.29     4.36 
+##      .25      .50      .75      .90      .95 
+##     4.71     5.70     6.54     7.31     7.66 
+## 
+## lowest :  0.00  3.73  3.74  3.76  3.77, highest: 10.01 10.02 10.14 10.23 10.74
+## ---------------------------------------------------------------------------
+## y 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##    53940        0      552        1    5.735    1.269     4.30     4.36 
+##      .25      .50      .75      .90      .95 
+##     4.72     5.71     6.54     7.30     7.65 
+##                                                                       
+## Value        0.0   3.5   4.0   4.5   5.0   5.5   6.0   6.5   7.0   7.5
+## Frequency      7     5  1731 12305  7817  5994  6742  9260  4298  3402
+## Proportion 0.000 0.000 0.032 0.228 0.145 0.111 0.125 0.172 0.080 0.063
+##                                                           
+## Value        8.0   8.5   9.0   9.5  10.0  10.5  32.0  59.0
+## Frequency   1635   652    69    14     6     1     1     1
+## Proportion 0.030 0.012 0.001 0.000 0.000 0.000 0.000 0.000
+## ---------------------------------------------------------------------------
+## z 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##    53940        0      375        1    3.539   0.7901     2.65     2.69 
+##      .25      .50      .75      .90      .95 
+##     2.91     3.53     4.04     4.52     4.73 
+##                                                                       
+## Value        0.0   1.0   1.5   2.0   2.5   3.0   3.5   4.0   4.5   5.0
+## Frequency     20     1     2     3  8807 13809  9474 13682  5525  2352
+## Proportion 0.000 0.000 0.000 0.000 0.163 0.256 0.176 0.254 0.102 0.044
+##                                               
+## Value        5.5   6.0   6.5   7.0   8.0  32.0
+## Frequency    237    20     5     1     1     1
+## Proportion 0.004 0.000 0.000 0.000 0.000 0.000
+## ---------------------------------------------------------------------------</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contents</span>(diamonds)</code></pre></div>
+<pre><code>## 
+## Data frame:diamonds  53940 observations and 10 variables    Maximum # NAs:0
+## 
+## 
+##         Levels   Class Storage
+## carat                   double
+## cut          5 ordered integer
+## color        7 ordered integer
+## clarity      8 ordered integer
+## depth                   double
+## table                   double
+## price                  integer
+## x                       double
+## y                       double
+## z                       double
+## 
+## +--------+---------------------------------+
+## |Variable|Levels                           |
+## +--------+---------------------------------+
+## | cut    |Fair,Good,Very Good,Premium,Ideal|
+## +--------+---------------------------------+
+## | color  |D,E,F,G,H,I,J                    |
+## +--------+---------------------------------+
+## | clarity|I1,SI2,SI1,VS2,VS1,VVS2,VVS1,IF  |
+## +--------+---------------------------------+</code></pre>
+<p>Categorical variables are usually stored as factors or characters. You can use count() function or bar chart to explore the distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">count</span>(diamonds, cut)</code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+##   cut           n
+##   &lt;ord&gt;     &lt;int&gt;
+## 1 Fair       1610
+## 2 Good       4906
+## 3 Very Good 12082
+## 4 Premium   13791
+## 5 Ideal     21551</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">count</span>(diamonds, color)</code></pre></div>
+<pre><code>## # A tibble: 7 x 2
+##   color     n
+##   &lt;ord&gt; &lt;int&gt;
+## 1 D      6775
+## 2 E      9797
+## 3 F      9542
+## 4 G     11292
+## 5 H      8304
+## 6 I      5422
+## 7 J      2808</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cut))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> color))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-9-2.png" width="672" /> Try this with clarity!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(languageR)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;languageR&#39;</code></pre>
+<pre><code>## The following object is masked _by_ &#39;.GlobalEnv&#39;:
+## 
+##     english</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(lexdec)</code></pre></div>
+<pre><code>##     Subject           RT            Trial     Sex      NativeLanguage
+##  A1     :  79   Min.   :5.829   Min.   : 23   F:1106   English:948   
+##  A2     :  79   1st Qu.:6.215   1st Qu.: 64   M: 553   Other  :711   
+##  A3     :  79   Median :6.346   Median :106                          
+##  C      :  79   Mean   :6.385   Mean   :105                          
+##  D      :  79   3rd Qu.:6.502   3rd Qu.:146                          
+##  I      :  79   Max.   :7.587   Max.   :185                          
+##  (Other):1185                                                        
+##       Correct        PrevType      PrevCorrect          Word     
+##  correct  :1594   nonword:855   correct  :1542   almond   :  21  
+##  incorrect:  65   word   :804   incorrect: 117   ant      :  21  
+##                                                  apple    :  21  
+##                                                  apricot  :  21  
+##                                                  asparagus:  21  
+##                                                  avocado  :  21  
+##                                                  (Other)  :1533  
+##    Frequency       FamilySize      SynsetCount         Length      
+##  Min.   :1.792   Min.   :0.0000   Min.   :0.6931   Min.   : 3.000  
+##  1st Qu.:3.951   1st Qu.:0.0000   1st Qu.:1.0986   1st Qu.: 5.000  
+##  Median :4.754   Median :0.0000   Median :1.0986   Median : 6.000  
+##  Mean   :4.751   Mean   :0.7028   Mean   :1.3154   Mean   : 5.911  
+##  3rd Qu.:5.652   3rd Qu.:1.0986   3rd Qu.:1.6094   3rd Qu.: 7.000  
+##  Max.   :7.772   Max.   :3.3322   Max.   :2.3026   Max.   :10.000  
+##                                                                    
+##     Class      FreqSingular      FreqPlural     DerivEntropy   
+##  animal:924   Min.   :   4.0   Min.   :  0.0   Min.   :0.0000  
+##  plant :735   1st Qu.:  23.0   1st Qu.: 19.0   1st Qu.:0.0000  
+##               Median :  69.0   Median : 49.0   Median :0.0370  
+##               Mean   : 132.1   Mean   :109.7   Mean   :0.3856  
+##               3rd Qu.: 146.0   3rd Qu.:132.0   3rd Qu.:0.6845  
+##               Max.   :1518.0   Max.   :854.0   Max.   :2.2641  
+##                                                                
+##     Complex         rInfl             meanRT         SubjFreq    
+##  complex: 210   Min.   :-1.3437   Min.   :6.245   Min.   :2.000  
+##  simplex:1449   1st Qu.:-0.3023   1st Qu.:6.322   1st Qu.:3.160  
+##                 Median : 0.1900   Median :6.364   Median :3.880  
+##                 Mean   : 0.2845   Mean   :6.379   Mean   :3.911  
+##                 3rd Qu.: 0.6385   3rd Qu.:6.420   3rd Qu.:4.680  
+##                 Max.   : 4.4427   Max.   :6.621   Max.   :6.040  
+##                                                                  
+##     meanSize       meanWeight          BNCw               BNCc        
+##  Min.   :1.323   Min.   :0.8244   Min.   : 0.02229   Min.   : 0.0000  
+##  1st Qu.:1.890   1st Qu.:1.4590   1st Qu.: 1.64921   1st Qu.: 0.1625  
+##  Median :3.099   Median :2.7558   Median : 3.32071   Median : 0.6500  
+##  Mean   :2.891   Mean   :2.5516   Mean   : 7.37800   Mean   : 5.0351  
+##  3rd Qu.:3.711   3rd Qu.:3.4178   3rd Qu.: 7.10943   3rd Qu.: 2.9248  
+##  Max.   :4.819   Max.   :4.7138   Max.   :79.17324   Max.   :83.1949  
+##                                                                       
+##       BNCd           BNCcRatio         BNCdRatio     
+##  Min.   :  0.000   Min.   :0.00000   Min.   :0.0000  
+##  1st Qu.:  1.188   1st Qu.:0.09673   1st Qu.:0.5551  
+##  Median :  3.800   Median :0.27341   Median :0.9349  
+##  Mean   : 12.995   Mean   :0.45834   Mean   :1.5428  
+##  3rd Qu.: 10.451   3rd Qu.:0.55550   3rd Qu.:2.1315  
+##  Max.   :241.561   Max.   :8.29545   Max.   :6.3458  
+## </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(iris)</code></pre></div>
+<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## </code></pre>
+</div>
+<div id="continous-variable" class="section level2">
+<h2><span class="header-section-number">4.2</span> Continous variable</h2>
+<p>A continuous variable can take any of an infinite set of ordered values. You can use a histogram and other descriptive stats to characterize its distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># histogram</span>
+<span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># histogram zoom in y axsis</span>
+<span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># histogram zoom in x axsis</span>
+<span class="kw">ggplot</span>(diamonds[ <span class="kw">which</span>(diamonds<span class="op">$</span>carat <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>), ])<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(carat <span class="op">&lt;</span><span class="dv">3</span>)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-4.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># density plot</span>
+<span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">kernel =</span> <span class="st">&quot;gaussian&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-5.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># area</span>
+<span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">stat =</span> <span class="st">&quot;bin&quot;</span>)</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-6.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dotplot</span>
+<span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_dotplot</span>()</code></pre></div>
+<pre><code>## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-7.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freqpoly</span>
+<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_freqpoly</span>()</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-8.png" width="672" /></p>
+<div id="five-number-summary" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Five-number summary</h3>
+<p>The five-number summary is a set of descriptive statistics that provide information about a dataset. It consists of the five most important sample percentiles:</p>
+<ul>
+<li><p>the sample minimum (smallest observation)</p></li>
+<li><p>the lower quartile or first quartile</p></li>
+<li><p>the median (the middle value)</p></li>
+<li><p>the upper quartile or third quartile</p></li>
+<li><p>the sample maximum (largest observation)</p></li>
+</ul>
+<p>The five-number summary provides a concise summary of the distribution of the observations. Reporting five numbers avoids the need to decide on the most appropriate summary statistic. The five-number summary gives information about the location (from the median), spread (from the quartiles) and range (from the sample minimum and maximum) of the observations. Since it reports order statistics (rather than, say, the mean) the five-number summary is appropriate for <em>ordinal measurements</em>, as well as <em>interval and ratio measurements</em>. (from wikipedia)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(diamonds<span class="op">$</span>carat)</code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.2000  0.4000  0.7000  0.7979  1.0400  5.0100</code></pre>
+</div>
+<div id="boxplot-violin-plot" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Boxplot &amp; violin plot</h3>
+<p>It is possible to quickly compare several sets of observations by comparing their five-number summaries, which can be represented graphically using a boxplot.</p>
+<p>In descriptive statistics, a <strong>boxplot</strong> is a method for graphically depicting groups of numerical data through their quartiles.</p>
+<p>Boxplots may also have lines extending vertically from the boxes (whiskers) indicating variability outside the upper and lower quartiles, hence the terms box-and-whisker plot and box-and-whisker diagram.</p>
+<p>Outliers may be plotted as individual points.</p>
+<p>The spacings between the different parts of the box indicate the degree of dispersion (spread) and skewness in the data, and show outliers.</p>
+<p>Box plots can be drawn either horizontally or vertically. Box plots received their name from the box in the middle.</p>
+<p>box plots typically graph six data points:</p>
+<ul>
+<li><p>The lowest value, excluding outliers</p></li>
+<li><p>The first quartile (this is the 25th percentile, or median of all the numbers below the median)</p></li>
+<li><p>The median value (equivalent to the 50th percentile)</p></li>
+<li><p>The third quartile (this is the 75th percentile, or median of all the numbers above the median)</p></li>
+<li><p>The highest value, excluding outliers</p></li>
+<li><p>Outliers</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/whatsaboxplot.png&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:figure3"></span>
+<img src="img/whatsaboxplot.png" alt="Boxplot" width="100%" />
+<p class="caption">
+Figure 4.1: Boxplot
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#source:https://mode.com/blog/how-to-make-box-and-whisker-plot-sql</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># r base function</span>
+<span class="kw">boxplot</span>(diamonds<span class="op">$</span>carat)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#ggplot version</span>
+<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">&quot;carat&quot;</span>, <span class="dt">y=</span>carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<p>A <em>violin plot</em> is a method of plotting numeric data. It is similar to a boxplot, with the addition of a <em>rotated kernel density</em> plot on each side.</p>
+<p>Violin plots are similar to boxplots. Typically a violin plot will include all the data that is in a box plot: a marker for the median of the data; a box or marker indicating the interquartile range; and possibly all sample points, if the number of samples is not too high.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/violinplot.png&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:figure4"></span>
+<img src="img/violinplot.png" alt="Violin plot" width="100%" />
+<p class="caption">
+Figure 4.2: Violin plot
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#source:https://mode.com/blog/violin-plot-examples</span></code></pre></div>
+<p>So a violin plot is more informative than a plain box plot. While a box plot only shows summary statistics such as mean/median and interquartile ranges, the violin plot shows the full distribution of the data. The difference is particularly useful when the data distribution is multimodal (more than one peak). In this case a violin plot shows the presence of different peaks, their position and relative amplitude.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#violin plot</span>
+<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">&quot;carat&quot;</span>, <span class="dt">y=</span>carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_violin</span>()</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">&quot;price&quot;</span>, <span class="dt">y=</span>price))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_violin</span>()</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+</div>
+<div id="qq-plots" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> QQ Plots</h3>
+<p>QQ Plots (Quantile-Quantile plots) are plots of two quantiles against each other. A quantile is a fraction where certain values fall below that quantile. For example, the median is a quantile where 50% of the data fall below that point and 50% lie above it. The purpose of QQ plots is to find out <em>if two sets of data come from the same distribution</em>.</p>
+<p>A 45 degree angle is plotted on the Q Q plot; if the two data sets come from a common distribution, the points will fall on that reference line.(from Wikipedia)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution 1</span>
+<span class="kw">qplot</span>(<span class="dt">sample =</span> carat, <span class="dt">data =</span> diamonds)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># solution 2</span>
+<span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_qq</span>(<span class="kw">aes</span>(<span class="dt">sample =</span> carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_qq_line</span>(<span class="kw">aes</span>(<span class="dt">sample =</span> carat))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-15-2.png" width="672" /></p>
+</div>
+<div id="unusual-values" class="section level3">
+<h3><span class="header-section-number">4.2.4</span> Unusual values</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">unusual =<span class="st"> </span>diamonds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(y <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span>y <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(y)
+
+unusual</code></pre></div>
+<pre><code>## # A tibble: 9 x 10
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  1    Very Good H     VS2      63.3    53  5139  0      0    0   
+## 2  1.14 Fair      G     VS1      57.5    67  6381  0      0    0   
+## 3  1.56 Ideal     G     VS2      62.2    54 12800  0      0    0   
+## 4  1.2  Premium   D     VVS1     62.1    59 15686  0      0    0   
+## 5  2.25 Premium   H     SI2      62.8    59 18034  0      0    0   
+## 6  0.71 Good      F     SI2      64.1    60  2130  0      0    0   
+## 7  0.71 Good      F     SI2      64.1    60  2130  0      0    0   
+## 8  0.51 Ideal     E     VS1      61.8    55  2075  5.15  31.8  5.12
+## 9  2    Premium   H     SI2      58.9    57 12210  8.09  58.9  8.06</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># drop the entire row with the strange values</span>
+diamonds_new =<span class="st"> </span>diamonds<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="kw">between</span>(y,<span class="dv">3</span>,<span class="dv">20</span>))
+
+<span class="kw">head</span>(<span class="kw">arrange</span>(diamonds_new,y))</code></pre></div>
+<pre><code>## # A tibble: 6 x 10
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1   0.2 Premium   D     VS2      62.3    60   367  3.73  3.68  2.31
+## 2   0.2 Premium   F     VS2      62.6    59   367  3.73  3.71  2.33
+## 3   0.2 Very Good E     VS2      63.4    59   367  3.74  3.71  2.36
+## 4   0.2 Premium   D     VS2      61.7    60   367  3.77  3.72  2.31
+## 5   0.2 Ideal     E     VS2      62.2    57   367  3.76  3.73  2.33
+## 6   0.2 Premium   E     SI2      60.2    62   345  3.79  3.75  2.27</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># replace the unusual values with missing values</span>
+diamonds_replace =<span class="st"> </span>diamonds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y2 =</span> <span class="kw">ifelse</span>(y<span class="op">&lt;</span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span>y<span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>, <span class="ot">NA</span>, y))
+
+<span class="kw">head</span>(<span class="kw">arrange</span>(diamonds_replace, y ))</code></pre></div>
+<pre><code>## # A tibble: 6 x 11
+##   carat cut       color clarity depth table price     x     y     z    y2
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  1    Very Good H     VS2      63.3    53  5139     0     0     0    NA
+## 2  1.14 Fair      G     VS1      57.5    67  6381     0     0     0    NA
+## 3  1.56 Ideal     G     VS2      62.2    54 12800     0     0     0    NA
+## 4  1.2  Premium   D     VVS1     62.1    59 15686     0     0     0    NA
+## 5  2.25 Premium   H     SI2      62.8    59 18034     0     0     0    NA
+## 6  0.71 Good      F     SI2      64.1    60  2130     0     0     0    NA</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="what-is-eda.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="covariation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-Variation.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

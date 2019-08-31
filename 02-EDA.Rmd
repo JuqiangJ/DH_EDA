@@ -1,0 +1,23 @@
+# What is EDA?
+
+## Data analysis workflow
+
+A common workflow for data analysis involves importing data, cleaning data, transforming data, visualizing and modeling data for reports or papers. However, you may notice that it is not a linear process. In other words, there is magic way of understanding your data with a touch. Rather, it is a process where you need to try different wayd of tranforming, visualizing and modeling your data. Therefore, EDA is not a formal process with a strict set of rules, but an open process. 
+
+Luckily, R offers a range of tools that can help us eaily summarize, visualize and model our data. 
+
+In this workshop, we first explore variation within a variable and then move on to covariation among variables.
+
+
+```{r figure2, fig.cap='Data analysis workflow', out.width='100%', fig.asp=.75, fig.align='center'}
+
+knitr::include_graphics("img/DA_workflow.png")
+
+```
+
+
+## Data wrangling
+
+Data wrangling (see the above figure in red box) involves some basic procedures (importing, tidying and transforming) in the early stage of data analysis. R,and relevant packages, *tidyverse* in particular, provide a number of functions that can help us dealing with data cleaning and tranformation. We will be learning how to use these functions in the follow sessions. 
+
+

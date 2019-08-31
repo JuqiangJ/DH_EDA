@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 2 Basic data structures in R | A Introduction to Eploratory Data Analysis with R</title>
+  <meta name="description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 2 Basic data structures in R | A Introduction to Eploratory Data Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Basic data structures in R | A Introduction to Eploratory Data Analysis with R" />
+  
+  <meta name="twitter:description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle." />
+  
+
+<meta name="author" content="Juqiang Chen">
+
+
+<meta name="date" content="2019-09-01">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="what-is-eda.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>1.1</b> Installing R and R studio</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-libraries-in-r"><i class="fa fa-check"></i><b>1.2</b> Installing libraries in R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#install-packages-and-library-packages"><i class="fa fa-check"></i><b>1.3</b> Install packages and library packages</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#programme"><i class="fa fa-check"></i><b>1.4</b> Programme</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Basic data structures in R</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#nominal-ordinal-intervalratio-variables"><i class="fa fa-check"></i><b>2.1</b> Nominal, ordinal, interval/ratio variables</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#d-data-structure-vectors"><i class="fa fa-check"></i><b>2.2</b> 1D data structure: vectors</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#creating-vectors"><i class="fa fa-check"></i><b>2.2.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> creating list objects</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#d-data-structures-matrice-and-data-frames"><i class="fa fa-check"></i><b>2.3</b> 2D data structures: matrice and data frames</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#what-if-i-want-to-change-column-names-or-add-variable-to-the-df"><i class="fa fa-check"></i><b>2.3.1</b> what if I want to change column names or add variable to the df?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Subsetting dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.4</b> summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>3</b> What is EDA?</a><ul>
+<li class="chapter" data-level="3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#data-analysis-workflow"><i class="fa fa-check"></i><b>3.1</b> Data analysis workflow</a></li>
+<li class="chapter" data-level="3.2" data-path="what-is-eda.html"><a href="what-is-eda.html#data-wrangling"><i class="fa fa-check"></i><b>3.2</b> Data wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>4</b> Variation</a><ul>
+<li class="chapter" data-level="4.1" data-path="variation.html"><a href="variation.html#categorical-variable"><i class="fa fa-check"></i><b>4.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="4.2" data-path="variation.html"><a href="variation.html#continous-variable"><i class="fa fa-check"></i><b>4.2</b> Continous variable</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#five-number-summary"><i class="fa fa-check"></i><b>4.2.1</b> Five-number summary</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#boxplot-violin-plot"><i class="fa fa-check"></i><b>4.2.2</b> Boxplot &amp; violin plot</a></li>
+<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#qq-plots"><i class="fa fa-check"></i><b>4.2.3</b> QQ Plots</a></li>
+<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.4</b> Unusual values</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
+<li class="chapter" data-level="5.1" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>5.1</b> Categorical + continuous variable</a></li>
+<li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.2</b> Two categorical variables</a></li>
+<li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="simple-modeling.html"><a href="simple-modeling.html"><i class="fa fa-check"></i><b>6</b> Simple modeling</a></li>
+<li class="chapter" data-level="7" data-path="build-your-own-function.html"><a href="build-your-own-function.html"><i class="fa fa-check"></i><b>7</b> Build your own function</a></li>
+<li class="chapter" data-level="8" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>8</b> Resources</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Introduction to Eploratory Data Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Basic data structures in R</h1>
+<p>Before we get our hands dirty in doing actual data analysis, it is desirable to first think about what types of variables and data structures we are dealing with.</p>
+<p>Before we talk about data structures in R, let’s first think about how data can be categorized.</p>
+<div id="nominal-ordinal-intervalratio-variables" class="section level2">
+<h2><span class="header-section-number">2.1</span> Nominal, ordinal, interval/ratio variables</h2>
+<ul>
+<li><p><strong>Nominal variables</strong> are the data whose levels are labels or descriptions, which cannot be ordered. (e.g. sex, school, or nationality). They are categorical in nature.</p></li>
+<li><p><strong>Ordinal variables</strong> can be ordered, or ranked in logical order, but the interval between levels of the variables are unknown.</p></li>
+</ul>
+<blockquote>
+<p>For example, when doing a survey, participants will be asked to rate. The subjective measurements of this kind are often ordinal variables. E.g. a Likert ranking scale; level of education (“&lt; high school”, “high school”, “associate’s degree”).</p>
+</blockquote>
+<p>We can assign numbers to levels of an ordinal variable, and can order them, but we should bear in mind that these variable are not numeric. For example, “strongly agree” and “neutral” cannot average out to an “agree.”, even though you can assign 5 to “strong agree” and 3 to “neutral”.</p>
+<ul>
+<li><strong>Interval/ratio variables</strong> are measured or counted values: age, height, weight or number of students. The interval between numbers is equal: the interval between 1 kg and 2 kg is the same as between 3 kg and 4 kg. Interval/ratio variables can be <em>discrete values</em>, such as population (1332) or counts of items, or they can be <em>continuous variables</em> values that can take on any value within an interval, and can be expressed as decimals (1.009 kg).</li>
+</ul>
+<p>The variable type will determine (1) statistical analysis; (2) the way we summarize data with statistics and plots. We will be elaborating on this in the <em>Explorative Data Analysis course</em>.</p>
+<p>Variables can be stored in R in different data types.</p>
+<ul>
+<li><p>Normial and ordinal variables can be stored as <em>character</em> or <em>factors</em> (with levels).</p></li>
+<li><p>Interval data are stored as numbers either as <em>integer</em> or <em>numeric</em> (real or decimal).</p></li>
+</ul>
+<p>If you have only one variable, you can store it in a vector. However, more often than not, you have a bunch of variables that should be stored or imported as a matrix or data frame.</p>
+</div>
+<div id="d-data-structure-vectors" class="section level2">
+<h2><span class="header-section-number">2.2</span> 1D data structure: vectors</h2>
+<p>A vector is a sequence of data elements of the same basic type: integer, double, logical or character. All elements of a vector must be the same type.</p>
+<div id="creating-vectors" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Creating vectors</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a =<span class="st"> </span><span class="dv">8</span><span class="op">:</span><span class="dv">17</span>
+
+b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">38</span>)
+
+c =<span class="st"> </span><span class="kw">c</span> (<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)
+
+c =<span class="st"> </span><span class="kw">c</span> (T, F, T, F)
+
+d =<span class="st"> </span><span class="kw">c</span> (<span class="st">&quot;TRUE&quot;</span>, <span class="st">&quot;FALSE&quot;</span>, <span class="st">&quot;FALSE&quot;</span>)
+
+<span class="co"># You can change the type of a vector with as.vector function.</span>
+
+<span class="kw">as.vector</span>(b, <span class="dt">mode =</span> <span class="st">&quot;character&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;9&quot;   &quot;10&quot;  &quot;100&quot; &quot;38&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># When you put elements of different types in one vector, R will automatically change the type of some elements to keep the whole vector homogenous.</span>
+
+e =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">10</span>, <span class="st">&quot;ab&quot;</span>, <span class="st">&quot;cd&quot;</span>)
+
+f =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, T, F)</code></pre></div>
+<p>c () is a function in R.</p>
+<p>There are some other basic functions in R that you can play with to generate vectors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A =<span class="st"> </span><span class="dv">9</span><span class="op">:</span><span class="dv">20</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+
+B =<span class="st"> </span><span class="kw">seq</span> (<span class="dv">1</span>, <span class="dv">10</span>)
+
+C =<span class="st"> </span><span class="kw">seq</span> (<span class="dv">1</span>, <span class="dv">20</span>, <span class="dt">by=</span> <span class="dv">2</span>)
+
+D =<span class="st"> </span><span class="kw">rep</span> (<span class="dv">5</span>, <span class="dv">4</span>)
+
+E =<span class="st"> </span><span class="kw">rep</span> (<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dv">4</span>)
+
+G =<span class="st"> </span><span class="kw">rep</span> (<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">each =</span> <span class="dv">4</span>)
+
+<span class="co"># Now that you have a vector, you can do some Maths.</span>
+
+<span class="kw">max</span>(a)</code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(a)</code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(a)</code></pre></div>
+<pre><code>## [1]  8 17</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(a)</code></pre></div>
+<pre><code>## [1] 125</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(a)</code></pre></div>
+<pre><code>## [1] 12.5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(a)</code></pre></div>
+<pre><code>## [1] 12.5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(a)</code></pre></div>
+<pre><code>##    0%   25%   50%   75%  100% 
+##  8.00 10.25 12.50 14.75 17.00</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(a)</code></pre></div>
+<pre><code>## [1] 3.02765</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">sd</span>(a), <span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 3.03</code></pre>
+</div>
+<div id="creating-list-objects" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> creating list objects</h3>
+<p>We can put vectors of different types (e.g., number, logic or character) and lengths in a list object.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">list1 =<span class="st"> </span><span class="kw">list</span>(a, b, c, d, e, f)
+
+list1</code></pre></div>
+<pre><code>## [[1]]
+##  [1]  8  9 10 11 12 13 14 15 16 17
+## 
+## [[2]]
+## [1]   9  10 100  38
+## 
+## [[3]]
+## [1]  TRUE FALSE  TRUE FALSE
+## 
+## [[4]]
+## [1] &quot;TRUE&quot;  &quot;FALSE&quot; &quot;FALSE&quot;
+## 
+## [[5]]
+## [1] &quot;9&quot;  &quot;10&quot; &quot;ab&quot; &quot;cd&quot;
+## 
+## [[6]]
+## [1] 10 11  1  0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># More often than not, we do not make list ourselves but have to deal with lists when we get outputs from stats models.</span></code></pre></div>
+</div>
+</div>
+<div id="d-data-structures-matrice-and-data-frames" class="section level2">
+<h2><span class="header-section-number">2.3</span> 2D data structures: matrice and data frames</h2>
+<p>Most of us have had some experience with the Excel spreadsheet. Data in a spreadsheet are arranged by rows and columns in a rectangular space. This is a typical 2 dimensional data structure. In R, we can have two ways of forming tabular data like a spreadsheet: the matrix and dataframe.</p>
+<p><strong>A matrix </strong>is a collection of data elements arranged in a two-dimensional rectangular layout in which all the elements must be of the same type (e.g., numeric or character).</p>
+<p><strong>Dataframe</strong> is similar to matrix in shape but only differs in that different types of data can co-exist in different columns. Thus, in data analysis, we use dataframes more often than matrix.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Let&#39;s generate a dataframe from scratch.</span>
+
+id =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">40</span>)
+
+gender =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>), <span class="dv">5</span>)
+
+maths =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dt">mean =</span> <span class="dv">70</span>, <span class="dt">sd =</span> <span class="dv">5</span>)
+
+english =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dt">mean =</span> <span class="dv">80</span>, <span class="dt">sd =</span> <span class="dv">9</span>)
+
+music =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dt">mean =</span> <span class="dv">75</span>, <span class="dt">sd =</span> <span class="dv">10</span>)
+
+pe =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dt">mean =</span> <span class="dv">86</span>, <span class="dt">sd =</span> <span class="dv">12</span>)
+
+df1 =<span class="st"> </span><span class="kw">data.frame</span> (id, gender, maths, english)</code></pre></div>
+<p>Now let’s explore the data frame we just created.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(df1)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    40 obs. of  4 variables:
+##  $ id     : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ gender : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 2 1 2 1 2 1 2 1 ...
+##  $ maths  : num  75.5 60.7 68.8 66.1 60 ...
+##  $ english: num  61.9 80.8 80.1 92 72.5 ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(df1)</code></pre></div>
+<pre><code>##        id           gender       maths          english     
+##  Min.   : 1.00   female:20   Min.   :59.36   Min.   :61.88  
+##  1st Qu.:10.75   male  :20   1st Qu.:64.62   1st Qu.:78.54  
+##  Median :20.50               Median :68.77   Median :81.96  
+##  Mean   :20.50               Mean   :68.42   Mean   :81.94  
+##  3rd Qu.:30.25               3rd Qu.:71.99   3rd Qu.:88.68  
+##  Max.   :40.00               Max.   :76.84   Max.   :99.28</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(df1)</code></pre></div>
+<pre><code>## [1] 40</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(df1)</code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attributes</span>(df1)</code></pre></div>
+<pre><code>## $names
+## [1] &quot;id&quot;      &quot;gender&quot;  &quot;maths&quot;   &quot;english&quot;
+## 
+## $class
+## [1] &quot;data.frame&quot;
+## 
+## $row.names
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+## [24] 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40</code></pre>
+<div id="what-if-i-want-to-change-column-names-or-add-variable-to-the-df" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> what if I want to change column names or add variable to the df?</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2 =<span class="st"> </span><span class="kw">data.frame</span> (<span class="dt">id =</span> id, <span class="dt">gender =</span> gender, <span class="dt">maths =</span> maths, <span class="dt">english =</span> english)
+
+df2 =<span class="st"> </span><span class="kw">cbind</span>(df2, pe)
+
+<span class="kw">colnames</span>(df2) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;SEX&quot;</span>,<span class="st">&quot;MATHS&quot;</span>,<span class="st">&quot;ENGLISH&quot;</span>,<span class="st">&quot;PE&quot;</span>)
+
+<span class="kw">head</span>(df2)</code></pre></div>
+<pre><code>##   ID    SEX    MATHS  ENGLISH       PE
+## 1  1   male 75.53592 61.88055 95.03021
+## 2  2 female 60.70274 80.76702 86.84679
+## 3  3   male 68.75166 80.06821 86.17865
+## 4  4 female 66.14480 91.98899 81.56946
+## 5  5   male 59.95896 72.50686 87.02268
+## 6  6 female 62.78927 82.90208 82.51376</code></pre>
+</div>
+<div id="subsetting-dataframes" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Subsetting dataframes</h3>
+<p>We all know how to select part of an Excel spreadsheet by clicking and moving our mouse. In R, when we want to select part of a dataframe, we use this formula, <strong>dataframe[row, column]</strong>.</p>
+<p>There are various ways we can use this formula and believe it or not, you will love them!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the complete dataset</span>
+
+df2</code></pre></div>
+<pre><code>##    ID    SEX    MATHS  ENGLISH        PE
+## 1   1   male 75.53592 61.88055  95.03021
+## 2   2 female 60.70274 80.76702  86.84679
+## 3   3   male 68.75166 80.06821  86.17865
+## 4   4 female 66.14480 91.98899  81.56946
+## 5   5   male 59.95896 72.50686  87.02268
+## 6   6 female 62.78927 82.90208  82.51376
+## 7   7   male 64.47803 63.44843  79.86741
+## 8   8 female 68.43376 83.91424  67.83984
+## 9   9   male 71.69499 85.87633 100.25799
+## 10 10 female 68.77894 90.29038  83.49447
+## 11 11   male 70.71313 76.73294  86.39878
+## 12 12 female 63.43502 81.92147  68.25523
+## 13 13   male 68.34154 74.88190 103.02797
+## 14 14 female 76.84083 89.11302  87.02468
+## 15 15   male 72.74221 79.53487  70.04364
+## 16 16 female 62.01027 79.13884 100.03862
+## 17 17   male 67.04570 68.99556  87.17493
+## 18 18 female 73.71834 80.83653  86.17177
+## 19 19   male 68.11686 82.74543  82.12412
+## 20 20 female 72.13637 86.61204  78.63536
+## 21 21   male 70.75857 75.84593  80.64906
+## 22 22 female 71.37134 88.92820  90.72850
+## 23 23   male 60.96830 80.26248  67.04517
+## 24 24 female 72.93128 82.00373  84.80269
+## 25 25   male 59.35604 92.06622  97.15599
+## 26 26 female 67.41777 80.98590  96.39935
+## 27 27   male 61.41414 90.35150  91.87032
+## 28 28 female 69.78970 84.00136  86.96864
+## 29 29   male 70.22080 98.06656  77.32599
+## 30 30 female 73.33246 67.09799  50.82574
+## 31 31   male 66.90442 92.52501 100.00362
+## 32 32 female 70.77281 85.73048  83.83447
+## 33 33   male 71.94776 89.77275  86.24335
+## 34 34 female 64.66966 88.60113  57.63487
+## 35 35   male 74.80500 99.27848  82.09231
+## 36 36 female 73.60764 81.17302  71.95113
+## 37 37   male 62.48457 87.70752  86.18011
+## 38 38 female 74.33927 63.84044  61.61388
+## 39 39   male 70.25799 81.03968 108.71588
+## 40 40 female 67.08501 74.31651  82.55867</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>, ] <span class="co"># from row 2 to row 5</span></code></pre></div>
+<pre><code>##   ID    SEX    MATHS  ENGLISH       PE
+## 2  2 female 60.70274 80.76702 86.84679
+## 3  3   male 68.75166 80.06821 86.17865
+## 4  4 female 66.14480 91.98899 81.56946
+## 5  5   male 59.95896 72.50686 87.02268</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[ , <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="co"># select column 1 to 2</span></code></pre></div>
+<pre><code>##    ID    SEX
+## 1   1   male
+## 2   2 female
+## 3   3   male
+## 4   4 female
+## 5   5   male
+## 6   6 female
+## 7   7   male
+## 8   8 female
+## 9   9   male
+## 10 10 female
+## 11 11   male
+## 12 12 female
+## 13 13   male
+## 14 14 female
+## 15 15   male
+## 16 16 female
+## 17 17   male
+## 18 18 female
+## 19 19   male
+## 20 20 female
+## 21 21   male
+## 22 22 female
+## 23 23   male
+## 24 24 female
+## 25 25   male
+## 26 26 female
+## 27 27   male
+## 28 28 female
+## 29 29   male
+## 30 30 female
+## 31 31   male
+## 32 32 female
+## 33 33   male
+## 34 34 female
+## 35 35   male
+## 36 36 female
+## 37 37   male
+## 38 38 female
+## 39 39   male
+## 40 40 female</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[ , <span class="kw">c</span>(<span class="st">&quot;ENGLISH&quot;</span>, <span class="st">&quot;PE&quot;</span>)] <span class="co"># select by column names</span></code></pre></div>
+<pre><code>##     ENGLISH        PE
+## 1  61.88055  95.03021
+## 2  80.76702  86.84679
+## 3  80.06821  86.17865
+## 4  91.98899  81.56946
+## 5  72.50686  87.02268
+## 6  82.90208  82.51376
+## 7  63.44843  79.86741
+## 8  83.91424  67.83984
+## 9  85.87633 100.25799
+## 10 90.29038  83.49447
+## 11 76.73294  86.39878
+## 12 81.92147  68.25523
+## 13 74.88190 103.02797
+## 14 89.11302  87.02468
+## 15 79.53487  70.04364
+## 16 79.13884 100.03862
+## 17 68.99556  87.17493
+## 18 80.83653  86.17177
+## 19 82.74543  82.12412
+## 20 86.61204  78.63536
+## 21 75.84593  80.64906
+## 22 88.92820  90.72850
+## 23 80.26248  67.04517
+## 24 82.00373  84.80269
+## 25 92.06622  97.15599
+## 26 80.98590  96.39935
+## 27 90.35150  91.87032
+## 28 84.00136  86.96864
+## 29 98.06656  77.32599
+## 30 67.09799  50.82574
+## 31 92.52501 100.00362
+## 32 85.73048  83.83447
+## 33 89.77275  86.24335
+## 34 88.60113  57.63487
+## 35 99.27848  82.09231
+## 36 81.17302  71.95113
+## 37 87.70752  86.18011
+## 38 63.84044  61.61388
+## 39 81.03968 108.71588
+## 40 74.31651  82.55867</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), ] <span class="co">#select the first three rows</span></code></pre></div>
+<pre><code>##   ID    SEX    MATHS  ENGLISH       PE
+## 1  1   male 75.53592 61.88055 95.03021
+## 2  2 female 60.70274 80.76702 86.84679
+## 3  3   male 68.75166 80.06821 86.17865</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[<span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">40</span>, <span class="dv">2</span>), ] <span class="co">#select every other rows from 1 to 40 rows </span></code></pre></div>
+<pre><code>##    ID  SEX    MATHS  ENGLISH        PE
+## 1   1 male 75.53592 61.88055  95.03021
+## 3   3 male 68.75166 80.06821  86.17865
+## 5   5 male 59.95896 72.50686  87.02268
+## 7   7 male 64.47803 63.44843  79.86741
+## 9   9 male 71.69499 85.87633 100.25799
+## 11 11 male 70.71313 76.73294  86.39878
+## 13 13 male 68.34154 74.88190 103.02797
+## 15 15 male 72.74221 79.53487  70.04364
+## 17 17 male 67.04570 68.99556  87.17493
+## 19 19 male 68.11686 82.74543  82.12412
+## 21 21 male 70.75857 75.84593  80.64906
+## 23 23 male 60.96830 80.26248  67.04517
+## 25 25 male 59.35604 92.06622  97.15599
+## 27 27 male 61.41414 90.35150  91.87032
+## 29 29 male 70.22080 98.06656  77.32599
+## 31 31 male 66.90442 92.52501 100.00362
+## 33 33 male 71.94776 89.77275  86.24335
+## 35 35 male 74.80500 99.27848  82.09231
+## 37 37 male 62.48457 87.70752  86.18011
+## 39 39 male 70.25799 81.03968 108.71588</code></pre>
+</div>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">2.4</span> summary</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Dimensions</th>
+<th align="center">Homogenous</th>
+<th align="left">Heterogeneous</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1D</td>
+<td align="center">Atomic Vector</td>
+<td align="left">List</td>
+</tr>
+<tr class="even">
+<td align="right">2D</td>
+<td align="center">Matrix</td>
+<td align="left">Data frame</td>
+</tr>
+<tr class="odd">
+<td align="right">nD</td>
+<td align="center">Array</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="what-is-eda.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-data_structure.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+# Simple modeling
+
+Patterns in the data provide clues about relationship or covariation.
+
+Models are a tool for extracting patterns out of data.
+
+```{r}
+ggplot(faithful)+
+  geom_point(aes(eruptions, waiting))
+```
+
