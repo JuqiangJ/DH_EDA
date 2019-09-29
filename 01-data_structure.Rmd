@@ -3,22 +3,43 @@
 
 Before we get our hands dirty in doing actual data analysis, it is desirable to first think about what types of variables and data structures we are dealing with. 
 
+A *variable* is any characteristics, number, or quantity that can be measured or counted. A variable may also be called a *data item*. Age, sex, business income and expenses, country of birth, capital expenditure, class grades, eye colour and vehicle type are examples of variables. It is called a variable because the value may vary between data units in a population, and may change in value over time.(Australian Bureau of Statistics, ABS)
+
 Before we talk about data structures in R, let's first think about how data can be categorized. 
 
-## Nominal, ordinal, interval/ratio variables
+## Categorical vs. numeric variables
 
+Categorical variables have values that describe a 'quality' or 'characteristic' of a data unit, like 'what type' or 'which category'. Categorical variables fall into mutually exclusive (in one category or in another) and exhaustive (include all possible options) categories. Therefore, categorical variables are *qualitative variables* and tend to be represented by a non-numeric value.
 
-- **Nominal variables** are the data whose levels are labels or descriptions, which cannot be ordered.  (e.g. sex, school, or nationality).  They are categorical in nature.
+Categorical variables may be further described as ordinal or nominal:
 
-- **Ordinal variables** can be ordered, or ranked in logical order, but the interval between levels of the variables are unknown.  
+An *ordinal variable* is a categorical variable. Observations can take a value that can be logically ordered or ranked. The categories associated with ordinal variables can be ranked higher or lower than another, but do not necessarily establish a numeric difference between each category.In other words, the interval between levels of the variables are unknown. Examples of ordinal categorical variables include academic grades (i.e. A, B, C), clothing size (i.e. small, medium, large, extra large) and attitudes (i.e. strongly agree, agree, disagree, strongly disagree).
 
 > For example, when doing a survey, participants will be asked to rate. The subjective measurements of this kind are often ordinal variables. E.g. a Likert ranking scale; level of education (“< high school”, “high school”, “associate’s degree”). 
 
 We can assign numbers to levels of an ordinal variable, and can order them, but we should bear in mind that these variable are not numeric. For example, “strongly agree” and “neutral” cannot average out to an “agree.”, even though you can assign 5 to "strong agree" and 3 to "neutral".
 
-- **Interval/ratio variables** are measured or counted values: age, height, weight or number of students. The interval between numbers is equal:  the interval between 1 kg and 2 kg is the same as between 3 kg and 4 kg. Interval/ratio variables can be *discrete values*, such as population (1332) or counts of items, or they can be *continuous variables* values that can take on any value within an interval, and can be expressed as decimals (1.009 kg).   
+A *nominal variable* is a categorical variable. Observations can take a value that is not able to be organised in a logical sequence. Examples of nominal categorical variables include sex, business type, eye colour, religion and brand.
 
-The variable type will determine (1) statistical analysis; (2) the way we summarize data with statistics and plots. We will be elaborating on this in the *Explorative Data Analysis course*.
+The data collected for a categorical variable are *qualitative data*.
+
+
+*Numeric variables* have values that describe a measurable quantity as a number, like 'how many' or 'how much'. Therefore numeric variables are *quantitative variables*.(ABS) It is also called **Interval/ratio variables** and the interval between numbers is equal:  the interval between 1 kg and 2 kg is the same as between 3 kg and 4 kg.
+
+Numeric variables may be further described as either continuous or discrete:
+
+A *continuous variable *is a numeric variable. Observations can take any value between a certain set of real numbers. The value given to an observation for a continuous variable can include values as small as the instrument of measurement allows. Examples of continuous variables include height, time, age, and temperature.(ABS)
+
+A *discrete variable* is a numeric variable. Observations can take a value based on a count from a set of distinct whole values. A discrete variable cannot take the value of a fraction between one value and the next closest value. Examples of discrete variables include the number of registered cars, number of business locations, and number of children in a family, all of of which measured as whole units (i.e. 1, 2, 3 cars).(ABS)
+
+The data collected for a numeric variable are *quantitative data*.
+
+The variable type will determine (1) statistical analysis; (2) the way we summarize data with statistics and plots. 
+```{r variable_type, fig.cap='Download R', out.width='100%', fig.asp=.75, fig.align='center'}
+
+knitr::include_graphics("img/variable.jpg")
+
+```
 
 Variables can be stored in R in different data types. 
 

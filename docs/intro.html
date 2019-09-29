@@ -25,7 +25,7 @@
 <meta name="author" content="Juqiang Chen">
 
 
-<meta name="date" content="2019-09-01">
+<meta name="date" content="2019-09-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -111,7 +111,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#programme"><i class="fa fa-check"></i><b>1.4</b> Programme</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Basic data structures in R</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#nominal-ordinal-intervalratio-variables"><i class="fa fa-check"></i><b>2.1</b> Nominal, ordinal, interval/ratio variables</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#categorical-vs.numeric-variables"><i class="fa fa-check"></i><b>2.1</b> Categorical vs. numeric variables</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#d-data-structure-vectors"><i class="fa fa-check"></i><b>2.2</b> 1D data structure: vectors</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#creating-vectors"><i class="fa fa-check"></i><b>2.2.1</b> Creating vectors</a></li>
 <li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> creating list objects</a></li>
@@ -132,7 +132,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#five-number-summary"><i class="fa fa-check"></i><b>4.2.1</b> Five-number summary</a></li>
 <li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#boxplot-violin-plot"><i class="fa fa-check"></i><b>4.2.2</b> Boxplot &amp; violin plot</a></li>
 <li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#qq-plots"><i class="fa fa-check"></i><b>4.2.3</b> QQ Plots</a></li>
-<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.4</b> Unusual values</a></li>
+<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#how-does-the-shape-of-a-distribution-influence-the-measures-of-central-tendency"><i class="fa fa-check"></i><b>4.2.4</b> How does the shape of a distribution influence the Measures of Central Tendency?</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
@@ -166,21 +166,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Basic data structures in R</h1>
 <p>Before we get our hands dirty in doing actual data analysis, it is desirable to first think about what types of variables and data structures we are dealing with.</p>
+<p>A <em>variable</em> is any characteristics, number, or quantity that can be measured or counted. A variable may also be called a <em>data item</em>. Age, sex, business income and expenses, country of birth, capital expenditure, class grades, eye colour and vehicle type are examples of variables. It is called a variable because the value may vary between data units in a population, and may change in value over time.(Australian Bureau of Statistics, ABS)</p>
 <p>Before we talk about data structures in R, let’s first think about how data can be categorized.</p>
-<div id="nominal-ordinal-intervalratio-variables" class="section level2">
-<h2><span class="header-section-number">2.1</span> Nominal, ordinal, interval/ratio variables</h2>
-<ul>
-<li><p><strong>Nominal variables</strong> are the data whose levels are labels or descriptions, which cannot be ordered. (e.g. sex, school, or nationality). They are categorical in nature.</p></li>
-<li><p><strong>Ordinal variables</strong> can be ordered, or ranked in logical order, but the interval between levels of the variables are unknown.</p></li>
-</ul>
+<div id="categorical-vs.numeric-variables" class="section level2">
+<h2><span class="header-section-number">2.1</span> Categorical vs. numeric variables</h2>
+<p>Categorical variables have values that describe a ‘quality’ or ‘characteristic’ of a data unit, like ‘what type’ or ‘which category’. Categorical variables fall into mutually exclusive (in one category or in another) and exhaustive (include all possible options) categories. Therefore, categorical variables are <em>qualitative variables</em> and tend to be represented by a non-numeric value.</p>
+<p>Categorical variables may be further described as ordinal or nominal:</p>
+<p>An <em>ordinal variable</em> is a categorical variable. Observations can take a value that can be logically ordered or ranked. The categories associated with ordinal variables can be ranked higher or lower than another, but do not necessarily establish a numeric difference between each category.In other words, the interval between levels of the variables are unknown. Examples of ordinal categorical variables include academic grades (i.e. A, B, C), clothing size (i.e. small, medium, large, extra large) and attitudes (i.e. strongly agree, agree, disagree, strongly disagree).</p>
 <blockquote>
 <p>For example, when doing a survey, participants will be asked to rate. The subjective measurements of this kind are often ordinal variables. E.g. a Likert ranking scale; level of education (“&lt; high school”, “high school”, “associate’s degree”).</p>
 </blockquote>
 <p>We can assign numbers to levels of an ordinal variable, and can order them, but we should bear in mind that these variable are not numeric. For example, “strongly agree” and “neutral” cannot average out to an “agree.”, even though you can assign 5 to “strong agree” and 3 to “neutral”.</p>
-<ul>
-<li><strong>Interval/ratio variables</strong> are measured or counted values: age, height, weight or number of students. The interval between numbers is equal: the interval between 1 kg and 2 kg is the same as between 3 kg and 4 kg. Interval/ratio variables can be <em>discrete values</em>, such as population (1332) or counts of items, or they can be <em>continuous variables</em> values that can take on any value within an interval, and can be expressed as decimals (1.009 kg).</li>
-</ul>
-<p>The variable type will determine (1) statistical analysis; (2) the way we summarize data with statistics and plots. We will be elaborating on this in the <em>Explorative Data Analysis course</em>.</p>
+<p>A <em>nominal variable</em> is a categorical variable. Observations can take a value that is not able to be organised in a logical sequence. Examples of nominal categorical variables include sex, business type, eye colour, religion and brand.</p>
+<p>The data collected for a categorical variable are <em>qualitative data</em>.</p>
+<p><em>Numeric variables</em> have values that describe a measurable quantity as a number, like ‘how many’ or ‘how much’. Therefore numeric variables are <em>quantitative variables</em>.(ABS) It is also called <strong>Interval/ratio variables</strong> and the interval between numbers is equal: the interval between 1 kg and 2 kg is the same as between 3 kg and 4 kg.</p>
+<p>Numeric variables may be further described as either continuous or discrete:</p>
+<p>A <em>continuous variable </em>is a numeric variable. Observations can take any value between a certain set of real numbers. The value given to an observation for a continuous variable can include values as small as the instrument of measurement allows. Examples of continuous variables include height, time, age, and temperature.(ABS)</p>
+<p>A <em>discrete variable</em> is a numeric variable. Observations can take a value based on a count from a set of distinct whole values. A discrete variable cannot take the value of a fraction between one value and the next closest value. Examples of discrete variables include the number of registered cars, number of business locations, and number of children in a family, all of of which measured as whole units (i.e. 1, 2, 3 cars).(ABS)</p>
+<p>The data collected for a numeric variable are <em>quantitative data</em>.</p>
+<p>The variable type will determine (1) statistical analysis; (2) the way we summarize data with statistics and plots.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/variable.jpg&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center">
+<img src="img/variable.jpg" alt="Download R" width="100%" />
+<p class="caption">
+(#fig:variable_type)Download R
+</p>
+</div>
 <p>Variables can be stored in R in different data types.</p>
 <ul>
 <li><p>Normial and ordinal variables can be stored as <em>character</em> or <em>factors</em> (with levels).</p></li>
@@ -299,16 +310,16 @@ df1 =<span class="st"> </span><span class="kw">data.frame</span> (id, gender, ma
 <pre><code>## &#39;data.frame&#39;:    40 obs. of  4 variables:
 ##  $ id     : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ gender : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 2 1 2 1 2 1 2 1 ...
-##  $ maths  : num  75.5 60.7 68.8 66.1 60 ...
-##  $ english: num  61.9 80.8 80.1 92 72.5 ...</code></pre>
+##  $ maths  : num  62.9 66.4 68.5 75.4 72.2 ...
+##  $ english: num  80.4 73.8 69.6 88.7 80.4 ...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(df1)</code></pre></div>
 <pre><code>##        id           gender       maths          english     
-##  Min.   : 1.00   female:20   Min.   :59.36   Min.   :61.88  
-##  1st Qu.:10.75   male  :20   1st Qu.:64.62   1st Qu.:78.54  
-##  Median :20.50               Median :68.77   Median :81.96  
-##  Mean   :20.50               Mean   :68.42   Mean   :81.94  
-##  3rd Qu.:30.25               3rd Qu.:71.99   3rd Qu.:88.68  
-##  Max.   :40.00               Max.   :76.84   Max.   :99.28</code></pre>
+##  Min.   : 1.00   female:20   Min.   :59.81   Min.   :65.47  
+##  1st Qu.:10.75   male  :20   1st Qu.:67.15   1st Qu.:77.00  
+##  Median :20.50               Median :70.88   Median :80.59  
+##  Mean   :20.50               Mean   :70.42   Mean   :81.38  
+##  3rd Qu.:30.25               3rd Qu.:72.58   3rd Qu.:88.11  
+##  Max.   :40.00               Max.   :83.09   Max.   :95.31</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(df1)</code></pre></div>
 <pre><code>## [1] 40</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(df1)</code></pre></div>
@@ -332,13 +343,13 @@ df2 =<span class="st"> </span><span class="kw">cbind</span>(df2, pe)
 <span class="kw">colnames</span>(df2) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;SEX&quot;</span>,<span class="st">&quot;MATHS&quot;</span>,<span class="st">&quot;ENGLISH&quot;</span>,<span class="st">&quot;PE&quot;</span>)
 
 <span class="kw">head</span>(df2)</code></pre></div>
-<pre><code>##   ID    SEX    MATHS  ENGLISH       PE
-## 1  1   male 75.53592 61.88055 95.03021
-## 2  2 female 60.70274 80.76702 86.84679
-## 3  3   male 68.75166 80.06821 86.17865
-## 4  4 female 66.14480 91.98899 81.56946
-## 5  5   male 59.95896 72.50686 87.02268
-## 6  6 female 62.78927 82.90208 82.51376</code></pre>
+<pre><code>##   ID    SEX    MATHS  ENGLISH        PE
+## 1  1   male 62.94909 80.40752  91.06741
+## 2  2 female 66.36799 73.76231  84.91701
+## 3  3   male 68.46500 69.63240 108.68219
+## 4  4 female 75.39550 88.68295  79.80965
+## 5  5   male 72.15650 80.38312  85.35978
+## 6  6 female 67.45631 78.34734 113.21709</code></pre>
 </div>
 <div id="subsetting-dataframes" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> Subsetting dataframes</h3>
@@ -348,52 +359,52 @@ df2 =<span class="st"> </span><span class="kw">cbind</span>(df2, pe)
 
 df2</code></pre></div>
 <pre><code>##    ID    SEX    MATHS  ENGLISH        PE
-## 1   1   male 75.53592 61.88055  95.03021
-## 2   2 female 60.70274 80.76702  86.84679
-## 3   3   male 68.75166 80.06821  86.17865
-## 4   4 female 66.14480 91.98899  81.56946
-## 5   5   male 59.95896 72.50686  87.02268
-## 6   6 female 62.78927 82.90208  82.51376
-## 7   7   male 64.47803 63.44843  79.86741
-## 8   8 female 68.43376 83.91424  67.83984
-## 9   9   male 71.69499 85.87633 100.25799
-## 10 10 female 68.77894 90.29038  83.49447
-## 11 11   male 70.71313 76.73294  86.39878
-## 12 12 female 63.43502 81.92147  68.25523
-## 13 13   male 68.34154 74.88190 103.02797
-## 14 14 female 76.84083 89.11302  87.02468
-## 15 15   male 72.74221 79.53487  70.04364
-## 16 16 female 62.01027 79.13884 100.03862
-## 17 17   male 67.04570 68.99556  87.17493
-## 18 18 female 73.71834 80.83653  86.17177
-## 19 19   male 68.11686 82.74543  82.12412
-## 20 20 female 72.13637 86.61204  78.63536
-## 21 21   male 70.75857 75.84593  80.64906
-## 22 22 female 71.37134 88.92820  90.72850
-## 23 23   male 60.96830 80.26248  67.04517
-## 24 24 female 72.93128 82.00373  84.80269
-## 25 25   male 59.35604 92.06622  97.15599
-## 26 26 female 67.41777 80.98590  96.39935
-## 27 27   male 61.41414 90.35150  91.87032
-## 28 28 female 69.78970 84.00136  86.96864
-## 29 29   male 70.22080 98.06656  77.32599
-## 30 30 female 73.33246 67.09799  50.82574
-## 31 31   male 66.90442 92.52501 100.00362
-## 32 32 female 70.77281 85.73048  83.83447
-## 33 33   male 71.94776 89.77275  86.24335
-## 34 34 female 64.66966 88.60113  57.63487
-## 35 35   male 74.80500 99.27848  82.09231
-## 36 36 female 73.60764 81.17302  71.95113
-## 37 37   male 62.48457 87.70752  86.18011
-## 38 38 female 74.33927 63.84044  61.61388
-## 39 39   male 70.25799 81.03968 108.71588
-## 40 40 female 67.08501 74.31651  82.55867</code></pre>
+## 1   1   male 62.94909 80.40752  91.06741
+## 2   2 female 66.36799 73.76231  84.91701
+## 3   3   male 68.46500 69.63240 108.68219
+## 4   4 female 75.39550 88.68295  79.80965
+## 5   5   male 72.15650 80.38312  85.35978
+## 6   6 female 67.45631 78.34734 113.21709
+## 7   7   male 63.48015 68.33354  98.43093
+## 8   8 female 71.22988 85.41294  87.14748
+## 9   9   male 78.21030 88.48541  93.88035
+## 10 10 female 61.54900 86.08458  79.45217
+## 11 11   male 72.44821 77.09976  74.24294
+## 12 12 female 70.75092 81.37752  80.54655
+## 13 13   male 69.81522 95.31480  89.86894
+## 14 14 female 69.12778 65.46783  83.19971
+## 15 15   male 59.81352 93.14477  62.25771
+## 16 16 female 65.11333 84.70131  67.84976
+## 17 17   male 73.25845 73.83405  84.53530
+## 18 18 female 72.14631 92.49389  88.07359
+## 19 19   male 64.32956 77.77248 101.24924
+## 20 20 female 69.72966 84.15071 114.08268
+## 21 21   male 70.66595 78.23849  79.60147
+## 22 22 female 72.34876 77.06610  84.60783
+## 23 23   male 67.03448 92.03494  82.91153
+## 24 24 female 73.88650 86.18086  68.65966
+## 25 25   male 77.99978 76.81171  74.56718
+## 26 26 female 67.18534 72.87460  79.86773
+## 27 27   male 71.01424 85.87876  88.76336
+## 28 28 female 71.58677 92.01391  85.11575
+## 29 29   male 77.74953 80.77482  84.98723
+## 30 30 female 77.50047 89.69614 107.04962
+## 31 31   male 72.20078 74.32219  91.39207
+## 32 32 female 69.04741 74.10059 107.94917
+## 33 33   male 83.08769 77.48155  89.73449
+## 34 34 female 74.08742 87.98211  99.97064
+## 35 35   male 70.23483 88.89830  86.98938
+## 36 36 female 65.72422 79.48428  87.32319
+## 37 37   male 72.11357 78.70252  65.57343
+## 38 38 female 71.17940 88.99933  76.57992
+## 39 39   male 65.34722 82.68863  95.79929
+## 40 40 female 72.98769 66.26498  92.16763</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>, ] <span class="co"># from row 2 to row 5</span></code></pre></div>
-<pre><code>##   ID    SEX    MATHS  ENGLISH       PE
-## 2  2 female 60.70274 80.76702 86.84679
-## 3  3   male 68.75166 80.06821 86.17865
-## 4  4 female 66.14480 91.98899 81.56946
-## 5  5   male 59.95896 72.50686 87.02268</code></pre>
+<pre><code>##   ID    SEX    MATHS  ENGLISH        PE
+## 2  2 female 66.36799 73.76231  84.91701
+## 3  3   male 68.46500 69.63240 108.68219
+## 4  4 female 75.39550 88.68295  79.80965
+## 5  5   male 72.15650 80.38312  85.35978</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[ , <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="co"># select column 1 to 2</span></code></pre></div>
 <pre><code>##    ID    SEX
 ## 1   1   male
@@ -438,73 +449,73 @@ df2</code></pre></div>
 ## 40 40 female</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[ , <span class="kw">c</span>(<span class="st">&quot;ENGLISH&quot;</span>, <span class="st">&quot;PE&quot;</span>)] <span class="co"># select by column names</span></code></pre></div>
 <pre><code>##     ENGLISH        PE
-## 1  61.88055  95.03021
-## 2  80.76702  86.84679
-## 3  80.06821  86.17865
-## 4  91.98899  81.56946
-## 5  72.50686  87.02268
-## 6  82.90208  82.51376
-## 7  63.44843  79.86741
-## 8  83.91424  67.83984
-## 9  85.87633 100.25799
-## 10 90.29038  83.49447
-## 11 76.73294  86.39878
-## 12 81.92147  68.25523
-## 13 74.88190 103.02797
-## 14 89.11302  87.02468
-## 15 79.53487  70.04364
-## 16 79.13884 100.03862
-## 17 68.99556  87.17493
-## 18 80.83653  86.17177
-## 19 82.74543  82.12412
-## 20 86.61204  78.63536
-## 21 75.84593  80.64906
-## 22 88.92820  90.72850
-## 23 80.26248  67.04517
-## 24 82.00373  84.80269
-## 25 92.06622  97.15599
-## 26 80.98590  96.39935
-## 27 90.35150  91.87032
-## 28 84.00136  86.96864
-## 29 98.06656  77.32599
-## 30 67.09799  50.82574
-## 31 92.52501 100.00362
-## 32 85.73048  83.83447
-## 33 89.77275  86.24335
-## 34 88.60113  57.63487
-## 35 99.27848  82.09231
-## 36 81.17302  71.95113
-## 37 87.70752  86.18011
-## 38 63.84044  61.61388
-## 39 81.03968 108.71588
-## 40 74.31651  82.55867</code></pre>
+## 1  80.40752  91.06741
+## 2  73.76231  84.91701
+## 3  69.63240 108.68219
+## 4  88.68295  79.80965
+## 5  80.38312  85.35978
+## 6  78.34734 113.21709
+## 7  68.33354  98.43093
+## 8  85.41294  87.14748
+## 9  88.48541  93.88035
+## 10 86.08458  79.45217
+## 11 77.09976  74.24294
+## 12 81.37752  80.54655
+## 13 95.31480  89.86894
+## 14 65.46783  83.19971
+## 15 93.14477  62.25771
+## 16 84.70131  67.84976
+## 17 73.83405  84.53530
+## 18 92.49389  88.07359
+## 19 77.77248 101.24924
+## 20 84.15071 114.08268
+## 21 78.23849  79.60147
+## 22 77.06610  84.60783
+## 23 92.03494  82.91153
+## 24 86.18086  68.65966
+## 25 76.81171  74.56718
+## 26 72.87460  79.86773
+## 27 85.87876  88.76336
+## 28 92.01391  85.11575
+## 29 80.77482  84.98723
+## 30 89.69614 107.04962
+## 31 74.32219  91.39207
+## 32 74.10059 107.94917
+## 33 77.48155  89.73449
+## 34 87.98211  99.97064
+## 35 88.89830  86.98938
+## 36 79.48428  87.32319
+## 37 78.70252  65.57343
+## 38 88.99933  76.57992
+## 39 82.68863  95.79929
+## 40 66.26498  92.16763</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), ] <span class="co">#select the first three rows</span></code></pre></div>
-<pre><code>##   ID    SEX    MATHS  ENGLISH       PE
-## 1  1   male 75.53592 61.88055 95.03021
-## 2  2 female 60.70274 80.76702 86.84679
-## 3  3   male 68.75166 80.06821 86.17865</code></pre>
+<pre><code>##   ID    SEX    MATHS  ENGLISH        PE
+## 1  1   male 62.94909 80.40752  91.06741
+## 2  2 female 66.36799 73.76231  84.91701
+## 3  3   male 68.46500 69.63240 108.68219</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[<span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">40</span>, <span class="dv">2</span>), ] <span class="co">#select every other rows from 1 to 40 rows </span></code></pre></div>
 <pre><code>##    ID  SEX    MATHS  ENGLISH        PE
-## 1   1 male 75.53592 61.88055  95.03021
-## 3   3 male 68.75166 80.06821  86.17865
-## 5   5 male 59.95896 72.50686  87.02268
-## 7   7 male 64.47803 63.44843  79.86741
-## 9   9 male 71.69499 85.87633 100.25799
-## 11 11 male 70.71313 76.73294  86.39878
-## 13 13 male 68.34154 74.88190 103.02797
-## 15 15 male 72.74221 79.53487  70.04364
-## 17 17 male 67.04570 68.99556  87.17493
-## 19 19 male 68.11686 82.74543  82.12412
-## 21 21 male 70.75857 75.84593  80.64906
-## 23 23 male 60.96830 80.26248  67.04517
-## 25 25 male 59.35604 92.06622  97.15599
-## 27 27 male 61.41414 90.35150  91.87032
-## 29 29 male 70.22080 98.06656  77.32599
-## 31 31 male 66.90442 92.52501 100.00362
-## 33 33 male 71.94776 89.77275  86.24335
-## 35 35 male 74.80500 99.27848  82.09231
-## 37 37 male 62.48457 87.70752  86.18011
-## 39 39 male 70.25799 81.03968 108.71588</code></pre>
+## 1   1 male 62.94909 80.40752  91.06741
+## 3   3 male 68.46500 69.63240 108.68219
+## 5   5 male 72.15650 80.38312  85.35978
+## 7   7 male 63.48015 68.33354  98.43093
+## 9   9 male 78.21030 88.48541  93.88035
+## 11 11 male 72.44821 77.09976  74.24294
+## 13 13 male 69.81522 95.31480  89.86894
+## 15 15 male 59.81352 93.14477  62.25771
+## 17 17 male 73.25845 73.83405  84.53530
+## 19 19 male 64.32956 77.77248 101.24924
+## 21 21 male 70.66595 78.23849  79.60147
+## 23 23 male 67.03448 92.03494  82.91153
+## 25 25 male 77.99978 76.81171  74.56718
+## 27 27 male 71.01424 85.87876  88.76336
+## 29 29 male 77.74953 80.77482  84.98723
+## 31 31 male 72.20078 74.32219  91.39207
+## 33 33 male 83.08769 77.48155  89.73449
+## 35 35 male 70.23483 88.89830  86.98938
+## 37 37 male 72.11357 78.70252  65.57343
+## 39 39 male 65.34722 82.68863  95.79929</code></pre>
 </div>
 </div>
 <div id="summary" class="section level2">

@@ -25,7 +25,7 @@
 <meta name="author" content="Juqiang Chen">
 
 
-<meta name="date" content="2019-09-01">
+<meta name="date" content="2019-09-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -111,7 +111,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#programme"><i class="fa fa-check"></i><b>1.4</b> Programme</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Basic data structures in R</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#nominal-ordinal-intervalratio-variables"><i class="fa fa-check"></i><b>2.1</b> Nominal, ordinal, interval/ratio variables</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#categorical-vs.numeric-variables"><i class="fa fa-check"></i><b>2.1</b> Categorical vs. numeric variables</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#d-data-structure-vectors"><i class="fa fa-check"></i><b>2.2</b> 1D data structure: vectors</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#creating-vectors"><i class="fa fa-check"></i><b>2.2.1</b> Creating vectors</a></li>
 <li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> creating list objects</a></li>
@@ -132,7 +132,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#five-number-summary"><i class="fa fa-check"></i><b>4.2.1</b> Five-number summary</a></li>
 <li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#boxplot-violin-plot"><i class="fa fa-check"></i><b>4.2.2</b> Boxplot &amp; violin plot</a></li>
 <li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#qq-plots"><i class="fa fa-check"></i><b>4.2.3</b> QQ Plots</a></li>
-<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.4</b> Unusual values</a></li>
+<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#how-does-the-shape-of-a-distribution-influence-the-measures-of-central-tendency"><i class="fa fa-check"></i><b>4.2.4</b> How does the shape of a distribution influence the Measures of Central Tendency?</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
@@ -166,17 +166,46 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="variation" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Variation</h1>
 <p>Variation is the tendency of the values of a variable to change from measurement to measurement. (Wickham &amp; Grolemund)</p>
-<p>It it important for us to explore the distribution of the variable before we do any stats modeling.</p>
 <div id="categorical-variable" class="section level2">
 <h2><span class="header-section-number">4.1</span> Categorical variable</h2>
-<p>Which variables are categorical?</p>
+<p>The best way to characterizing categorical variables is via the frequency. The <em>frequency</em> is the number of times a particular value for a variable (data item) has been observed to occur.</p>
+<p><em>How can we measure frequency?</em></p>
+<p>The frequency of a value can be expressed in different ways, depending on the purpose required.</p>
+<p>The <em>absolute frequency</em> describes the number of times a particular value for a variable (data item) has been observed to occur. Or simply put, counts.</p>
+<p>A <em>relative frequency</em> describes the number of times a particular value for a variable (data item) has been observed to occur in relation to the total number of values for that variable.It is calculated by dividing the absolute frequency by the total number of values for the variable.</p>
+<p>Ratios, rates, proportions and percentages are different ways of expressing relative frequencies.</p>
+<ul>
+<li>A <em>ratio</em>compares the frequency of one value for a variable with another value for the variable. The first value identified in a ratio must be to the left of the colon (:) and the second value must be to the right of the colon (1st value : 2nd value).</li>
+</ul>
+<blockquote>
+<p>For example, in a total of 20 coin tosses where there are 12 heads and 8 tails, the ratio of heads to tails is 12:8. Alternatively, the ratio of tails to heads is 8:12.</p>
+</blockquote>
+<ul>
+<li>A <em>rate</em> is a measurement of one value for a variable in relation to another measured quantity.</li>
+</ul>
+<p>For example, in a total of 20 coin tosses where there are 12 heads and 8 tails, the rate is 12 heads per 20 coin tosses. Alternatively, the rate is 8 tails per 20 coin tosses.</p>
+<ul>
+<li>A <em>proportion</em> describes the share of one value for a variable in relation to a whole.It is calculated by dividing the number of times a particular value for a variable has been observed, by the total number of values in the population.</li>
+</ul>
+<blockquote>
+<p>For example, in a total of 20 coin tosses where there are 12 heads and 8 tails, the proportion of heads is 0.6 (12 divided by 20). Alternatively, the proportion of tails is 0.4 (8 divided by 20).</p>
+</blockquote>
+<ul>
+<li>A <em>percentage</em> expresses a value for a variable in relation to a whole population as a fraction of one hundred. The percentage total of an entire dataset should always add up to 100, as 100% represents the total, it is equal to the ‘whole’. A percentage is calculated by dividing the number of times a particular value for a variable has been observed, by the total number of observations in the population, then multiplying this number by 100.</li>
+</ul>
+<p>For example, in a total of 20 coin tosses where there are 12 heads and 8 tails, the percentage of heads is 60% (12 divided by 20, multiplied by 100). Alternatively, the percentage of tails is 40% (8 divided by 20, multiplied by 100). (ABS)</p>
+<p><em>Frequency distributions</em> are visual displays that organise and present frequency counts so that the information can be interpreted more easily.</p>
+<p>How do we show a frequency distribution?</p>
+<p>A frequency distribution of data can be shown in a table or graph. Some common methods of showing frequency distributions include <em>frequency tables</em>, <em>bar charts</em> or <em>histograms</em>.</p>
+<p>Frequency Tables</p>
+<p>A frequency table is a simple way to display the number of occurrences of a particular value or characteristic.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
-<pre><code>## -- Attaching packages ----------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## -- Attaching packages ------------------------------------------ tidyverse 1.2.1 --</code></pre>
 <pre><code>## v ggplot2 3.1.0       v purrr   0.3.2  
 ## v tibble  2.1.1       v dplyr   0.8.0.1
 ## v tidyr   0.8.3       v stringr 1.4.0  
 ## v readr   1.3.1       v forcats 0.4.0</code></pre>
-<pre><code>## -- Conflicts -------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts --------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(diamonds)</code></pre></div>
@@ -352,6 +381,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## | clarity|I1,SI2,SI1,VS2,VS1,VVS2,VVS1,IF  |
 ## +--------+---------------------------------+</code></pre>
 <p>Categorical variables are usually stored as factors or characters. You can use count() function or bar chart to explore the distribution.</p>
+<p>A bar chart is a type of graph in which each column (plotted either vertically or horizontally) represents a categorical variable or a discrete ungrouped numeric variable. It is used to compare the frequency (count) for a category or characteristic with another category or characteristic.(ABS)</p>
+<p>How to interprate:</p>
+<ul>
+<li><p>In a bar chart, the bar height (if vertical) or length (if horizontal) shows the frequency for each category or characteristic.</p></li>
+<li><p>The distribution of the dataset is not important because the columns each represent an individual category or characteristic rather than intervals for a continuous measurement. Therefore, gaps are included between each bar and each bar can be arranged in any order without affecting the data.</p></li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">count</span>(diamonds, cut)</code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   cut           n
@@ -460,6 +495,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="continous-variable" class="section level2">
 <h2><span class="header-section-number">4.2</span> Continous variable</h2>
 <p>A continuous variable can take any of an infinite set of ordered values. You can use a histogram and other descriptive stats to characterize its distribution.</p>
+<p>A histogram is a type of graph in which each column represents a numeric variable, in particular that which is continuous and/or grouped.It shows the distribution of all observations in a quantitative dataset. It is useful for describing the shape, centre and spread to better understand the distribution of the dataset.</p>
+<p>How to interprate:</p>
+<ul>
+<li><p>The height of the column shows the frequency for a specific range of values.</p></li>
+<li><p>Columns are usually of equal width, however a histogram may show data using unequal ranges (intervals) and therefore have columns of unequal width.</p></li>
+<li><p>The values represented by each column must be mutually exclusive and exhaustive. Therefore, there are no spaces between columns and each observation can only ever belong in one column.</p></li>
+<li><p>It is important that there is no ambiguity in the labelling of the intervals on the x-axis for continuous or grouped data (e.g. 0 to less than 10, 10 to less than 20, 20 to less than 30).</p></li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># histogram</span>
 <span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
@@ -508,6 +551,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>the sample maximum (largest observation)</p></li>
 </ul>
 <p>The five-number summary provides a concise summary of the distribution of the observations. Reporting five numbers avoids the need to decide on the most appropriate summary statistic. The five-number summary gives information about the location (from the median), spread (from the quartiles) and range (from the sample minimum and maximum) of the observations. Since it reports order statistics (rather than, say, the mean) the five-number summary is appropriate for <em>ordinal measurements</em>, as well as <em>interval and ratio measurements</em>. (from wikipedia)</p>
+<p>How to Find a Five-Number Summary:</p>
+<ul>
+<li><p>Step 1: Put your numbers in ascending order (from smallest to largest). For this particular data set, the order is: &gt; Example: 1,2,5,6,7,9,12,15,18,19,27.</p></li>
+<li><p>Step 2: Find the minimum and maximum for your data set. Now that your numbers are in order, this should be easy to spot. In the example in step 1, the minimum (the smallest number) is 1 and the maximum (the largest number) is 27.</p></li>
+<li><p>Step 3: Find the median. The median is the middle number. If you aren’t sure how to find the median, see: How to find the mean mode and median.</p></li>
+<li><p>Step 4: Place parentheses around the numbers above and below the median.(This is not technically necessary, but it makes Q1 and Q3 easier to find). (1,2,5,6,7),9,(12,15,18,19,27).</p></li>
+<li><p>Step 5: Find Q1 and Q3. Q1 can be thought of as a median in the lower half of the data, and Q3 can be thought of as a median for the upper half of data. (1,2,5,6,7), 9, ( 12,15,18,19,27).</p></li>
+</ul>
+<p>-Step 6: Write down your summary found in the above steps. minimum=1, Q1 =5, median=9, Q3=18, and maximum=27.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(diamonds<span class="op">$</span>carat)</code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##  0.2000  0.4000  0.7000  0.7979  1.0400  5.0100</code></pre>
@@ -574,10 +626,89 @@ Figure 4.2: Violin plot
 <span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_qq</span>(<span class="kw">aes</span>(<span class="dt">sample =</span> carat))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_qq_line</span>(<span class="kw">aes</span>(<span class="dt">sample =</span> carat))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-15-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-15-2.png" width="672" /> ### The measures of central tendency? (ABS)</p>
+<p>A measure of central tendency (also referred to as measures of centre or central location) is a summary measure that attempts to describe a whole set of data with a single value that represents the middle or centre of its distribution.</p>
+<p>There are three main measures of central tendency: the mode, the median and the mean. Each of these measures describes a different indication of the typical or central value in the distribution.</p>
+<ul>
+<li>The <em>mode</em> is the most commonly occurring value in a distribution.</li>
+</ul>
+<p>Consider this dataset showing the retirement age of 11 people, in whole years:</p>
+<p>54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60</p>
+<p><em>Advantage of the mode:</em></p>
+<p>The mode has an advantage over the median and the mean as it can be found for both numerical and categorical (non-numerical) data.</p>
+<p><em>Limitations of the mode:</em></p>
+<p>In some distributions, the mode may not reflect the centre of the distribution very well.</p>
+<blockquote>
+<p>it is easy to see that the centre of the distribution is 57 years, but the mode is lower, at 54 years. 54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60</p>
+</blockquote>
+<p>more than one mode for the same distribution of data, (bi-modal, or multi-modal). The presence of more than one mode can limit the ability of the mode in describing the centre or typical value of the distribution because a single value to describe the centre cannot be identified.</p>
+<p>In some cases, particularly where the data are continuous, the distribution may have no mode at all (i.e. if all values are different).In cases such as these, it may be better to consider using the median or mean, or group the data in to appropriate intervals, and find the modal class.</p>
+<ul>
+<li>The median is the middle value in distribution when the values are arranged in ascending or descending order.</li>
+</ul>
+<p>The median divides the distribution in half (there are 50% of observations on either side of the median value). In a distribution with an odd number of observations, the median value is the middle value.</p>
+<p>54, 54, 54, 55, 56, <strong>57</strong>, 57, 58, 58, 60, 60</p>
+<p>When the distribution has an even number of observations, the median value is the mean of the two middle values. In the following distribution, the two middle values are 56 and 57, therefore the median equals 56.5 years:</p>
+<p>52, 54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60</p>
+<p><em>Advantage of the median:</em></p>
+<p>The median is less affected by outliers and skewed data than the mean, and is usually the preferred measure of central tendency when the distribution is not symmetrical.</p>
+<p><em>Limitation of the median:</em></p>
+<p>The median cannot be identified for categorical nominal data, as it cannot be logically ordered.</p>
+<ul>
+<li>The mean is the sum of the value of each observation in a dataset divided by the number of observations. This is also known as the arithmetic average.</li>
+</ul>
+<p>Looking at the retirement age distribution again:</p>
+<p>54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60</p>
+<p>The mean is 56.6 years.</p>
+<p>Advantage of the mean:</p>
+<p>The mean can be used for both continuous and discrete numeric data.</p>
+<p>Limitations of the mean:</p>
+<p>The mean cannot be calculated for categorical data, as the values cannot be summed.</p>
+<p>As the mean includes every value in the distribution the mean is influenced by outliers and skewed distributions.</p>
+<p>What else do I need to know about the mean?</p>
+<p>The population mean is indicated by the Greek symbol µ (pronounced ‘mu’). When the mean is calculated on a distribution from a sample it is indicated by the symbol x̅ (pronounced X-bar).</p>
 </div>
-<div id="unusual-values" class="section level3">
-<h3><span class="header-section-number">4.2.4</span> Unusual values</h3>
+<div id="how-does-the-shape-of-a-distribution-influence-the-measures-of-central-tendency" class="section level3">
+<h3><span class="header-section-number">4.2.4</span> How does the shape of a distribution influence the Measures of Central Tendency?</h3>
+<div id="symmetrical-distributions" class="section level4">
+<h4><span class="header-section-number">4.2.4.1</span> Symmetrical distributions:</h4>
+<p>When a distribution is symmetrical, the mode, median and mean are all in the middle of the distribution. The following graph shows a larger retirement age dataset with a distribution which is symmetrical. The mode, median and mean all equal 58 years.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rbeta</span>(<span class="dv">10000</span>,<span class="dv">5</span>,<span class="dv">2</span>))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rbeta</span>(<span class="dv">10000</span>,<span class="dv">2</span>,<span class="dv">5</span>))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rbeta</span>(<span class="dv">10000</span>,<span class="dv">5</span>,<span class="dv">5</span>))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/normal.jpg&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:distribution"></span>
+<img src="img/normal.jpg" alt="distribution" width="100%" />
+<p class="caption">
+Figure 4.3: distribution
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/right.jpg&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:distribution"></span>
+<img src="img/right.jpg" alt="distribution" width="100%" />
+<p class="caption">
+Figure 4.3: distribution
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/left.jpg&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:distribution"></span>
+<img src="img/left.jpg" alt="distribution" width="100%" />
+<p class="caption">
+Figure 4.3: distribution
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#source:https://mode.com/blog/violin-plot-examples</span></code></pre></div>
+</div>
+<div id="skewed-distributions" class="section level4">
+<h4><span class="header-section-number">4.2.4.2</span> Skewed distributions:</h4>
+<p>When a distribution is skewed the mode remains the most commonly occurring value, the median remains the middle value in the distribution, but the mean is generally ‘pulled’ in the direction of the tails. In a skewed distribution, the median is often a preferred measure of central tendency, as the mean is not usually in the middle of the distribution.</p>
+<p>A distribution is said to be positively or right skewed when the tail on the right side of the distribution is longer than the left side. In a positively skewed distribution it is common for the mean to be ‘pulled’ toward the right tail of the distribution. Although there are exceptions to this rule, generally, most of the values, including the median value, tend to be less than the mean value.</p>
+<p>The following graph shows a larger retirement age data set with a distribution which is right skewed. The data has been grouped into classes, as the variable being measured (retirement age) is continuous. The mode is 54 years, the modal class is 54-56 years, the median is 56 years and the mean is 57.2 years.</p>
+<p>A distribution is said to be negatively or left skewed when the tail on the left side of the distribution is longer than the right side. In a negatively skewed distribution, it is common for the mean to be ‘pulled’ toward the left tail of the distribution. Although there are exceptions to this rule, generally, most of the values, including the median value, tend to be greater than the mean value.</p>
+<p>The following graph shows a larger retirement age dataset with a distribution which left skewed. The mode is 65 years, the modal class is 63-65 years, the median is 63 years and the mean is 61.8 years. ### Unusual values</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">unusual =<span class="st"> </span>diamonds <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(y <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span>y <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>)<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">arrange</span>(y)
@@ -624,6 +755,7 @@ diamonds_replace =<span class="st"> </span>diamonds <span class="op">%&gt;%</spa
 ## 5  2.25 Premium   H     SI2      62.8    59 18034     0     0     0    NA
 ## 6  0.71 Good      F     SI2      64.1    60  2130     0     0     0    NA</code></pre>
 
+</div>
 </div>
 </div>
 </div>
