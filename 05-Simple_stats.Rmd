@@ -8,4 +8,10 @@ Models are a tool for extracting patterns out of data.
 ggplot(faithful)+
   geom_point(aes(eruptions, waiting))
 ```
+```{r stats, fig.cap='stats', out.width='100%', fig.asp=.75, fig.align='center'}
 
+knitr::include_graphics("img/stats.png")
+
+#source:from slides, Dr.Russell Thomson, Statistical Consultant, Centre for Research in Mathematics and Graduate Research School
+
+```
