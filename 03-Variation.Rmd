@@ -371,7 +371,7 @@ knitr::include_graphics("img/normal.jpg")
 knitr::include_graphics("img/right.jpg")
 knitr::include_graphics("img/left.jpg")
 
-#source:https://mode.com/blog/violin-plot-examples
+#source:https://www.abs.gov.au/websitedbs/a3121120.nsf/home/statistical+language+-+measures+of+central+tendency
 ```
 
 
