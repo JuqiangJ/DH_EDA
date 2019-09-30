@@ -25,7 +25,7 @@
 <meta name="author" content="Juqiang Chen">
 
 
-<meta name="date" content="2019-09-29">
+<meta name="date" content="2019-10-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -133,6 +133,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#boxplot-violin-plot"><i class="fa fa-check"></i><b>4.2.2</b> Boxplot &amp; violin plot</a></li>
 <li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#qq-plots"><i class="fa fa-check"></i><b>4.2.3</b> QQ Plots</a></li>
 <li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#how-does-the-shape-of-a-distribution-influence-the-measures-of-central-tendency"><i class="fa fa-check"></i><b>4.2.4</b> How does the shape of a distribution influence the Measures of Central Tendency?</a></li>
+<li class="chapter" data-level="4.2.5" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.5</b> Measures of Spread</a></li>
+<li class="chapter" data-level="4.2.6" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.6</b> Unusual values</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
@@ -140,7 +142,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.2</b> Two categorical variables</a></li>
 <li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="simple-modeling.html"><a href="simple-modeling.html"><i class="fa fa-check"></i><b>6</b> Simple modeling</a></li>
+<li class="chapter" data-level="6" data-path="simple-modeling.html"><a href="simple-modeling.html"><i class="fa fa-check"></i><b>6</b> Simple modeling</a><ul>
+<li class="chapter" data-level="6.1" data-path="simple-modeling.html"><a href="simple-modeling.html#two-continuousnumerical-variables"><i class="fa fa-check"></i><b>6.1</b> Two continuous/numerical variables</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="build-your-own-function.html"><a href="build-your-own-function.html"><i class="fa fa-check"></i><b>7</b> Build your own function</a></li>
 <li class="chapter" data-level="8" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>8</b> Resources</a></li>
 <li class="divider"></li>
@@ -165,12 +169,37 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="simple-modeling" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Simple modeling</h1>
-<p>Patterns in the data provide clues about relationship or covariation.</p>
-<p>Models are a tool for extracting patterns out of data.</p>
+<p>Patterns in the data provide clues about relationship or covariation.Now that we know how to visualize the various relationships, we can proceed to know more about how to formally test the relationship.</p>
+<p>Statistical models are tools for extracting patterns out of data.</p>
+<p>Statistics represent a common method of presenting information helping us to understand what the data are telling us.</p>
+<ul>
+<li><p><em>Descriptive (or summary) statistics</em> summarise the raw data and allow data users to interpret a dataset more easily.Descriptive statistics can describe the shape, centre and spread of a dataset.</p></li>
+<li><p><em>Inferential statistics</em> are used to infer conclusions about a population from a sample of that population. Inferential statistics are the result of techniques that use the data collected from a sample to make generalisations about the whole population from which the sample was taken. Inferential statistics include <em>estimation</em> (An estimate is a value that is inferred for a population based on data collected from a sample of units from that population), and <em>hypothesis testing</em>.</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/stats.png&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:stats"></span>
+<img src="img/stats.png" alt="stats" width="100%" />
+<p class="caption">
+Figure 6.1: stats
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#source:from slides, Dr.Russell Thomson, Statistical Consultant, Centre for Research in Mathematics and Graduate Research School</span></code></pre></div>
+<div id="two-continuousnumerical-variables" class="section level2">
+<h2><span class="header-section-number">6.1</span> Two continuous/numerical variables</h2>
+<p>The techique we used here is called <em>Simpler linear regression</em>, where there is one dependent variable (continuous) and one independent variable (continuous). When there are more than one independent variable (continuous), you need to look for something called <em>Multiple linear regression</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(faithful)</code></pre></div>
+<pre><code>##   eruptions waiting
+## 1     3.600      79
+## 2     1.800      54
+## 3     3.333      74
+## 4     2.283      62
+## 5     4.533      85
+## 6     2.883      55</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(faithful)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(eruptions, waiting))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-28-1.png" width="672" /> Correlation: r The technical term for the degree to which the data points cluster around the regression line is correlation. The correlation coefficient of a given population is denoted by ρ and that of a sample from that population by r. The correlation coefficient is bounded by -1 and +1. When the correlation is -1 or +1, all the data points lie exactly on the regression line and in that case the regression line is equal to the line Y=-X and Y=X respectively. You can regard r as a measure of how useful it is to fit a straight line to the data. If r is close to zero, the regression line does not help at all to predict where the data points will be for a give value of the predictor variable. Also, r tells us how much of the scatter we get a handle one. this is accounted for or explained, by r2 (often denoted by R2). R2 quantifies the proportion of the variance in the data that is captured and explained by the regression model.</p>
 
+</div>
 </div>
             </section>
 

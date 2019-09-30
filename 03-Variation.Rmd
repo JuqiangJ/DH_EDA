@@ -387,6 +387,140 @@ The following graph shows a larger retirement age data set with a distribution w
 A distribution is said to be negatively or left skewed when the tail on the left side of the distribution is longer than the right side. In a negatively skewed distribution, it is common for the mean to be ‘pulled’ toward the left tail of the distribution. Although there are exceptions to this rule, generally, most of the values, including the median value, tend to be greater than the mean value.
 
 The following graph shows a larger retirement age dataset with a distribution which left skewed. The mode is 65 years, the modal class is 63-65 years, the median is 63 years and the mean is 61.8 years.
+
+### Measures of Spread 
+Summarising the dataset can help us understand the data, especially when the dataset is large. As discussed in the Measures of Central Tendency page, the mode, median, and mean summarise the data into a single value that is typical or representative of all the values in the dataset, but this is only part of the 'picture' that summarises a dataset. Measures of spread summarise the data in a way that shows how scattered the values are and how much they differ from the mean value.(ABS)
+
+Measures of spread describe how similar or varied the set of observed values are for a particular variable (data item). Measures of spread include the range, quartiles and the interquartile range, variance and standard deviation.(ABS)
+
+The spread of the values can be measured for quantitative data, as the variables are numeric and can be arranged into a logical order with a low end value and a high end value.(ABS)
+
+4, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 8
+1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11
+
+the measures of central tendency for both datasets are the same.However, if we look at the spread of the values, we can see that Dataset B is more dispersed than Dataset A. Used together, the measures of central tendency and measures of spread help us to better understand the data
+
+```{r}
+dataset1 = c(4, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 8)
+
+dataset2 = c(1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11)
+
+dataset = data.frame(dataset1, dataset2)
+
+dataset =  gather(dataset, type, data)
+
+ggplot(dataset, aes(data, fill = type)) + geom_bar(position=position_dodge())
+
+```
+
+The range is the difference between the smallest value and the largest value in a dataset.
+
+```{r}
+range(dataset1)
+range(dataset2)
+```
+
+Quartiles divide an ordered dataset into four equal parts, and refer to the values of the point between the quarters. A dataset may also be divided into quintiles (five equal parts) or deciles (ten equal parts).
+
+The lower quartile (Q1) is the point between the lowest 25% of values and the highest 75% of values. It is also called the 25th percentile.
+
+The second quartile (Q2) is the middle of the data set. It is also called the 50th percentile, or the median.
+
+The upper quartile (Q3) is the point between the lowest 75% and highest 25% of values. It is also called the 75th percentile.
+
+The interquartile range (IQR) is the difference between the upper (Q3) and lower (Q1) quartiles, and describes the middle 50% of values when ordered from lowest to highest. The IQR is often seen as a better measure of spread than the range as it is not affected by outliers.
+
+```{r}
+quantile(dataset1)
+
+quantile(dataset2)
+
+```
+
+The variance and the standard deviation are measures of the spread of the data around the mean. They summarise how close each observed data value is to the mean value.
+
+In datasets with a small spread all values are very close to the mean, resulting in a small variance and standard deviation. Where a dataset is more dispersed, values are spread further away from the mean, leading to a larger variance and standard deviation.
+
+The smaller the variance and standard deviation, the more the mean value is indicative of the whole dataset. Therefore, if all values of a dataset are the same, the standard deviation and variance are zero.
+
+The standard deviation of a normal distribution enables us to calculate confidence intervals. In a normal distribution, about 68% of the values are within one standard deviation either side of the mean and about 95% of the scores are within two standard deviations of the mean.
+
+The standard deviation is the square root of the variance. 
+```{r}
+var(dataset1)
+sqrt(var(dataset1))
+sd(dataset1)
+```
+
+Confidence interval
+(Taken from *Summary and Analysis of Extension Program Evaluation in R* by Salvatore S. Mangiafico)
+
+A confidence interval is a range in which it is estimated the true population value lies. A confidence interval is used to indicate how accurate a calculated statistic is likely to be.  Confidence intervals can be calculated for a variety of statistics, such as the mean, median, or slope of a linear regression.  This chapter will focus on confidences intervals for means. 
+
+Most of the statistics we use assume we are analyzing a sample which we are using to represent a larger population.
+
+Statistics and parameters
+
+When we calculate the sample mean, the result is a statistic. It’s an estimate of the population mean, but our calculated sample mean would vary depending on our sample.  In theory, there is a mean for the population of interest, and we consider this population mean a parameter.  Our goal in calculating the sample mean is estimating the population parameter.
+
+Point estimates and confidence intervals
+Our sample mean is a point estimate for the population parameter.  A point estimate is a useful approximation for the parameter, but considering the confidence interval for the estimate gives us more information.
+
+As a definition of confidence intervals, if we were to sample the same population many times and calculated a sample mean and a 95% confidence interval each time, then 95% of those intervals would contain the actual population mean.
+
+if we want to compare the means of two groups to see if they are statistically different, we will use a t-test, or similar test, calculate a p-value, and draw a conclusion.  An alternative approach would be to construct 95% or 99% confidence intervals about the mean for each group.  If the confidence intervals of the two means don’t overlap, we are justified in calling them statistically different.
+
+Confidence intervals for means can be calculated by various methods. 
+
+The traditional method is the most commonly encountered, and is appropriate for normally distributed data or with large sample sizes.  It produces an interval that is symmetric about the mean.For skewed data, confidence intervals by bootstrapping may be more reliable.For routine use, I recommend using bootstrapped confidence intervals, particularly the BCa or percentile methods.
+
+The *groupwiseMean* function in the *rcompanion* package can produce confidence intervals both by traditional and bootstrap methods, for grouped and ungrouped data. 
+
+The data must be housed in a data frame.  By default, the function reports confidence intervals by the traditional method.
+
+In the *groupwiseMean* function, the measurement and grouping variables can be indicated with formula notation, with the measurement variable on the left side of the tilde (~), and grouping variables on the right.
+
+The confidence level is indicated by, e.g., the conf = 0.95 argument.  The digits option indicates the number of significant digits to which the output is rounded.  Note that in the output, the means and other statistics are rounded to 3 significant figures.
+
+```{r}
+#install.packages("rcompanion")
+library(rcompanion)
+
+dataset3 = data.frame(dataset1)
+
+groupwiseMean(dataset1 ~ 1,
+              data   = dataset3,
+              conf   = 0.95,
+              digits = 3)
+
+groupwiseMean(data ~ type,
+              data   = dataset,
+              conf   = 0.95,
+              digits = 3)
+
+
+```
+
+Bootstrapped means by group
+
+
+In the groupwiseMean function, the type of confidence interval is requested by setting certain options to TRUE.  These options are traditional, normal, basic, percentile and bca.  The boot option reports an optional statistic, the mean by bootstrap.  The R option indicates the number of iterations to calculate each bootstrap statistic.
+
+```{r}
+groupwiseMean(data ~ type,
+              data   = dataset,
+              conf   = 0.95,
+              digits = 3,
+              R      = 10000,
+              boot        = TRUE,
+              traditional = FALSE,
+              normal      = FALSE,
+              basic       = FALSE,
+              percentile  = FALSE,
+              bca         = TRUE)
+```
+
+
 ### Unusual values
 ```{r}
 unusual = diamonds %>%

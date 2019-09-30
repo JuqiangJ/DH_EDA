@@ -25,7 +25,7 @@
 <meta name="author" content="Juqiang Chen">
 
 
-<meta name="date" content="2019-09-29">
+<meta name="date" content="2019-10-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -133,6 +133,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#boxplot-violin-plot"><i class="fa fa-check"></i><b>4.2.2</b> Boxplot &amp; violin plot</a></li>
 <li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#qq-plots"><i class="fa fa-check"></i><b>4.2.3</b> QQ Plots</a></li>
 <li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#how-does-the-shape-of-a-distribution-influence-the-measures-of-central-tendency"><i class="fa fa-check"></i><b>4.2.4</b> How does the shape of a distribution influence the Measures of Central Tendency?</a></li>
+<li class="chapter" data-level="4.2.5" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.5</b> Measures of Spread</a></li>
+<li class="chapter" data-level="4.2.6" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.6</b> Unusual values</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
@@ -140,7 +142,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.2</b> Two categorical variables</a></li>
 <li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="simple-modeling.html"><a href="simple-modeling.html"><i class="fa fa-check"></i><b>6</b> Simple modeling</a></li>
+<li class="chapter" data-level="6" data-path="simple-modeling.html"><a href="simple-modeling.html"><i class="fa fa-check"></i><b>6</b> Simple modeling</a><ul>
+<li class="chapter" data-level="6.1" data-path="simple-modeling.html"><a href="simple-modeling.html#two-continuousnumerical-variables"><i class="fa fa-check"></i><b>6.1</b> Two continuous/numerical variables</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="build-your-own-function.html"><a href="build-your-own-function.html"><i class="fa fa-check"></i><b>7</b> Build your own function</a></li>
 <li class="chapter" data-level="8" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>8</b> Resources</a></li>
 <li class="divider"></li>
@@ -173,20 +177,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(price))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="dt">binwidth =</span> <span class="dv">500</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(price))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="kw">aes</span>(<span class="dt">color =</span> cut), <span class="dt">binwidth =</span> <span class="dv">500</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># standardized count where the area under each frequency polygon is one</span>
 
 <span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> price, <span class="dt">y =</span>  ..density..))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="kw">aes</span>(<span class="dt">color =</span> cut), <span class="dt">binwidth =</span> <span class="dv">500</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-3.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-3.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># boxplot</span>
 
 <span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(cut, price))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-4.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-4.png" width="672" /></p>
 <p>model = model name</p>
 <p>displ = engine displacement, in litres</p>
 <p>year = year of manufacture</p>
@@ -221,17 +225,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  Max.   :44.00</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(class, hwy, <span class="dt">FUN =</span> median), <span class="dt">y =</span> hwy))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(class, hwy, <span class="dt">FUN =</span> median), <span class="dt">y =</span> hwy))<span class="op">+</span>
 <span class="st">  </span><span class="kw">coord_flip</span>()</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-25-2.png" width="672" /></p>
 </div>
 <div id="two-categorical-variables" class="section level2">
 <h2><span class="header-section-number">5.2</span> Two categorical variables</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_count</span>(<span class="kw">aes</span>(cut, color))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds<span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">count</span>(color, cut)</code></pre></div>
 <pre><code>## # A tibble: 35 x 3
@@ -252,33 +256,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="st">  </span><span class="kw">count</span>(color, cut)<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(color, cut))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>n))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-26-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;seriation&quot;)</span></code></pre></div>
 </div>
 <div id="two-continuous-variables" class="section level2">
 <h2><span class="header-section-number">5.3</span> Two continuous variables</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(carat, price))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add transparency</span>
 <span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(carat, price), <span class="dt">alpha =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">100</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bin two variables</span>
 <span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bin2d</span>(<span class="kw">aes</span>(carat, price))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-3.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-3.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;hexbin&quot;)</span>
 <span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_hex</span>(<span class="kw">aes</span>(carat, price))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-4.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-4.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#bin one variable</span>
 <span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat, price))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="kw">cut_width</span>(carat, <span class="fl">0.1</span>)))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-5.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-5.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat, price))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="kw">cut_width</span>(carat, <span class="fl">0.5</span>)))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-6.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-6.png" width="672" /></p>
 
 </div>
 </div>
