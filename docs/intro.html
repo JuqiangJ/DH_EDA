@@ -25,7 +25,7 @@
 <meta name="author" content="Juqiang Chen">
 
 
-<meta name="date" content="2019-10-01">
+<meta name="date" content="2019-10-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -142,10 +142,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.2</b> Two categorical variables</a></li>
 <li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="simple-modeling.html"><a href="simple-modeling.html"><i class="fa fa-check"></i><b>6</b> Simple modeling</a><ul>
-<li class="chapter" data-level="6.1" data-path="simple-modeling.html"><a href="simple-modeling.html#two-continuousnumerical-variables"><i class="fa fa-check"></i><b>6.1</b> Two continuous/numerical variables</a></li>
+<li class="chapter" data-level="6" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html"><i class="fa fa-check"></i><b>6</b> From data visualization to statistical modelling</a><ul>
+<li class="chapter" data-level="6.1" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#two-continuousnumerical-variables"><i class="fa fa-check"></i><b>6.1</b> Two continuous/numerical variables</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#t-testanova-categorical-independent-variable-continuous-dependent-variable"><i class="fa fa-check"></i><b>6.1.1</b> T-test/ANOVA: categorical (independent variable )+ continuous (dependent variable)</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="build-your-own-function.html"><a href="build-your-own-function.html"><i class="fa fa-check"></i><b>7</b> Build your own function</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statistical-modeling-and-model-interpretation.html"><a href="statistical-modeling-and-model-interpretation.html"><i class="fa fa-check"></i><b>7</b> Statistical Modeling and Model Interpretation</a><ul>
+<li class="chapter" data-level="7.1" data-path="statistical-modeling-and-model-interpretation.html"><a href="statistical-modeling-and-model-interpretation.html#parametric-statistical-tests"><i class="fa fa-check"></i><b>7.1</b> Parametric statistical tests</a></li>
+<li class="chapter" data-level="7.2" data-path="statistical-modeling-and-model-interpretation.html"><a href="statistical-modeling-and-model-interpretation.html#formal-tests-for-homogeneity-of-variance"><i class="fa fa-check"></i><b>7.2</b> formal tests for homogeneity of variance</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>8</b> Resources</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -314,16 +319,16 @@ df1 =<span class="st"> </span><span class="kw">data.frame</span> (id, gender, ma
 <pre><code>## &#39;data.frame&#39;:    40 obs. of  4 variables:
 ##  $ id     : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ gender : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 2 1 2 1 2 1 2 1 ...
-##  $ maths  : num  67.1 72.9 58.5 64 69.5 ...
-##  $ english: num  79.3 78.2 94.7 66.1 82.3 ...</code></pre>
+##  $ maths  : num  63.6 66.8 75.7 67.5 79.3 ...
+##  $ english: num  76.8 79 77.1 69.5 92.5 ...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(df1)</code></pre></div>
 <pre><code>##        id           gender       maths          english     
-##  Min.   : 1.00   female:20   Min.   :58.55   Min.   :63.23  
-##  1st Qu.:10.75   male  :20   1st Qu.:66.23   1st Qu.:74.65  
-##  Median :20.50               Median :69.14   Median :78.35  
-##  Mean   :20.50               Mean   :69.16   Mean   :79.38  
-##  3rd Qu.:30.25               3rd Qu.:72.20   3rd Qu.:85.58  
-##  Max.   :40.00               Max.   :79.65   Max.   :98.52</code></pre>
+##  Min.   : 1.00   female:20   Min.   :59.49   Min.   :66.83  
+##  1st Qu.:10.75   male  :20   1st Qu.:67.17   1st Qu.:74.86  
+##  Median :20.50               Median :70.48   Median :79.81  
+##  Mean   :20.50               Mean   :70.48   Mean   :80.46  
+##  3rd Qu.:30.25               3rd Qu.:74.29   3rd Qu.:84.78  
+##  Max.   :40.00               Max.   :80.50   Max.   :96.81</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(df1)</code></pre></div>
 <pre><code>## [1] 40</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(df1)</code></pre></div>
@@ -347,13 +352,13 @@ df2 =<span class="st"> </span><span class="kw">cbind</span>(df2, pe)
 <span class="kw">colnames</span>(df2) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;SEX&quot;</span>,<span class="st">&quot;MATHS&quot;</span>,<span class="st">&quot;ENGLISH&quot;</span>,<span class="st">&quot;PE&quot;</span>)
 
 <span class="kw">head</span>(df2)</code></pre></div>
-<pre><code>##   ID    SEX    MATHS  ENGLISH        PE
-## 1  1   male 67.10260 79.26386  75.99639
-## 2  2 female 72.92120 78.22704  96.44623
-## 3  3   male 58.54952 94.73972  92.36976
-## 4  4 female 63.99531 66.10700 101.02846
-## 5  5   male 69.52982 82.31204  67.06088
-## 6  6 female 76.82613 66.17838  59.22584</code></pre>
+<pre><code>##   ID    SEX    MATHS  ENGLISH       PE
+## 1  1   male 63.60067 76.82566 84.81883
+## 2  2 female 66.80858 78.96168 92.10383
+## 3  3   male 75.73642 77.08596 93.07447
+## 4  4 female 67.50803 69.48500 93.40537
+## 5  5   male 79.30949 92.49889 74.88952
+## 6  6 female 65.31796 78.94801 96.99276</code></pre>
 </div>
 <div id="subsetting-dataframes" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> Subsetting dataframes</h3>
@@ -363,52 +368,52 @@ df2 =<span class="st"> </span><span class="kw">cbind</span>(df2, pe)
 
 df2</code></pre></div>
 <pre><code>##    ID    SEX    MATHS  ENGLISH        PE
-## 1   1   male 67.10260 79.26386  75.99639
-## 2   2 female 72.92120 78.22704  96.44623
-## 3   3   male 58.54952 94.73972  92.36976
-## 4   4 female 63.99531 66.10700 101.02846
-## 5   5   male 69.52982 82.31204  67.06088
-## 6   6 female 76.82613 66.17838  59.22584
-## 7   7   male 65.25168 64.05965  85.68037
-## 8   8 female 70.32484 86.72792  90.44031
-## 9   9   male 76.71499 71.52681  87.27176
-## 10 10 female 65.95352 85.52772  65.69553
-## 11 11   male 67.50990 86.25371  86.08133
-## 12 12 female 63.70739 77.68774  70.15953
-## 13 13   male 66.32736 77.55232  84.94501
-## 14 14 female 71.40428 85.74698  89.11871
-## 15 15   male 79.65290 76.54392  64.04306
-## 16 16 female 70.03737 72.76095  76.50210
-## 17 17   male 70.59037 98.51633  97.71688
-## 18 18 female 70.39160 63.22922  98.51001
-## 19 19   male 69.38239 79.71478  88.06099
-## 20 20 female 74.22179 78.47974  77.64835
-## 21 21   male 69.70287 94.76988  81.65935
-## 22 22 female 70.84446 84.18760  81.32930
-## 23 23   male 63.73727 71.46383  83.12611
-## 24 24 female 68.08203 80.99508  82.51002
-## 25 25   male 62.16247 76.07132 105.96730
-## 26 26 female 66.75412 83.00218  72.35363
-## 27 27   male 67.26878 63.91522  87.90309
-## 28 28 female 72.16771 92.97074  93.35232
-## 29 29   male 74.77108 76.79170  66.82745
-## 30 30 female 72.28777 85.06464  85.10710
-## 31 31   male 66.71685 75.27856  76.69704
-## 32 32 female 64.52857 75.34638  82.56891
-## 33 33   male 63.17599 70.76502  92.20454
-## 34 34 female 75.22901 66.63227  71.56448
-## 35 35   male 68.58097 78.60475  83.61302
-## 36 36 female 74.24621 91.62546  74.09641
-## 37 37   male 66.31976 77.13070  80.19007
-## 38 38 female 76.98249 94.75860  86.62740
-## 39 39   male 68.89026 88.26863  92.39251
-## 40 40 female 63.44543 76.51918  76.13370</code></pre>
+## 1   1   male 63.60067 76.82566  84.81883
+## 2   2 female 66.80858 78.96168  92.10383
+## 3   3   male 75.73642 77.08596  93.07447
+## 4   4 female 67.50803 69.48500  93.40537
+## 5   5   male 79.30949 92.49889  74.88952
+## 6   6 female 65.31796 78.94801  96.99276
+## 7   7   male 69.57576 83.61106 110.89836
+## 8   8 female 67.50031 80.26111  76.95012
+## 9   9   male 74.29699 72.02294  89.50968
+## 10 10 female 72.46651 76.05992 118.69548
+## 11 11   male 80.50352 80.96733  84.08140
+## 12 12 female 66.23698 93.23605  71.14928
+## 13 13   male 70.25221 73.20228  67.53100
+## 14 14 female 77.07048 67.70829 108.94205
+## 15 15   male 60.15218 87.13030  73.69138
+## 16 16 female 70.92119 79.03598  87.76326
+## 17 17   male 59.48581 83.70136  85.92176
+## 18 18 female 69.18568 80.29215  83.87893
+## 19 19   male 67.96099 74.27589  67.30751
+## 20 20 female 74.29792 73.63072 105.07425
+## 21 21   male 72.88794 80.74825  59.14302
+## 22 22 female 63.18744 66.82835  74.05205
+## 23 23   male 70.70988 78.77581  65.70374
+## 24 24 female 68.87075 81.38294  99.64162
+## 25 25   male 72.49988 82.17665  69.11069
+## 26 26 female 73.83918 79.36088 113.02678
+## 27 27   male 69.18583 70.43512  94.47199
+## 28 28 female 75.02203 91.11138 100.18006
+## 29 29   male 75.63459 93.63422  94.19919
+## 30 30 female 72.26730 81.35121 115.28747
+## 31 31   male 66.26477 96.81003  89.63672
+## 32 32 female 63.58778 96.66053  79.14634
+## 33 33   male 73.38286 85.12079  84.05962
+## 34 34 female 76.21245 84.78968  82.97945
+## 35 35   male 77.43891 72.19446 103.68315
+## 36 36 female 67.28903 84.77316  84.51351
+## 37 37   male 73.71398 73.63922  92.48138
+## 38 38 female 66.31164 88.82953  70.16855
+## 39 39   male 68.26469 75.05796  61.86067
+## 40 40 female 74.29179 75.89089  84.53353</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>, ] <span class="co"># from row 2 to row 5</span></code></pre></div>
-<pre><code>##   ID    SEX    MATHS  ENGLISH        PE
-## 2  2 female 72.92120 78.22704  96.44623
-## 3  3   male 58.54952 94.73972  92.36976
-## 4  4 female 63.99531 66.10700 101.02846
-## 5  5   male 69.52982 82.31204  67.06088</code></pre>
+<pre><code>##   ID    SEX    MATHS  ENGLISH       PE
+## 2  2 female 66.80858 78.96168 92.10383
+## 3  3   male 75.73642 77.08596 93.07447
+## 4  4 female 67.50803 69.48500 93.40537
+## 5  5   male 79.30949 92.49889 74.88952</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[ , <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="co"># select column 1 to 2</span></code></pre></div>
 <pre><code>##    ID    SEX
 ## 1   1   male
@@ -453,73 +458,73 @@ df2</code></pre></div>
 ## 40 40 female</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[ , <span class="kw">c</span>(<span class="st">&quot;ENGLISH&quot;</span>, <span class="st">&quot;PE&quot;</span>)] <span class="co"># select by column names</span></code></pre></div>
 <pre><code>##     ENGLISH        PE
-## 1  79.26386  75.99639
-## 2  78.22704  96.44623
-## 3  94.73972  92.36976
-## 4  66.10700 101.02846
-## 5  82.31204  67.06088
-## 6  66.17838  59.22584
-## 7  64.05965  85.68037
-## 8  86.72792  90.44031
-## 9  71.52681  87.27176
-## 10 85.52772  65.69553
-## 11 86.25371  86.08133
-## 12 77.68774  70.15953
-## 13 77.55232  84.94501
-## 14 85.74698  89.11871
-## 15 76.54392  64.04306
-## 16 72.76095  76.50210
-## 17 98.51633  97.71688
-## 18 63.22922  98.51001
-## 19 79.71478  88.06099
-## 20 78.47974  77.64835
-## 21 94.76988  81.65935
-## 22 84.18760  81.32930
-## 23 71.46383  83.12611
-## 24 80.99508  82.51002
-## 25 76.07132 105.96730
-## 26 83.00218  72.35363
-## 27 63.91522  87.90309
-## 28 92.97074  93.35232
-## 29 76.79170  66.82745
-## 30 85.06464  85.10710
-## 31 75.27856  76.69704
-## 32 75.34638  82.56891
-## 33 70.76502  92.20454
-## 34 66.63227  71.56448
-## 35 78.60475  83.61302
-## 36 91.62546  74.09641
-## 37 77.13070  80.19007
-## 38 94.75860  86.62740
-## 39 88.26863  92.39251
-## 40 76.51918  76.13370</code></pre>
+## 1  76.82566  84.81883
+## 2  78.96168  92.10383
+## 3  77.08596  93.07447
+## 4  69.48500  93.40537
+## 5  92.49889  74.88952
+## 6  78.94801  96.99276
+## 7  83.61106 110.89836
+## 8  80.26111  76.95012
+## 9  72.02294  89.50968
+## 10 76.05992 118.69548
+## 11 80.96733  84.08140
+## 12 93.23605  71.14928
+## 13 73.20228  67.53100
+## 14 67.70829 108.94205
+## 15 87.13030  73.69138
+## 16 79.03598  87.76326
+## 17 83.70136  85.92176
+## 18 80.29215  83.87893
+## 19 74.27589  67.30751
+## 20 73.63072 105.07425
+## 21 80.74825  59.14302
+## 22 66.82835  74.05205
+## 23 78.77581  65.70374
+## 24 81.38294  99.64162
+## 25 82.17665  69.11069
+## 26 79.36088 113.02678
+## 27 70.43512  94.47199
+## 28 91.11138 100.18006
+## 29 93.63422  94.19919
+## 30 81.35121 115.28747
+## 31 96.81003  89.63672
+## 32 96.66053  79.14634
+## 33 85.12079  84.05962
+## 34 84.78968  82.97945
+## 35 72.19446 103.68315
+## 36 84.77316  84.51351
+## 37 73.63922  92.48138
+## 38 88.82953  70.16855
+## 39 75.05796  61.86067
+## 40 75.89089  84.53353</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), ] <span class="co">#select the first three rows</span></code></pre></div>
 <pre><code>##   ID    SEX    MATHS  ENGLISH       PE
-## 1  1   male 67.10260 79.26386 75.99639
-## 2  2 female 72.92120 78.22704 96.44623
-## 3  3   male 58.54952 94.73972 92.36976</code></pre>
+## 1  1   male 63.60067 76.82566 84.81883
+## 2  2 female 66.80858 78.96168 92.10383
+## 3  3   male 75.73642 77.08596 93.07447</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2[<span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">40</span>, <span class="dv">2</span>), ] <span class="co">#select every other rows from 1 to 40 rows </span></code></pre></div>
 <pre><code>##    ID  SEX    MATHS  ENGLISH        PE
-## 1   1 male 67.10260 79.26386  75.99639
-## 3   3 male 58.54952 94.73972  92.36976
-## 5   5 male 69.52982 82.31204  67.06088
-## 7   7 male 65.25168 64.05965  85.68037
-## 9   9 male 76.71499 71.52681  87.27176
-## 11 11 male 67.50990 86.25371  86.08133
-## 13 13 male 66.32736 77.55232  84.94501
-## 15 15 male 79.65290 76.54392  64.04306
-## 17 17 male 70.59037 98.51633  97.71688
-## 19 19 male 69.38239 79.71478  88.06099
-## 21 21 male 69.70287 94.76988  81.65935
-## 23 23 male 63.73727 71.46383  83.12611
-## 25 25 male 62.16247 76.07132 105.96730
-## 27 27 male 67.26878 63.91522  87.90309
-## 29 29 male 74.77108 76.79170  66.82745
-## 31 31 male 66.71685 75.27856  76.69704
-## 33 33 male 63.17599 70.76502  92.20454
-## 35 35 male 68.58097 78.60475  83.61302
-## 37 37 male 66.31976 77.13070  80.19007
-## 39 39 male 68.89026 88.26863  92.39251</code></pre>
+## 1   1 male 63.60067 76.82566  84.81883
+## 3   3 male 75.73642 77.08596  93.07447
+## 5   5 male 79.30949 92.49889  74.88952
+## 7   7 male 69.57576 83.61106 110.89836
+## 9   9 male 74.29699 72.02294  89.50968
+## 11 11 male 80.50352 80.96733  84.08140
+## 13 13 male 70.25221 73.20228  67.53100
+## 15 15 male 60.15218 87.13030  73.69138
+## 17 17 male 59.48581 83.70136  85.92176
+## 19 19 male 67.96099 74.27589  67.30751
+## 21 21 male 72.88794 80.74825  59.14302
+## 23 23 male 70.70988 78.77581  65.70374
+## 25 25 male 72.49988 82.17665  69.11069
+## 27 27 male 69.18583 70.43512  94.47199
+## 29 29 male 75.63459 93.63422  94.19919
+## 31 31 male 66.26477 96.81003  89.63672
+## 33 33 male 73.38286 85.12079  84.05962
+## 35 35 male 77.43891 72.19446 103.68315
+## 37 37 male 73.71398 73.63922  92.48138
+## 39 39 male 68.26469 75.05796  61.86067</code></pre>
 </div>
 </div>
 <div id="summary" class="section level2">

@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 6 From data visualization to statistical modelling | A Introduction to Eploratory Data Analysis with R</title>
+  <meta name="description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 6 From data visualization to statistical modelling | A Introduction to Eploratory Data Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 From data visualization to statistical modelling | A Introduction to Eploratory Data Analysis with R" />
+  
+  <meta name="twitter:description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle." />
+  
+
+<meta name="author" content="Juqiang Chen">
+
+
+<meta name="date" content="2019-10-05">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="covariation.html">
+<link rel="next" href="statistical-modeling-and-model-interpretation.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>1.1</b> Installing R and R studio</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-libraries-in-r"><i class="fa fa-check"></i><b>1.2</b> Installing libraries in R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#install-packages-and-library-packages"><i class="fa fa-check"></i><b>1.3</b> Install packages and library packages</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#programme"><i class="fa fa-check"></i><b>1.4</b> Programme</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Basic data structures in R</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#categorical-vs.numeric-variables"><i class="fa fa-check"></i><b>2.1</b> Categorical vs. numeric variables</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#d-data-structure-vectors"><i class="fa fa-check"></i><b>2.2</b> 1D data structure: vectors</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#creating-vectors"><i class="fa fa-check"></i><b>2.2.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> creating list objects</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#d-data-structures-matrice-and-data-frames"><i class="fa fa-check"></i><b>2.3</b> 2D data structures: matrice and data frames</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#what-if-i-want-to-change-column-names-or-add-variable-to-the-df"><i class="fa fa-check"></i><b>2.3.1</b> what if I want to change column names or add variable to the df?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Subsetting dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.4</b> summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>3</b> What is EDA?</a><ul>
+<li class="chapter" data-level="3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#data-analysis-workflow"><i class="fa fa-check"></i><b>3.1</b> Data analysis workflow</a></li>
+<li class="chapter" data-level="3.2" data-path="what-is-eda.html"><a href="what-is-eda.html#data-wrangling"><i class="fa fa-check"></i><b>3.2</b> Data wrangling</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>4</b> Variation</a><ul>
+<li class="chapter" data-level="4.1" data-path="variation.html"><a href="variation.html#categorical-variable"><i class="fa fa-check"></i><b>4.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="4.2" data-path="variation.html"><a href="variation.html#continous-variable"><i class="fa fa-check"></i><b>4.2</b> Continous variable</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#five-number-summary"><i class="fa fa-check"></i><b>4.2.1</b> Five-number summary</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#boxplot-violin-plot"><i class="fa fa-check"></i><b>4.2.2</b> Boxplot &amp; violin plot</a></li>
+<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#qq-plots"><i class="fa fa-check"></i><b>4.2.3</b> QQ Plots</a></li>
+<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#how-does-the-shape-of-a-distribution-influence-the-measures-of-central-tendency"><i class="fa fa-check"></i><b>4.2.4</b> How does the shape of a distribution influence the Measures of Central Tendency?</a></li>
+<li class="chapter" data-level="4.2.5" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.5</b> Measures of Spread</a></li>
+<li class="chapter" data-level="4.2.6" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.6</b> Unusual values</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
+<li class="chapter" data-level="5.1" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>5.1</b> Categorical + continuous variable</a></li>
+<li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.2</b> Two categorical variables</a></li>
+<li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html"><i class="fa fa-check"></i><b>6</b> From data visualization to statistical modelling</a><ul>
+<li class="chapter" data-level="6.1" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#two-continuousnumerical-variables"><i class="fa fa-check"></i><b>6.1</b> Two continuous/numerical variables</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#t-testanova-categorical-independent-variable-continuous-dependent-variable"><i class="fa fa-check"></i><b>6.1.1</b> T-test/ANOVA: categorical (independent variable )+ continuous (dependent variable)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statistical-modeling-and-model-interpretation.html"><a href="statistical-modeling-and-model-interpretation.html"><i class="fa fa-check"></i><b>7</b> Statistical Modeling and Model Interpretation</a><ul>
+<li class="chapter" data-level="7.1" data-path="statistical-modeling-and-model-interpretation.html"><a href="statistical-modeling-and-model-interpretation.html#parametric-statistical-tests"><i class="fa fa-check"></i><b>7.1</b> Parametric statistical tests</a></li>
+<li class="chapter" data-level="7.2" data-path="statistical-modeling-and-model-interpretation.html"><a href="statistical-modeling-and-model-interpretation.html#formal-tests-for-homogeneity-of-variance"><i class="fa fa-check"></i><b>7.2</b> formal tests for homogeneity of variance</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>8</b> Resources</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Introduction to Eploratory Data Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="from-data-visualization-to-statistical-modelling" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> From data visualization to statistical modelling</h1>
+<p>Patterns in the data provide clues about relationship or covariation.Now that we know how to visualize the various relationships, we can proceed to know more about how to formally test the relationship.</p>
+<p>Statistical models are tools for extracting patterns out of data.</p>
+<p>Statistics represent a common method of presenting information helping us to understand what the data are telling us.</p>
+<ul>
+<li><p><em>Descriptive (or summary) statistics</em> summarise the raw data and allow data users to interpret a dataset more easily.Descriptive statistics can describe the shape, centre and spread of a dataset.</p></li>
+<li><p><em>Inferential statistics</em> are used to infer conclusions about a population from a sample of that population. Inferential statistics are the result of techniques that use the data collected from a sample to make generalisations about the whole population from which the sample was taken. Inferential statistics include <em>estimation</em> (An estimate is a value that is inferred for a population based on data collected from a sample of units from that population), and <em>hypothesis testing</em>.</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/stats.png&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:stats"></span>
+<img src="img/stats.png" alt="stats" width="100%" />
+<p class="caption">
+Figure 6.1: stats
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#source:from slides, Dr.Russell Thomson, Statistical Consultant, Centre for Research in Mathematics and Graduate Research School</span></code></pre></div>
+<div id="two-continuousnumerical-variables" class="section level2">
+<h2><span class="header-section-number">6.1</span> Two continuous/numerical variables</h2>
+<p>The techique we used here is called <em>Simpler linear regression</em>, where there is one dependent variable (continuous) and one independent variable (continuous). When there are more than one independent variable (continuous), you need to look for something called <em>Multiple linear regression</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(faithful)</code></pre></div>
+<pre><code>##   eruptions waiting
+## 1     3.600      79
+## 2     1.800      54
+## 3     3.333      74
+## 4     2.283      62
+## 5     4.533      85
+## 6     2.883      55</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(faithful)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(eruptions, waiting))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-28-1.png" width="672" /> <em>Correlation</em> and <em>linear regression</em> each explore the relationship between two quantitative variables. (Salvatore S. Mangiafico)</p>
+<p>Correlation determines if one variable varies systematically as another variable changes. It does not specify that one variable is the dependent variable and the other is the independent variable. Often, it is useful to look at which variables are correlated to others in a data set, and it is especially useful to see which variables correlate to a particular variable of interest.</p>
+<p>In contrast, linear regression specifies one variable as the independent variable and another as the dependent variable. The resultant model relates the variables with a linear relationship.</p>
+<p>The tests associated with linear regression are parametric and assume normality, homoscedasticity, and independence of residuals, as well as a linear relationship between the two variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(psych)){<span class="kw">install.packages</span>(<span class="st">&quot;psych&quot;</span>)}</code></pre></div>
+<pre><code>## Loading required package: psych</code></pre>
+<pre><code>## 
+## Attaching package: &#39;psych&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:rcompanion&#39;:
+## 
+##     phi</code></pre>
+<pre><code>## The following object is masked from &#39;package:Hmisc&#39;:
+## 
+##     describe</code></pre>
+<pre><code>## The following objects are masked from &#39;package:ggplot2&#39;:
+## 
+##     %+%, alpha</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(PerformanceAnalytics)){<span class="kw">install.packages</span>(<span class="st">&quot;PerformanceAnalytics&quot;</span>)}</code></pre></div>
+<pre><code>## Loading required package: PerformanceAnalytics</code></pre>
+<pre><code>## Loading required package: xts</code></pre>
+<pre><code>## Loading required package: zoo</code></pre>
+<pre><code>## 
+## Attaching package: &#39;zoo&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<pre><code>## 
+## Attaching package: &#39;xts&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     first, last</code></pre>
+<pre><code>## 
+## Attaching package: &#39;PerformanceAnalytics&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:graphics&#39;:
+## 
+##     legend</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(ggplot2)){<span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)}
+<span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(rcompanion)){<span class="kw">install.packages</span>(<span class="st">&quot;rcompanion&quot;</span>)}
+
+<span class="kw">library</span>(psych)
+<span class="kw">pairs</span>(<span class="dt">data=</span>faithful,
+    <span class="op">~</span><span class="st"> </span>eruptions <span class="op">+</span><span class="st"> </span>waiting)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(<span class="dt">data=</span>iris,
+    <span class="op">~</span><span class="st"> </span>Sepal.Length <span class="op">+</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>Petal.Length <span class="op">+</span>Petal.Width)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">corr.test</span>(faithful,
+          <span class="dt">use    =</span> <span class="st">&quot;pairwise&quot;</span>,
+          <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>,
+          <span class="dt">adjust =</span> <span class="st">&quot;none&quot;</span>)</code></pre></div>
+<pre><code>## Call:corr.test(x = faithful, use = &quot;pairwise&quot;, method = &quot;pearson&quot;, 
+##     adjust = &quot;none&quot;)
+## Correlation matrix 
+##           eruptions waiting
+## eruptions       1.0     0.9
+## waiting         0.9     1.0
+## Sample Size 
+## [1] 272
+## Probability values (Entries above the diagonal are adjusted for multiple tests.) 
+##           eruptions waiting
+## eruptions         0       0
+## waiting           0       0
+## 
+##  To see confidence intervals of the correlations, print with the short=FALSE option</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(PerformanceAnalytics)
+
+<span class="kw">chart.Correlation</span>(faithful,
+                   <span class="dt">method=</span><span class="st">&quot;pearson&quot;</span>,
+                   <span class="dt">histogram=</span><span class="ot">TRUE</span>,
+                   <span class="dt">pch=</span><span class="dv">16</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart.Correlation</span>(faithful,
+                   <span class="dt">method=</span><span class="st">&quot;kendall&quot;</span>,
+                   <span class="dt">histogram=</span><span class="ot">TRUE</span>,
+                   <span class="dt">pch=</span><span class="dv">16</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-4.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart.Correlation</span>(faithful,
+                   <span class="dt">method=</span><span class="st">&quot;spearman&quot;</span>,
+                   <span class="dt">histogram=</span><span class="ot">TRUE</span>,
+                   <span class="dt">pch=</span><span class="dv">16</span>)</code></pre></div>
+<pre><code>## Warning in cor.test.default(as.numeric(x), as.numeric(y), method = method):
+## Cannot compute exact p-value with ties</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-5.png" width="672" /> The statistics r, rho, and tau are used as effect sizes for Pearson, Spearman, and Kendall regression, respectively. These statistics vary from –1 to 1, with 0 indicating no correlation, 1 indicating a perfect positive correlation, and –1 indicating a perfect negative correlation. Like other effect size statistics, these statistics are not affected by sample size.</p>
+<p>Interpretation of effect sizes necessarily varies by discipline and the expectations of the experiment. They should not be considered universal. An interpretation of r is given by Cohen (1988). It is probably reasonable to use similar interpretations for rho and tau.</p>
+<ul>
+<li><p>small: 0.10 – &lt; 0.30</p></li>
+<li><p>medium: 0.30 – &lt; 0.50</p></li>
+<li><p>large: ≥ 0.50</p></li>
+</ul>
+<p>The test used for <em>Pearson correlation</em> is a parametric analysis that requires that the relationship between the variables is linear, and that the data be bivariate normal. Variables should be interval/ratio. The test is sensitive to outliers.</p>
+<p>The correlation coefficient, r, can range from +1 to –1, with +1 being a perfect positive correlation and –1 being a perfect negative correlation. An r of 0 represents no correlation whatsoever. The hypothesis test determines if the r value is significantly different from 0.</p>
+<p><em>Kendall correlation </em>is considered a nonparametric analysis. It is a rank-based test that does not require assumptions about the distribution of the data. Variables can be interval/ratio or ordinal.</p>
+<p>The correlation coefficient from the test is tau, which can range from +1 to –1, with +1 being a perfect positive correlation and –1 being a perfect negative correlation. A tau of 0 represents no correlation whatsoever. The hypothesis test determines if the tau value is significantly different from 0.</p>
+<p>As a technical note, the cor.test function in R calculates tau-b, which handles ties in ranks well.</p>
+<p>The test is relatively robust to outliers in the data. The test is sometimes cited for being reliable when there are small number of samples or when there are many ties in ranks.</p>
+<p><em>Spearman correlation</em> is considered a nonparametric analysis. It is a rank-based test that does not require assumptions about the distribution of the data. Variables can be interval/ratio or ordinal.</p>
+<p>The correlation coefficient from the test, rho, can range from +1 to –1, with +1 being a perfect positive correlation and –1 being a perfect negative correlation. A rho of 0 represents no correlation whatsoever. The hypothesis test determines if the rho value is significantly different from 0.</p>
+<p>Spearman correlation is probably most often used with ordinal data. It tests for a monotonic relationship between the variables. It is relatively robust to outliers in the data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>eruptions <span class="op">+</span><span class="st"> </span>waiting,
+         <span class="dt">data=</span>faithful,
+         <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  eruptions and waiting
+## t = 34.089, df = 270, p-value &lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.8756964 0.9210652
+## sample estimates:
+##       cor 
+## 0.9008112</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the results report the p-value for the hypothesis test as well as the r value, written as cor, 0.849.</span>
+
+<span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>eruptions <span class="op">+</span><span class="st"> </span>waiting,
+         <span class="dt">data=</span>faithful,
+         <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</code></pre></div>
+<pre><code>## 
+##  Kendall&#39;s rank correlation tau
+## 
+## data:  eruptions and waiting
+## z = 13.902, p-value &lt; 2.2e-16
+## alternative hypothesis: true tau is not equal to 0
+## sample estimates:
+##       tau 
+## 0.5747674</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>( <span class="op">~</span><span class="st"> </span>eruptions <span class="op">+</span><span class="st"> </span>waiting,
+         <span class="dt">data=</span>faithful,
+         <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</code></pre></div>
+<pre><code>## Warning in cor.test.default(x = c(3.6, 1.8, 3.333, 2.283, 4.533, 2.883, :
+## Cannot compute exact p-value with ties</code></pre>
+<pre><code>## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  eruptions and waiting
+## S = 744660, p-value &lt; 2.2e-16
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##       rho 
+## 0.7779721</code></pre>
+<div id="linear-regression" class="section level4">
+<h4><span class="header-section-number">6.1.0.1</span> Linear regression</h4>
+<p>Linear regression is a very common approach to model the relationship between two interval/ratio variables. The method assumes that there is a linear relationship between the dependent variable and the independent variable, and finds a best fit model for this relationship.</p>
+<p>Interpretation of coefficients The outcome of linear regression includes estimating the <em>intercept</em> and the <em>slope</em> of the linear model.</p>
+<p>Multiple, nominal, and ordinal independent variables If there are multiple independent variables of interval/ratio type in the model, then linear regression expands to multiple regression. The polynomial regression example in this chapter is a form of multiple regression.</p>
+<p>If the independent variable were of nominal type, then the linear regression would become a <em>one-way analysis of variance</em>.</p>
+<p>Handling independent variables of ordinal type can be complicated. Often they are treated as either nominal type or interval/ratio type, although there are drawbacks to each approach.</p>
+<p>Assumptions Linear regression assumes a linear relationship between the two variables, normality of the residuals, independence of the residuals, and homoscedasticity of residuals.</p>
+<p>Linear regression can be performed with the lm function, which was the same function we used for analysis of variance.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model =<span class="st"> </span><span class="kw">lm</span>(eruptions <span class="op">~</span><span class="st"> </span>waiting,
+           <span class="dt">data =</span> faithful)
+
+<span class="kw">summary</span>(model)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = eruptions ~ waiting, data = faithful)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.29917 -0.37689  0.03508  0.34909  1.19329 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -1.874016   0.160143  -11.70   &lt;2e-16 ***
+## waiting      0.075628   0.002219   34.09   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.4965 on 270 degrees of freedom
+## Multiple R-squared:  0.8115, Adjusted R-squared:  0.8108 
+## F-statistic:  1162 on 1 and 270 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(eruptions <span class="op">~</span><span class="st"> </span>waiting,
+     <span class="dt">data=</span>faithful,
+     <span class="dt">pch=</span><span class="dv">16</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;waiting&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;eruptions&quot;</span>)
+
+<span class="kw">abline</span>(model,
+       <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>,
+       <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+
+<span class="kw">library</span>(rcompanion)
+
+<span class="kw">plotNormalHistogram</span>(x)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-2.png" width="672" /></p>
+<p>The summary function for lm model objects includes estimates for model parameters (intercept and slope), as well as an r-squared value for the model and p-value for the model.</p>
+<p>How to read the model? The model produces a coefficient for the intercept (-1.87) and a coefficient for the slope (0.07);Each coefficient comes with three other numbers: its standard error, a t-value, and a p-value. The p-value tells us whether the coefficient is significantly different from zero.</p>
+<p>If the coefficient for a predictor is zero, there is no relation at all between the predictor and the dependent variable, in which case it is worthless as a predictor. In order to ascertain whether a coefficient is significantly different from zero, and hence potentially useful, a two-tailed t-test is carried out, using the t-value and <em>the associated degrees of freedom</em>.</p>
+<p>The t-value itself is the value of the coefficient divided by its standard error. This standard error is a measure of how sure we are about the estimate of the coefficient. The smaller the standard error, the smaller the confidence interval around the estimate, the less likely it is that zero will be included in the acceptance region, and hence the smaller the probability that it might just as well be zero.</p>
+<p>The residual standard error is a measure of how unsuccessful the model is; it gauges the variability in the dependent variable that we can’t handle through the predictor variables. The better a model is, the smaller its residual standard error will be.</p>
+<p>The multiple R-squared equals 0.8115. This R-squared is the squared correlation coefficient, r2, which quantifies, on a scale from 0 to 1, the proportion of the variance that the model explains.</p>
+</div>
+<div id="t-testanova-categorical-independent-variable-continuous-dependent-variable" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> T-test/ANOVA: categorical (independent variable )+ continuous (dependent variable)</h3>
+<p>The two-sample unpaired t-test is a commonly used test that compares the means of two samples.</p>
+<p>• Data for each population are normally distributed</p>
+<p>• For Student’s t-test, the two samples need to have the same variance. However, Welch’s t-test, which is used by default in R, does not assume equal variances.</p>
+<p>• Observations between groups are independent. That is, not paired or repeated measures data</p>
+<p>• Moderate skewness is permissible if the data distribution is unimodal without outliers</p>
+<p>Hypotheses • Null hypothesis: The means of the populations from which the data were sampled for each group are equal.</p>
+<p>• Alternative hypothesis (two-sided): The means of the populations from which the data were sampled for each group are not equal.</p>
+<p>Interpretation Reporting significant results as “Mean of variable Y for group A was different than that for group B.” is acceptable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># simulating the data</span>
+id =<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">100</span>)
+temp1 =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;f&quot;</span>,<span class="st">&quot;m&quot;</span>)
+gender =<span class="st">  </span><span class="kw">sample</span>(temp1, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+a =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">80</span>, <span class="dt">sd =</span> <span class="dv">4</span>) 
+b =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">60</span>, <span class="dt">sd =</span> <span class="dv">4</span>) 
+c =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">85</span>, <span class="dt">sd =</span> <span class="dv">4</span>) 
+d =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>), <span class="dt">times =</span> <span class="dv">25</span>) 
+df =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> id, <span class="dt">sex =</span> gender, <span class="dt">chinese =</span> a, <span class="dt">math =</span> b, <span class="dt">english =</span> c, <span class="dt">class =</span> d)
+df<span class="op">$</span>class =<span class="st"> </span><span class="kw">as.factor</span>(df<span class="op">$</span>class)
+
+<span class="co"># test if chinese is significantly different from </span>
+<span class="co">#distribution tests</span>
+
+<span class="kw">summary</span>(df<span class="op">$</span>class)</code></pre></div>
+<pre><code>##  1  2  3  4 
+## 25 25 25 25</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#visualization</span>
+<span class="kw">plot</span>(<span class="kw">density</span>(df<span class="op">$</span>chinese))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(df<span class="op">$</span>chinese)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#formal tests</span>
+<span class="co">#null hypothesis: the distribution is normal</span>
+<span class="kw">shapiro.test</span>(df<span class="op">$</span>chinese)</code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  df$chinese
+## W = 0.98994, p-value = 0.6598</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ks.test</span>(df<span class="op">$</span>chinese, <span class="st">&quot;pnorm&quot;</span>, <span class="kw">mean</span>(df<span class="op">$</span>chinese), <span class="kw">sd</span>(df<span class="op">$</span>chinese))</code></pre></div>
+<pre><code>## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  df$chinese
+## D = 0.041607, p-value = 0.9952
+## alternative hypothesis: two-sided</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#one sample t-test: one group and a fixed value</span>
+<span class="kw">mean</span>(df<span class="op">$</span>chinese)</code></pre></div>
+<pre><code>## [1] 80.54568</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(df<span class="op">$</span>chinese, <span class="dt">mu =</span> <span class="dv">78</span>)</code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  df$chinese
+## t = 7.1611, df = 99, p-value = 1.431e-10
+## alternative hypothesis: true mean is not equal to 78
+## 95 percent confidence interval:
+##  79.84032 81.25104
+## sample estimates:
+## mean of x 
+##  80.54568</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(df<span class="op">$</span>chinese, <span class="dt">mu =</span> <span class="dv">78</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  df$chinese
+## t = 7.1611, df = 99, p-value = 7.156e-11
+## alternative hypothesis: true mean is greater than 78
+## 95 percent confidence interval:
+##  79.95543      Inf
+## sample estimates:
+## mean of x 
+##  80.54568</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(df<span class="op">$</span>chinese, <span class="dt">mu =</span> <span class="dv">78</span>, <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  df$chinese
+## t = 7.1611, df = 99, p-value = 1
+## alternative hypothesis: true mean is less than 78
+## 95 percent confidence interval:
+##      -Inf 81.13593
+## sample estimates:
+## mean of x 
+##  80.54568</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(df<span class="op">$</span>chinese, <span class="dt">mu =</span> <span class="dv">78</span>)<span class="co"># skewed distributions</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon signed rank test with continuity correction
+## 
+## data:  df$chinese
+## V = 4247, p-value = 3.238e-09
+## alternative hypothesis: true location is not equal to 78</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#probabilities of the things counted</span>
+count =<span class="st"> </span><span class="kw">c</span>(<span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">67</span>,<span class="dv">65</span>,<span class="dv">40</span>,<span class="dv">89</span>,<span class="dv">36</span>)
+<span class="kw">chisq.test</span>(count)</code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  count
+## X-squared = 58.548, df = 6, p-value = 8.873e-11</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#testing two groups</span>
+<span class="co">#independent sample t-test v.s. paired sample t-test</span>
+<span class="co">#independent sample t-test---compare means</span>
+class1 =<span class="st"> </span>df[df<span class="op">$</span>class <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, ]<span class="op">$</span>chinese
+class2 =<span class="st"> </span>df[df<span class="op">$</span>class <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, ]<span class="op">$</span>chinese
+<span class="kw">t.test</span>(class1,class2)</code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  class1 and class2
+## t = -0.68354, df = 40.144, p-value = 0.4982
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -2.682207  1.326341
+## sample estimates:
+## mean of x mean of y 
+##  80.22551  80.90345</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(class1,class2)<span class="co">#not normally distributed</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test
+## 
+## data:  class1 and class2
+## W = 272, p-value = 0.441
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var.test</span>(class1,class2)<span class="co">#compare variance</span></code></pre></div>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  class1 and class2
+## F = 2.5866, num df = 24, denom df = 24, p-value = 0.02364
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  1.139849 5.869788
+## sample estimates:
+## ratio of variances 
+##           2.586633</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#paired sample t-test</span>
+<span class="kw">t.test</span>(df<span class="op">$</span>chinese, df<span class="op">$</span>math, <span class="dt">paired =</span> T)</code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  df$chinese and df$math
+## t = 39.844, df = 99, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  19.91672 22.00439
+## sample estimates:
+## mean of the differences 
+##                20.96056</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(df<span class="op">$</span>chinese, df<span class="op">$</span>math, <span class="dt">paired =</span> T)</code></pre></div>
+<pre><code>## 
+##  Wilcoxon signed rank test with continuity correction
+## 
+## data:  df$chinese and df$math
+## V = 5050, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Analysis of Variance: ANOVA</span>
+
+<span class="co">#Question: is there a difference between four classes?</span>
+
+dif_class =<span class="st"> </span><span class="kw">aov</span> (chinese <span class="op">~</span><span class="st"> </span>class, <span class="dt">data =</span> df)
+<span class="kw">summary</span>(dif_class)</code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
+## class        3   19.2    6.41     0.5  0.684
+## Residuals   96 1231.8   12.83</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#How to report: there is a significant difference among different classes in terms of their Chinese scores, F (3, 96) = 0.87, p = .46.</span>
+
+<span class="co">#the problem of multiple comparision</span>
+<span class="co">#Bonferroni correction: a/n</span>
+<span class="co">#Tukey&#39;s Honestly Significant difference: assuming the means for each level of the factor should be based on equal numbers of observation.</span>
+
+
+<span class="co">#how is the difference like?</span>
+<span class="kw">TukeyHSD</span>(dif_class)</code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = chinese ~ class, data = df)
+## 
+## $class
+##           diff       lwr      upr     p adj
+## 2-1  0.6779331 -1.971139 3.327005 0.9084774
+## 3-1  0.8199894 -1.829082 3.469061 0.8499162
+## 4-1 -0.2172604 -2.866332 2.431811 0.9964937
+## 3-2  0.1420563 -2.507015 2.791128 0.9990099
+## 4-2 -0.8951935 -3.544265 1.753878 0.8133893
+## 4-3 -1.0372498 -3.686321 1.611822 0.7359742</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#diff= the difference in the means</span>
+<span class="co">#lwr = the lower end points of the confidence interval</span>
+<span class="co"># p adj = adjusted p value</span>
+
+<span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(dif_class))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#two-way ANOVA</span>
+m1 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>class, <span class="dt">data =</span> df)
+<span class="kw">summary</span>(m1)</code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
+## sex          1   13.2  13.210   1.028  0.313
+## class        3   17.4   5.787   0.450  0.718
+## Residuals   95 1220.5  12.847</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class="op">~</span><span class="st"> </span>sex <span class="op">*</span><span class="st"> </span>class, <span class="dt">data =</span> df)
+<span class="kw">summary</span>(m2)</code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
+## sex          1   13.2  13.210   1.025  0.314
+## class        3   17.4   5.787   0.449  0.719
+## sex:class    3   34.7  11.562   0.897  0.446
+## Residuals   92 1185.8  12.889</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m3 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>class <span class="op">+</span><span class="st"> </span>sex<span class="op">:</span>class, <span class="dt">data =</span> df)<span class="co"># same as model2</span>
+<span class="kw">summary</span>(m3)</code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
+## sex          1   13.2  13.210   1.025  0.314
+## class        3   17.4   5.787   0.449  0.719
+## sex:class    3   34.7  11.562   0.897  0.446
+## Residuals   92 1185.8  12.889</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">TukeyHSD</span>(m1)</code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = chinese ~ sex + class, data = df)
+## 
+## $sex
+##          diff        lwr      upr     p adj
+## m-f 0.7341464 -0.7031658 2.171459 0.3131484
+## 
+## $class
+##           diff       lwr      upr     p adj
+## 2-1  0.6485672 -2.002614 3.299749 0.9188560
+## 3-1  0.7612577 -1.889924 3.412439 0.8760702
+## 4-1 -0.2172604 -2.868442 2.433921 0.9964998
+## 3-2  0.1126904 -2.538491 2.763872 0.9995052
+## 4-2 -0.8658276 -3.517009 1.785354 0.8283253
+## 4-3 -0.9785181 -3.629699 1.672663 0.7694785</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">TukeyHSD</span>(m2)</code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = chinese ~ sex * class, data = df)
+## 
+## $sex
+##          diff        lwr      upr     p adj
+## m-f 0.7341464 -0.7061142 2.174407 0.3140158
+## 
+## $class
+##           diff       lwr      upr     p adj
+## 2-1  0.6485672 -2.008481 3.305616 0.9192024
+## 3-1  0.7612577 -1.895791 3.418306 0.8765832
+## 4-1 -0.2172604 -2.874309 2.439788 0.9965158
+## 3-2  0.1126904 -2.544358 2.769739 0.9995075
+## 4-2 -0.8658276 -3.522876 1.791221 0.8290123
+## 4-3 -0.9785181 -3.635566 1.678530 0.7703628
+## 
+## $`sex:class`
+##                diff       lwr      upr     p adj
+## m:1-f:1 -0.69060047 -5.236865 3.855664 0.9997549
+## f:2-f:1  0.43812479 -3.700154 4.576403 0.9999786
+## m:2-f:1  0.35532504 -4.065212 4.775862 0.9999968
+## f:3-f:1 -0.62325698 -4.843059 3.596545 0.9997968
+## m:3-f:1  1.80800588 -2.504960 6.120971 0.8965301
+## f:4-f:1 -0.90143933 -4.967742 3.164863 0.9971450
+## m:4-f:1  0.11840756 -4.427857 4.664672 1.0000000
+## f:2-m:1  1.12872525 -3.482029 5.739479 0.9947107
+## m:2-m:1  1.04592551 -3.819756 5.911607 0.9976493
+## f:3-m:1  0.06734349 -4.616718 4.751405 1.0000000
+## m:3-m:1  2.49860635 -2.269556 7.266769 0.7338348
+## f:4-m:1 -0.21083887 -4.757104 4.335426 0.9999999
+## m:4-m:1  0.80900802 -4.171175 5.789191 0.9996175
+## m:2-f:2 -0.08279975 -4.569634 4.404034 1.0000000
+## f:3-f:2 -1.06138177 -5.350584 3.227821 0.9943495
+## m:3-f:2  1.36988109 -3.011009 5.750771 0.9775388
+## f:4-f:2 -1.33956412 -5.477842 2.798714 0.9727407
+## m:4-f:2 -0.31971723 -4.930471 4.291037 0.9999988
+## f:3-m:2 -0.97858202 -5.540715 3.583551 0.9976809
+## m:3-m:2  1.45268084 -3.195760 6.101122 0.9776139
+## f:4-m:2 -1.25676437 -5.677302 3.163773 0.9870110
+## m:4-m:2 -0.23691748 -5.102599 4.628764 0.9999999
+## m:3-f:3  2.43126286 -2.026716 6.889242 0.6925572
+## f:4-f:3 -0.27818236 -4.497984 3.941619 0.9999992
+## m:4-f:3  0.74166454 -3.942397 5.425726 0.9996771
+## f:4-m:3 -2.70944521 -7.022411 1.603520 0.5218289
+## m:4-m:3 -1.68959832 -6.457761 3.078564 0.9554634
+## m:4-f:4  1.01984689 -3.526418 5.566112 0.9969246</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="covariation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="statistical-modeling-and-model-interpretation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-Simple_stats.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
