@@ -39,14 +39,13 @@ knitr::include_graphics("img/installr.jpg")
 
 ```
 
-## Installing libraries in R
 
 RStudio is an integrated development environment, or IDE, for R
 programming. Download and install it from [http://www.rstudio.com/download.]
 
 The free version is poweful enough.
 
-## Install packages and library packages
+## Install and library packages
 
  * install.packages("package_name")
 
