@@ -25,7 +25,7 @@
 <meta name="author" content="Juqiang Chen">
 
 
-<meta name="date" content="2019-10-28">
+<meta name="date" content="2019-12-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -106,20 +106,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>1.1</b> Installing R and R studio</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#install-and-library-packages"><i class="fa fa-check"></i><b>1.2</b> Install and library packages</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#programme"><i class="fa fa-check"></i><b>1.3</b> Programme</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#install-packages-and-library-packages"><i class="fa fa-check"></i><b>1.2</b> Install packages and library packages</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#data-and-workbook"><i class="fa fa-check"></i><b>1.3</b> Data and workbook</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Basic data structures in R</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#categorical-vs.numeric-variables"><i class="fa fa-check"></i><b>2.1</b> Categorical vs. numeric variables</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#types-of-variables-a-taxonomy"><i class="fa fa-check"></i><b>2.1</b> Types of variables: A taxonomy</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#categorical-variables-ordinal-vs.norminal"><i class="fa fa-check"></i><b>2.1.1</b> Categorical variables: ordinal vs. norminal</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#numeric-variables-discrete-or-continuous"><i class="fa fa-check"></i><b>2.1.2</b> Numeric variables: discrete or continuous</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#d-data-structure-vectors"><i class="fa fa-check"></i><b>2.2</b> 1D data structure: vectors</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#creating-vectors"><i class="fa fa-check"></i><b>2.2.1</b> Creating vectors</a></li>
-<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> creating list objects</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> Creating list objects</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#d-data-structures-matrice-and-data-frames"><i class="fa fa-check"></i><b>2.3</b> 2D data structures: matrice and data frames</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#what-if-i-want-to-change-column-names-or-add-variable-to-the-df"><i class="fa fa-check"></i><b>2.3.1</b> what if I want to change column names or add variable to the df?</a></li>
 <li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Subsetting dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.4</b> summary</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>3</b> What is EDA?</a><ul>
 <li class="chapter" data-level="3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#definition-from-wikipedia"><i class="fa fa-check"></i><b>3.1</b> Definition (from Wikipedia)</a></li>
@@ -127,20 +130,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.3" data-path="what-is-eda.html"><a href="what-is-eda.html#data-analysis-workflow"><i class="fa fa-check"></i><b>3.3</b> Data analysis workflow</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>4</b> Variation</a><ul>
-<li class="chapter" data-level="4.1" data-path="variation.html"><a href="variation.html#categorical-variable"><i class="fa fa-check"></i><b>4.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="4.1" data-path="variation.html"><a href="variation.html#categorical-variable"><i class="fa fa-check"></i><b>4.1</b> Categorical variable</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="variation.html"><a href="variation.html#absolute-v.s-relative-frequency"><i class="fa fa-check"></i><b>4.1.1</b> Absolute v.s relative frequency?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="variation.html"><a href="variation.html#frequency-distributions"><i class="fa fa-check"></i><b>4.1.2</b> Frequency distributions</a></li>
+</ul></li>
 <li class="chapter" data-level="4.2" data-path="variation.html"><a href="variation.html#continous-variable"><i class="fa fa-check"></i><b>4.2</b> Continous variable</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#five-number-summary"><i class="fa fa-check"></i><b>4.2.1</b> Five-number summary</a></li>
-<li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#boxplot-violin-plot"><i class="fa fa-check"></i><b>4.2.2</b> Boxplot &amp; violin plot</a></li>
-<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#qq-plots"><i class="fa fa-check"></i><b>4.2.3</b> QQ Plots</a></li>
-<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#how-does-the-shape-of-a-distribution-influence-the-measures-of-central-tendency"><i class="fa fa-check"></i><b>4.2.4</b> How does the shape of a distribution influence the Measures of Central Tendency?</a></li>
-<li class="chapter" data-level="4.2.5" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.5</b> Measures of Spread</a></li>
-<li class="chapter" data-level="4.2.6" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.6</b> Unusual values</a></li>
+<li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#central-tendency"><i class="fa fa-check"></i><b>4.2.1</b> Central tendency</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.2</b> Measures of Spread</a></li>
+<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#confidence-interval"><i class="fa fa-check"></i><b>4.2.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.4</b> Unusual values</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
-<li class="chapter" data-level="5.1" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>5.1</b> Categorical + continuous variable</a></li>
-<li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.2</b> Two categorical variables</a></li>
-<li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a></li>
+<li class="chapter" data-level="5.1" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.1</b> Two categorical variables</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="covariation.html"><a href="covariation.html#contingency-table"><i class="fa fa-check"></i><b>5.1.1</b> Contingency table</a></li>
+<li class="chapter" data-level="5.1.2" data-path="covariation.html"><a href="covariation.html#tile-plot"><i class="fa fa-check"></i><b>5.1.2</b> Tile plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>5.2</b> Categorical + continuous variable</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="covariation.html"><a href="covariation.html#summary-table"><i class="fa fa-check"></i><b>5.2.1</b> Summary table</a></li>
+<li class="chapter" data-level="5.2.2" data-path="covariation.html"><a href="covariation.html#central-tendency-mean-bar-plots"><i class="fa fa-check"></i><b>5.2.2</b> Central tendency (mean): Bar plots</a></li>
+<li class="chapter" data-level="5.2.3" data-path="covariation.html"><a href="covariation.html#distribution-density-plot"><i class="fa fa-check"></i><b>5.2.3</b> Distribution: density plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="covariation.html"><a href="covariation.html#scatter-plots"><i class="fa fa-check"></i><b>5.3.1</b> Scatter plots</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html"><i class="fa fa-check"></i><b>6</b> From data visualization to statistical modelling</a><ul>
 <li class="chapter" data-level="6.1" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#two-continuousnumerical-variables"><i class="fa fa-check"></i><b>6.1</b> Two continuous/numerical variables</a><ul>
@@ -174,17 +187,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="variation" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Variation</h1>
-<p>Variation is the tendency of the values of a variable to change from measurement to measurement. (Wickham &amp; Grolemund)</p>
+<p><em>Variation</em> is the tendency of the values of a variable to change from measurement to measurement. (Wickham &amp; Grolemund)</p>
 <div id="categorical-variable" class="section level2">
 <h2><span class="header-section-number">4.1</span> Categorical variable</h2>
 <p>The best way to characterizing categorical variables is via the frequency. The <em>frequency</em> is the number of times a particular value for a variable (data item) has been observed to occur.</p>
-<p><em>How can we measure frequency?</em></p>
-<p>The frequency of a value can be expressed in different ways, depending on the purpose required.</p>
-<p>The <em>absolute frequency</em> describes the number of times a particular value for a variable (data item) has been observed to occur. Or simply put, counts.</p>
-<p>A <em>relative frequency</em> describes the number of times a particular value for a variable (data item) has been observed to occur in relation to the total number of values for that variable.It is calculated by dividing the absolute frequency by the total number of values for the variable.</p>
-<p>Ratios, rates, proportions and percentages are different ways of expressing relative frequencies.</p>
+<div id="absolute-v.s-relative-frequency" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Absolute v.s relative frequency?</h3>
+<p>The frequency of a value can be expressed in different ways:</p>
 <ul>
-<li>A <em>ratio</em>compares the frequency of one value for a variable with another value for the variable. The first value identified in a ratio must be to the left of the colon (:) and the second value must be to the right of the colon (1st value : 2nd value).</li>
+<li><p>The <em>absolute frequency</em> describes the number of times a particular value for a variable occurs. Or simply put, counts.</p></li>
+<li><p>The <em>relative frequency</em> describes the number of times a particular value for a variable occurs in relation to the total number of values for that variable.It is calculated by dividing the absolute frequency by the total number of values for the variable. Ratios, rates, proportions and percentages are different ways of expressing relative frequencies.</p></li>
+<li><p>A <em>ratio</em> compares the frequency of one value for a variable with another value for the variable (1st value : 2nd value).</p></li>
 </ul>
 <blockquote>
 <p>For example, in a total of 20 coin tosses where there are 12 heads and 8 tails, the ratio of heads to tails is 12:8. Alternatively, the ratio of tails to heads is 8:12.</p>
@@ -192,7 +205,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li>A <em>rate</em> is a measurement of one value for a variable in relation to another measured quantity.</li>
 </ul>
+<blockquote>
 <p>For example, in a total of 20 coin tosses where there are 12 heads and 8 tails, the rate is 12 heads per 20 coin tosses. Alternatively, the rate is 8 tails per 20 coin tosses.</p>
+</blockquote>
 <ul>
 <li>A <em>proportion</em> describes the share of one value for a variable in relation to a whole.It is calculated by dividing the number of times a particular value for a variable has been observed, by the total number of values in the population.</li>
 </ul>
@@ -200,23 +215,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>For example, in a total of 20 coin tosses where there are 12 heads and 8 tails, the proportion of heads is 0.6 (12 divided by 20). Alternatively, the proportion of tails is 0.4 (8 divided by 20).</p>
 </blockquote>
 <ul>
-<li>A <em>percentage</em> expresses a value for a variable in relation to a whole population as a fraction of one hundred. The percentage total of an entire dataset should always add up to 100, as 100% represents the total, it is equal to the ‘whole’. A percentage is calculated by dividing the number of times a particular value for a variable has been observed, by the total number of observations in the population, then multiplying this number by 100.</li>
+<li>A <em>percentage</em> expresses a value for a variable in relation to a whole population as a fraction of one hundred. The percentage total of an entire dataset should always add up to 100, as 100% represents the total. A percentage is calculated by dividing the number of times a particular value for a variable has been observed, by the total number of observations in the population, then multiplying this number by 100.</li>
 </ul>
+<blockquote>
 <p>For example, in a total of 20 coin tosses where there are 12 heads and 8 tails, the percentage of heads is 60% (12 divided by 20, multiplied by 100). Alternatively, the percentage of tails is 40% (8 divided by 20, multiplied by 100). (ABS)</p>
+</blockquote>
+</div>
+<div id="frequency-distributions" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Frequency distributions</h3>
 <p><em>Frequency distributions</em> are visual displays that organise and present frequency counts so that the information can be interpreted more easily.</p>
-<p>How do we show a frequency distribution?</p>
 <p>A frequency distribution of data can be shown in a table or graph. Some common methods of showing frequency distributions include <em>frequency tables</em>, <em>bar charts</em> or <em>histograms</em>.</p>
-<p>Frequency Tables</p>
+<div id="frequency-tables" class="section level4">
+<h4><span class="header-section-number">4.1.2.1</span> Frequency Tables</h4>
 <p>A frequency table is a simple way to display the number of occurrences of a particular value or characteristic.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
-<pre><code>## -- Attaching packages ------------------------------ tidyverse 1.2.1 --</code></pre>
-<pre><code>## v ggplot2 3.1.0       v purrr   0.3.2  
-## v tibble  2.1.1       v dplyr   0.8.0.1
-## v tidyr   0.8.3       v stringr 1.4.0  
-## v readr   1.3.1       v forcats 0.4.0</code></pre>
-<pre><code>## -- Conflicts --------------------------------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(diamonds)</code></pre></div>
 <pre><code>##      carat               cut        color        clarity     
 ##  Min.   :0.2000   Fair     : 1610   D: 6775   SI1    :13065  
@@ -254,19 +265,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  $ x      : num  3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...
 ##  $ y      : num  3.98 3.84 4.07 4.23 4.35 3.96 3.98 4.11 3.78 4.05 ...
 ##  $ z      : num  2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Hmisc)</code></pre></div>
-<pre><code>## Loading required package: lattice</code></pre>
-<pre><code>## Loading required package: survival</code></pre>
-<pre><code>## Loading required package: Formula</code></pre>
-<pre><code>## 
-## Attaching package: &#39;Hmisc&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
-## 
-##     src, summarize</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     format.pval, units</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">describe</span>(diamonds)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#library(Hmisc)</span>
+<span class="kw">describe</span>(diamonds)</code></pre></div>
 <pre><code>## diamonds 
 ## 
 ##  10  Variables      53940  Observations
@@ -390,6 +390,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## | clarity|I1,SI2,SI1,VS2,VS1,VVS2,VVS1,IF  |
 ## +--------+---------------------------------+</code></pre>
 <p>Categorical variables are usually stored as factors or characters. You can use count() function or bar chart to explore the distribution.</p>
+</div>
+<div id="bar-chart" class="section level4">
+<h4><span class="header-section-number">4.1.2.2</span> Bar chart</h4>
 <p>A bar chart is a type of graph in which each column (plotted either vertically or horizontally) represents a categorical variable or a discrete ungrouped numeric variable. It is used to compare the frequency (count) for a category or characteristic with another category or characteristic.(ABS)</p>
 <p>How to interprate:</p>
 <ul>
@@ -418,10 +421,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 7 J      2808</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cut))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> color))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-9-2.png" width="672" /> Try this with clarity!</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-10-2.png" width="672" /> Try this with clarity!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(languageR)</code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;languageR&#39;</code></pre>
@@ -501,56 +504,120 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##                 
 ## </code></pre>
 </div>
+</div>
+</div>
 <div id="continous-variable" class="section level2">
 <h2><span class="header-section-number">4.2</span> Continous variable</h2>
-<p>A continuous variable can take any of an infinite set of ordered values. You can use a histogram and other descriptive stats to characterize its distribution.</p>
-<p>A histogram is a type of graph in which each column represents a numeric variable, in particular that which is continuous and/or grouped.It shows the distribution of all observations in a quantitative dataset. It is useful for describing the shape, centre and spread to better understand the distribution of the dataset.</p>
-<p>How to interprate:</p>
+<p>A continuous variable can take any of an infinite set of ordered values.</p>
+<div id="central-tendency" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Central tendency</h3>
+<p>A measure of central tendency attempts to describe a whole set of data with a single value that represents the middle or centre of its distribution.</p>
+<p>There are three main measures of central tendency: the mode, the median, and the mean. Each of these measures describes a different indication of the typical or central value in the distribution.</p>
+<div id="mode" class="section level4">
+<h4><span class="header-section-number">4.2.1.1</span> Mode</h4>
 <ul>
-<li><p>The height of the column shows the frequency for a specific range of values.</p></li>
-<li><p>Columns are usually of equal width, however a histogram may show data using unequal ranges (intervals) and therefore have columns of unequal width.</p></li>
-<li><p>The values represented by each column must be mutually exclusive and exhaustive. Therefore, there are no spaces between columns and each observation can only ever belong in one column.</p></li>
-<li><p>It is important that there is no ambiguity in the labelling of the intervals on the x-axis for continuous or grouped data (e.g. 0 to less than 10, 10 to less than 20, 20 to less than 30).</p></li>
+<li>The <em>mode</em> is the most commonly occurring value in a distribution.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># histogram</span>
-<span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># histogram zoom in y axsis</span>
-<span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)<span class="op">+</span>
-<span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># histogram zoom in x axsis</span>
-<span class="kw">ggplot</span>(diamonds[ <span class="kw">which</span>(diamonds<span class="op">$</span>carat <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>), ])<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-3.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(carat <span class="op">&lt;</span><span class="dv">3</span>)<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-4.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># density plot</span>
-<span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat))<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">kernel =</span> <span class="st">&quot;gaussian&quot;</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-5.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># area</span>
-<span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat))<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">stat =</span> <span class="st">&quot;bin&quot;</span>)</code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-6.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dotplot</span>
-<span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat))<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_dotplot</span>()</code></pre></div>
-<pre><code>## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-7.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freqpoly</span>
-<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat))<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_freqpoly</span>()</code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-8.png" width="672" /></p>
-<div id="five-number-summary" class="section level3">
-<h3><span class="header-section-number">4.2.1</span> Five-number summary</h3>
+<p>Consider this dataset showing the retirement age of 11 people, in whole years:</p>
+<p>54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60</p>
+<p>*Advantage:</p>
+<p>The mode has an advantage over the median and the mean as it can be found for both numerical and categorical (non-numerical) data.</p>
+<p>*Limitations:</p>
+<ol style="list-style-type: decimal">
+<li>In some distributions, the mode may not reflect the centre of the distribution very well.</li>
+</ol>
+<blockquote>
+<p>it is easy to see that the centre of the distribution is 57 years, but the mode is lower, at 54 years. 54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60</p>
+</blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li><p>more than one mode for the same distribution of data, bi-modal, or multi-modal. The presence of more than one mode can limit the ability of the mode in describing the centre or typical value of the distribution because a single value to describe the centre cannot be identified.</p></li>
+<li><p>In some cases, particularly where the data are continuous, the distribution may have no mode at all (i.e. if all values are different).In cases such as these, it may be better to consider using the median or mean, or group the data in to appropriate intervals, and find the modal class.</p></li>
+</ol>
+</div>
+<div id="median" class="section level4">
+<h4><span class="header-section-number">4.2.1.2</span> Median</h4>
+<ul>
+<li>The median is the middle value in distribution when the values are arranged in ascending or descending order.</li>
+</ul>
+<p>The median divides the distribution in half (there are 50% of observations on either side of the median value). In a distribution with an odd number of observations, the median value is the middle value.</p>
+<p>54, 54, 54, 55, 56, <strong>57</strong>, 57, 58, 58, 60, 60</p>
+<p>When the distribution has an even number of observations, the median value is the mean of the two middle values. In the following distribution, the two middle values are 56 and 57, therefore the median equals 56.5 years:</p>
+<p>52, 54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60</p>
+<p>*Advantage:</p>
+<p>The median is less affected by outliers and skewed data than the mean, and is usually the preferred measure of central tendency when the distribution is not symmetrical.</p>
+<p>*Limitation:</p>
+<p>The median cannot be identified for categorical nominal data, as it cannot be logically ordered.</p>
+</div>
+<div id="mean" class="section level4">
+<h4><span class="header-section-number">4.2.1.3</span> Mean</h4>
+<ul>
+<li><p>The mean is the sum of the value of each observation in a dataset divided by the number of observations. This is also known as the arithmetic average.</p></li>
+<li><p>Advantage</p></li>
+</ul>
+<p>The mean can be used for both continuous and discrete numeric data.</p>
+<ul>
+<li>Limitations</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>The mean cannot be calculated for categorical data, as the values cannot be summed.</p></li>
+<li><p>As the mean includes every value in the distribution the mean is influenced by outliers and skewed distributions.</p></li>
+</ol>
+<p>The population mean is indicated by the Greek symbol µ (pronounced ‘mu’). When the mean is calculated on a distribution from a sample it is indicated by the symbol x̅ (pronounced X-bar).</p>
+</div>
+</div>
+<div id="measures-of-spread" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Measures of Spread</h3>
+<p>Dataset A: 4, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 8 Dataset B: 1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11</p>
+<p>The measures of central tendency for both datasets above are the same.However, if we look at the spread of the values, we can see that Dataset B is more dispersed than Dataset A. Used together, the measures of central tendency and measures of spread help us to better understand the data</p>
+<p>Summarising the dataset can help us understand the data, especially when the dataset is large. Measures of spread summarise the data in a way that shows how scattered the values are and how much they differ from the mean value.</p>
+<p>The spread of the values can be measured for quantitative data, as the variables are numeric and can be arranged into a logical order with a low end value and a high end value.(ABS)</p>
+<p>Measures of spread include the range, quartiles and the interquartile range, variance and standard deviation.(ABS)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset1 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">8</span>)
+
+dataset2 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)
+
+dataset =<span class="st"> </span><span class="kw">data.frame</span>(dataset1, dataset2)
+
+dataset =<span class="st">  </span><span class="kw">gather</span>(dataset, type, data)
+
+<span class="kw">ggplot</span>(dataset, <span class="kw">aes</span>(data, <span class="dt">fill =</span> type)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="kw">position_dodge</span>())</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-12-1.png" width="672" /> #### Range The range is the difference between the smallest value and the largest value in a dataset.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(dataset1)</code></pre></div>
+<pre><code>## [1] 4 8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(dataset2)</code></pre></div>
+<pre><code>## [1]  1 11</code></pre>
+<div id="quartiles" class="section level4">
+<h4><span class="header-section-number">4.2.2.1</span> Quartiles</h4>
+<p>Quartiles divide an ordered dataset into four equal parts, and refer to the values of the point between the quarters. A dataset may also be divided into quintiles (five equal parts) or deciles (ten equal parts).</p>
+<p>The lower quartile (Q1) is the point between the lowest 25% of values and the highest 75% of values. It is also called the 25th percentile.</p>
+<p>The second quartile (Q2) is the middle of the data set. It is also called the 50th percentile, or the median.</p>
+<p>The upper quartile (Q3) is the point between the lowest 75% and highest 25% of values. It is also called the 75th percentile.</p>
+</div>
+<div id="the-interquartile-range" class="section level4">
+<h4><span class="header-section-number">4.2.2.2</span> The interquartile range</h4>
+<p>The interquartile range (IQR) is the difference between the upper (Q3) and lower (Q1) quartiles, and describes the middle 50% of values when ordered from lowest to highest. The IQR is often seen as a better measure of spread than the range as it is not affected by outliers.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(dataset1)</code></pre></div>
+<pre><code>##   0%  25%  50%  75% 100% 
+##    4    5    6    7    8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(dataset2)</code></pre></div>
+<pre><code>##    0%   25%   50%   75%  100% 
+##  1.00  3.75  6.00  8.25 11.00</code></pre>
+</div>
+<div id="variance-vs.standard-deviation" class="section level4">
+<h4><span class="header-section-number">4.2.2.3</span> Variance vs. standard deviation</h4>
+<p>The variance and the standard deviation are measures of how close each observed data value is to the mean value.</p>
+<p>In datasets with a small spread all values are very close to the mean, resulting in a small variance and standard deviation. Where a dataset is more dispersed, values are spread further away from the mean, leading to a larger variance and standard deviation. The smaller the variance and standard deviation, the more the mean value is indicative of the whole dataset. Therefore, if all values of a dataset are the same, the standard deviation and variance are zero.</p>
+<p>The standard deviation is the square root of the variance.</p>
+<p>The standard deviation of a normal distribution enables us to calculate confidence intervals. In a normal distribution, about 68% of the values are within one standard deviation either side of the mean and about 95% of the scores are within two standard deviations of the mean.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var</span>(dataset1)</code></pre></div>
+<pre><code>## [1] 1.272727</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="kw">var</span>(dataset1))</code></pre></div>
+<pre><code>## [1] 1.128152</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(dataset1)</code></pre></div>
+<pre><code>## [1] 1.128152</code></pre>
+</div>
+<div id="five-number-summary" class="section level4">
+<h4><span class="header-section-number">4.2.2.4</span> Five-number summary</h4>
 <p>The five-number summary is a set of descriptive statistics that provide information about a dataset. It consists of the five most important sample percentiles:</p>
 <ul>
 <li><p>the sample minimum (smallest observation)</p></li>
@@ -559,10 +626,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>the upper quartile or third quartile</p></li>
 <li><p>the sample maximum (largest observation)</p></li>
 </ul>
-<p>The five-number summary provides a concise summary of the distribution of the observations. Reporting five numbers avoids the need to decide on the most appropriate summary statistic. The five-number summary gives information about the location (from the median), spread (from the quartiles) and range (from the sample minimum and maximum) of the observations. Since it reports order statistics (rather than, say, the mean) the five-number summary is appropriate for <em>ordinal measurements</em>, as well as <em>interval and ratio measurements</em>. (from wikipedia)</p>
+<p>The five-number summary provides a concise summary of the distribution of the observations. Reporting five numbers avoids the need to decide on the most appropriate summary statistic. The five-number summary gives information about the location (from the median), spread (from the quartiles) and range (from the sample minimum and maximum) of the observations.</p>
+<p>Since it reports order statistics (rather than, say, the mean), the five-number summary is appropriate for <em>ordinal measurements</em>, as well as <em>interval and ratio measurements</em>. (from wikipedia)</p>
 <p>How to Find a Five-Number Summary:</p>
 <ul>
-<li><p>Step 1: Put your numbers in ascending order (from smallest to largest). For this particular data set, the order is: &gt; Example: 1,2,5,6,7,9,12,15,18,19,27.</p></li>
+<li><p>Step 1: Put your numbers in ascending order (from smallest to largest). For this particular data set, the order is: &gt; Example: 1,2,5,6,7,9,12,15,18,19,27</p></li>
 <li><p>Step 2: Find the minimum and maximum for your data set. Now that your numbers are in order, this should be easy to spot. In the example in step 1, the minimum (the smallest number) is 1 and the maximum (the largest number) is 27.</p></li>
 <li><p>Step 3: Find the median. The median is the middle number. If you aren’t sure how to find the median, see: How to find the mean mode and median.</p></li>
 <li><p>Step 4: Place parentheses around the numbers above and below the median.(This is not technically necessary, but it makes Q1 and Q3 easier to find). (1,2,5,6,7),9,(12,15,18,19,27).</p></li>
@@ -573,14 +641,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##  0.2000  0.4000  0.7000  0.7979  1.0400  5.0100</code></pre>
 </div>
-<div id="boxplot-violin-plot" class="section level3">
-<h3><span class="header-section-number">4.2.2</span> Boxplot &amp; violin plot</h3>
-<p>It is possible to quickly compare several sets of observations by comparing their five-number summaries, which can be represented graphically using a boxplot.</p>
-<p>In descriptive statistics, a <strong>boxplot</strong> is a method for graphically depicting groups of numerical data through their quartiles.</p>
-<p>Boxplots may also have lines extending vertically from the boxes (whiskers) indicating variability outside the upper and lower quartiles, hence the terms box-and-whisker plot and box-and-whisker diagram.</p>
-<p>Outliers may be plotted as individual points.</p>
-<p>The spacings between the different parts of the box indicate the degree of dispersion (spread) and skewness in the data, and show outliers.</p>
-<p>Box plots can be drawn either horizontally or vertically. Box plots received their name from the box in the middle.</p>
+<div id="visualization-boxplot-violin-plot" class="section level4">
+<h4><span class="header-section-number">4.2.2.5</span> Visualization: Boxplot &amp; violin plot</h4>
+<p>The five-number summary can be represented graphically using a boxplot.</p>
+<p>Boxplots have lines extending vertically from the boxes (whiskers) indicating variability outside the upper and lower quartiles. Outliers may be plotted as individual points. The spacings between the different parts of the box indicate the degree of dispersion (spread) and skewness in the data.</p>
 <p>box plots typically graph six data points:</p>
 <ul>
 <li><p>The lowest value, excluding outliers</p></li>
@@ -590,23 +654,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>The highest value, excluding outliers</p></li>
 <li><p>Outliers</p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/whatsaboxplot.png&quot;</span>)</code></pre></div>
+source:<a href="https://mode.com/blog/how-to-make-box-and-whisker-plot-sql" class="uri">https://mode.com/blog/how-to-make-box-and-whisker-plot-sql</a>
 <div class="figure" style="text-align: center"><span id="fig:figure3"></span>
 <img src="img/whatsaboxplot.png" alt="Boxplot" width="100%" />
 <p class="caption">
 Figure 4.1: Boxplot
 </p>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#source:https://mode.com/blog/how-to-make-box-and-whisker-plot-sql</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># r base function</span>
 <span class="kw">boxplot</span>(diamonds<span class="op">$</span>carat)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#ggplot version</span>
 <span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">&quot;carat&quot;</span>, <span class="dt">y=</span>carat))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
-<p>A <em>violin plot</em> is a method of plotting numeric data. It is similar to a boxplot, with the addition of a <em>rotated kernel density</em> plot on each side.</p>
-<p>Violin plots are similar to boxplots. Typically a violin plot will include all the data that is in a box plot: a marker for the median of the data; a box or marker indicating the interquartile range; and possibly all sample points, if the number of samples is not too high.</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-2.png" width="672" /></p>
+<p>A <em>violin plot</em> is a method of plotting numeric data. Typically a violin plot will include all the data that is in a box plot: a marker for the median of the data; a box or marker indicating the interquartile range; and possibly all sample points, if the number of samples is not too high.</p>
+<p>It is similar to a boxplot, with the addition of a <em>rotated kernel density</em> plot on each side.The difference is particularly useful when the data distribution is multimodal (more than one peak). In this case a violin plot shows the presence of different peaks, their position and relative amplitude.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/violinplot.png&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:figure4"></span>
 <img src="img/violinplot.png" alt="Violin plot" width="100%" />
@@ -615,166 +678,136 @@ Figure 4.2: Violin plot
 </p>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#source:https://mode.com/blog/violin-plot-examples</span></code></pre></div>
-<p>So a violin plot is more informative than a plain box plot. While a box plot only shows summary statistics such as mean/median and interquartile ranges, the violin plot shows the full distribution of the data. The difference is particularly useful when the data distribution is multimodal (more than one peak). In this case a violin plot shows the presence of different peaks, their position and relative amplitude.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#violin plot</span>
 <span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">&quot;carat&quot;</span>, <span class="dt">y=</span>carat))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>()</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x=</span><span class="st">&quot;price&quot;</span>, <span class="dt">y=</span>price))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>()</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-2.png" width="672" /> ### Distributions You can use a histogram and other descriptive stats to characterize its distribution.</p>
 </div>
-<div id="qq-plots" class="section level3">
-<h3><span class="header-section-number">4.2.3</span> QQ Plots</h3>
+<div id="histogram" class="section level4">
+<h4><span class="header-section-number">4.2.2.6</span> Histogram</h4>
+<p>A histogram is a type of graph in which each column represents a numeric variable, in particular that which is continuous and/or grouped.It shows the distribution of all observations in a quantitative dataset. It is useful for describing the shape, centre and spread to better understand the distribution of the dataset.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rbeta</span>(<span class="dv">10000</span>,<span class="dv">5</span>,<span class="dv">2</span>))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rbeta</span>(<span class="dv">10000</span>,<span class="dv">2</span>,<span class="dv">5</span>))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rbeta</span>(<span class="dv">10000</span>,<span class="dv">5</span>,<span class="dv">5</span>))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-3.png" width="672" /> How to interprate:</p>
+<ul>
+<li><p>The height of the column shows the frequency for a specific range of values.</p></li>
+<li><p>Columns are usually of equal width, however a histogram may show data using unequal ranges (intervals) and therefore have columns of unequal width.</p></li>
+<li><p>The values represented by each column must be mutually exclusive and exhaustive. Therefore, there are no spaces between columns and each observation can only ever belong in one column.</p></li>
+<li><p>It is important that there is no ambiguity in the labelling of the intervals on the x-axis for continuous or grouped data (e.g. 0 to less than 10, 10 to less than 20, 20 to less than 30).</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># histogram</span>
+<span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># histogram zoom in y axsis</span>
+<span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># histogram zoom in x axsis</span>
+<span class="kw">ggplot</span>(diamonds[ <span class="kw">which</span>(diamonds<span class="op">$</span>carat <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>), ])<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(carat <span class="op">&lt;</span><span class="dv">3</span>)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(carat), <span class="dt">binwidth =</span> <span class="fl">0.1</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-4.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># density plot</span>
+<span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">kernel =</span> <span class="st">&quot;gaussian&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-5.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># area</span>
+<span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">stat =</span> <span class="st">&quot;bin&quot;</span>)</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-6.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dotplot</span>
+<span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_dotplot</span>()</code></pre></div>
+<pre><code>## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-7.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># freqpoly</span>
+<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_freqpoly</span>()</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-8.png" width="672" /></p>
+</div>
+<div id="symmetrical-distributions" class="section level4">
+<h4><span class="header-section-number">4.2.2.7</span> Symmetrical distributions:</h4>
+<p>When a distribution is symmetrical, the mode, median and mean are all in the middle of the distribution. The following graph shows a larger retirement age dataset with a distribution which is symmetrical. The mode, median and mean all equal 58 years.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-21"></span>
+<img src="img/normal.jpg" alt="normal distribution" width="100%" />
+<p class="caption">
+Figure 4.3: normal distribution
+</p>
+</div>
+</div>
+<div id="skewed-distributions" class="section level4">
+<h4><span class="header-section-number">4.2.2.8</span> Skewed distributions:</h4>
+<p>When a distribution is skewed, the mode remains the most commonly occurring value, the median remains the middle value in the distribution, but the mean is generally ‘pulled’ in the direction of the tails. In a skewed distribution, the median is often a preferred measure of central tendency, as the mean is not usually in the middle of the distribution.</p>
+<p>A distribution is said to be <em>positively or right skewed</em> when the tail on the right side of the distribution is longer than the left side. In a positively skewed distribution it is common for the mean to be ‘pulled’ toward the right tail of the distribution. Although there are exceptions to this rule, generally, most of the values, including the median value, tend to be less than the mean value.</p>
+The following graph shows a larger retirement age data set with a distribution which is right skewed. The data has been grouped into classes, as the variable being measured (retirement age) is continuous. The mode is 54 years, the modal class is 54-56 years, the median is 56 years and the mean is 57.2 years.
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
+<img src="img/right.jpg" alt="right skewed distribution" width="100%" />
+<p class="caption">
+Figure 4.4: right skewed distribution
+</p>
+</div>
+<p>A distribution is said to be negatively or left skewed when the tail on the left side of the distribution is longer than the right side. In a negatively skewed distribution, it is common for the mean to be ‘pulled’ toward the left tail of the distribution. Although there are exceptions to this rule, generally, most of the values, including the median value, tend to be greater than the mean value.</p>
+<p>The following graph shows a larger retirement age dataset with a distribution which left skewed. The mode is 65 years, the modal class is 63-65 years, the median is 63 years and the mean is 61.8 years.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-23"></span>
+<img src="img/left.jpg" alt="left skewed distribution" width="100%" />
+<p class="caption">
+Figure 4.5: left skewed distribution
+</p>
+</div>
+</div>
+<div id="qq-plots" class="section level4">
+<h4><span class="header-section-number">4.2.2.9</span> QQ Plots</h4>
 <p>QQ Plots (Quantile-Quantile plots) are plots of two quantiles against each other. A quantile is a fraction where certain values fall below that quantile. For example, the median is a quantile where 50% of the data fall below that point and 50% lie above it. The purpose of QQ plots is to find out <em>if two sets of data come from the same distribution</em>.</p>
 <p>A 45 degree angle is plotted on the Q Q plot; if the two data sets come from a common distribution, the points will fall on that reference line.(from Wikipedia)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution 1</span>
 <span class="kw">qplot</span>(<span class="dt">sample =</span> carat, <span class="dt">data =</span> diamonds)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># solution 2</span>
 <span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_qq</span>(<span class="kw">aes</span>(<span class="dt">sample =</span> carat))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_qq_line</span>(<span class="kw">aes</span>(<span class="dt">sample =</span> carat))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-15-2.png" width="672" /> ### The measures of central tendency? (ABS)</p>
-<p>A measure of central tendency (also referred to as measures of centre or central location) is a summary measure that attempts to describe a whole set of data with a single value that represents the middle or centre of its distribution.</p>
-<p>There are three main measures of central tendency: the mode, the median and the mean. Each of these measures describes a different indication of the typical or central value in the distribution.</p>
-<ul>
-<li>The <em>mode</em> is the most commonly occurring value in a distribution.</li>
-</ul>
-<p>Consider this dataset showing the retirement age of 11 people, in whole years:</p>
-<p>54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60</p>
-<p><em>Advantage of the mode:</em></p>
-<p>The mode has an advantage over the median and the mean as it can be found for both numerical and categorical (non-numerical) data.</p>
-<p><em>Limitations of the mode:</em></p>
-<p>In some distributions, the mode may not reflect the centre of the distribution very well.</p>
-<blockquote>
-<p>it is easy to see that the centre of the distribution is 57 years, but the mode is lower, at 54 years. 54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60</p>
-</blockquote>
-<p>more than one mode for the same distribution of data, (bi-modal, or multi-modal). The presence of more than one mode can limit the ability of the mode in describing the centre or typical value of the distribution because a single value to describe the centre cannot be identified.</p>
-<p>In some cases, particularly where the data are continuous, the distribution may have no mode at all (i.e. if all values are different).In cases such as these, it may be better to consider using the median or mean, or group the data in to appropriate intervals, and find the modal class.</p>
-<ul>
-<li>The median is the middle value in distribution when the values are arranged in ascending or descending order.</li>
-</ul>
-<p>The median divides the distribution in half (there are 50% of observations on either side of the median value). In a distribution with an odd number of observations, the median value is the middle value.</p>
-<p>54, 54, 54, 55, 56, <strong>57</strong>, 57, 58, 58, 60, 60</p>
-<p>When the distribution has an even number of observations, the median value is the mean of the two middle values. In the following distribution, the two middle values are 56 and 57, therefore the median equals 56.5 years:</p>
-<p>52, 54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60</p>
-<p><em>Advantage of the median:</em></p>
-<p>The median is less affected by outliers and skewed data than the mean, and is usually the preferred measure of central tendency when the distribution is not symmetrical.</p>
-<p><em>Limitation of the median:</em></p>
-<p>The median cannot be identified for categorical nominal data, as it cannot be logically ordered.</p>
-<ul>
-<li>The mean is the sum of the value of each observation in a dataset divided by the number of observations. This is also known as the arithmetic average.</li>
-</ul>
-<p>Looking at the retirement age distribution again:</p>
-<p>54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60</p>
-<p>The mean is 56.6 years.</p>
-<p>Advantage of the mean:</p>
-<p>The mean can be used for both continuous and discrete numeric data.</p>
-<p>Limitations of the mean:</p>
-<p>The mean cannot be calculated for categorical data, as the values cannot be summed.</p>
-<p>As the mean includes every value in the distribution the mean is influenced by outliers and skewed distributions.</p>
-<p>What else do I need to know about the mean?</p>
-<p>The population mean is indicated by the Greek symbol µ (pronounced ‘mu’). When the mean is calculated on a distribution from a sample it is indicated by the symbol x̅ (pronounced X-bar).</p>
-</div>
-<div id="how-does-the-shape-of-a-distribution-influence-the-measures-of-central-tendency" class="section level3">
-<h3><span class="header-section-number">4.2.4</span> How does the shape of a distribution influence the Measures of Central Tendency?</h3>
-<div id="symmetrical-distributions" class="section level4">
-<h4><span class="header-section-number">4.2.4.1</span> Symmetrical distributions:</h4>
-<p>When a distribution is symmetrical, the mode, median and mean are all in the middle of the distribution. The following graph shows a larger retirement age dataset with a distribution which is symmetrical. The mode, median and mean all equal 58 years.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rbeta</span>(<span class="dv">10000</span>,<span class="dv">5</span>,<span class="dv">2</span>))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rbeta</span>(<span class="dv">10000</span>,<span class="dv">2</span>,<span class="dv">5</span>))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">rbeta</span>(<span class="dv">10000</span>,<span class="dv">5</span>,<span class="dv">5</span>))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-3.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/normal.jpg&quot;</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:distribution"></span>
-<img src="img/normal.jpg" alt="distribution" width="100%" />
-<p class="caption">
-Figure 4.3: distribution
-</p>
-</div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/right.jpg&quot;</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:distribution"></span>
-<img src="img/right.jpg" alt="distribution" width="100%" />
-<p class="caption">
-Figure 4.3: distribution
-</p>
-</div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/left.jpg&quot;</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:distribution"></span>
-<img src="img/left.jpg" alt="distribution" width="100%" />
-<p class="caption">
-Figure 4.3: distribution
-</p>
-</div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#source:https://www.abs.gov.au/websitedbs/a3121120.nsf/home/statistical+language+-+measures+of+central+tendency</span></code></pre></div>
-</div>
-<div id="skewed-distributions" class="section level4">
-<h4><span class="header-section-number">4.2.4.2</span> Skewed distributions:</h4>
-<p>When a distribution is skewed the mode remains the most commonly occurring value, the median remains the middle value in the distribution, but the mean is generally ‘pulled’ in the direction of the tails. In a skewed distribution, the median is often a preferred measure of central tendency, as the mean is not usually in the middle of the distribution.</p>
-<p>A distribution is said to be positively or right skewed when the tail on the right side of the distribution is longer than the left side. In a positively skewed distribution it is common for the mean to be ‘pulled’ toward the right tail of the distribution. Although there are exceptions to this rule, generally, most of the values, including the median value, tend to be less than the mean value.</p>
-<p>The following graph shows a larger retirement age data set with a distribution which is right skewed. The data has been grouped into classes, as the variable being measured (retirement age) is continuous. The mode is 54 years, the modal class is 54-56 years, the median is 56 years and the mean is 57.2 years.</p>
-<p>A distribution is said to be negatively or left skewed when the tail on the left side of the distribution is longer than the right side. In a negatively skewed distribution, it is common for the mean to be ‘pulled’ toward the left tail of the distribution. Although there are exceptions to this rule, generally, most of the values, including the median value, tend to be greater than the mean value.</p>
-<p>The following graph shows a larger retirement age dataset with a distribution which left skewed. The mode is 65 years, the modal class is 63-65 years, the median is 63 years and the mean is 61.8 years.</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-2.png" width="672" /></p>
 </div>
 </div>
-<div id="measures-of-spread" class="section level3">
-<h3><span class="header-section-number">4.2.5</span> Measures of Spread</h3>
-<p>Summarising the dataset can help us understand the data, especially when the dataset is large. As discussed in the Measures of Central Tendency page, the mode, median, and mean summarise the data into a single value that is typical or representative of all the values in the dataset, but this is only part of the ‘picture’ that summarises a dataset. Measures of spread summarise the data in a way that shows how scattered the values are and how much they differ from the mean value.(ABS)</p>
-<p>Measures of spread describe how similar or varied the set of observed values are for a particular variable (data item). Measures of spread include the range, quartiles and the interquartile range, variance and standard deviation.(ABS)</p>
-<p>The spread of the values can be measured for quantitative data, as the variables are numeric and can be arranged into a logical order with a low end value and a high end value.(ABS)</p>
-<p>4, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 8 1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11</p>
-<p>the measures of central tendency for both datasets are the same.However, if we look at the spread of the values, we can see that Dataset B is more dispersed than Dataset A. Used together, the measures of central tendency and measures of spread help us to better understand the data</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset1 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">8</span>)
-
-dataset2 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)
-
-dataset =<span class="st"> </span><span class="kw">data.frame</span>(dataset1, dataset2)
-
-dataset =<span class="st">  </span><span class="kw">gather</span>(dataset, type, data)
-
-<span class="kw">ggplot</span>(dataset, <span class="kw">aes</span>(data, <span class="dt">fill =</span> type)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="kw">position_dodge</span>())</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<p>The range is the difference between the smallest value and the largest value in a dataset.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(dataset1)</code></pre></div>
-<pre><code>## [1] 4 8</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(dataset2)</code></pre></div>
-<pre><code>## [1]  1 11</code></pre>
-<p>Quartiles divide an ordered dataset into four equal parts, and refer to the values of the point between the quarters. A dataset may also be divided into quintiles (five equal parts) or deciles (ten equal parts).</p>
-<p>The lower quartile (Q1) is the point between the lowest 25% of values and the highest 75% of values. It is also called the 25th percentile.</p>
-<p>The second quartile (Q2) is the middle of the data set. It is also called the 50th percentile, or the median.</p>
-<p>The upper quartile (Q3) is the point between the lowest 75% and highest 25% of values. It is also called the 75th percentile.</p>
-<p>The interquartile range (IQR) is the difference between the upper (Q3) and lower (Q1) quartiles, and describes the middle 50% of values when ordered from lowest to highest. The IQR is often seen as a better measure of spread than the range as it is not affected by outliers.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(dataset1)</code></pre></div>
-<pre><code>##   0%  25%  50%  75% 100% 
-##    4    5    6    7    8</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(dataset2)</code></pre></div>
-<pre><code>##    0%   25%   50%   75%  100% 
-##  1.00  3.75  6.00  8.25 11.00</code></pre>
-<p>The variance and the standard deviation are measures of the spread of the data around the mean. They summarise how close each observed data value is to the mean value.</p>
-<p>In datasets with a small spread all values are very close to the mean, resulting in a small variance and standard deviation. Where a dataset is more dispersed, values are spread further away from the mean, leading to a larger variance and standard deviation.</p>
-<p>The smaller the variance and standard deviation, the more the mean value is indicative of the whole dataset. Therefore, if all values of a dataset are the same, the standard deviation and variance are zero.</p>
-<p>The standard deviation of a normal distribution enables us to calculate confidence intervals. In a normal distribution, about 68% of the values are within one standard deviation either side of the mean and about 95% of the scores are within two standard deviations of the mean.</p>
-<p>The standard deviation is the square root of the variance.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var</span>(dataset1)</code></pre></div>
-<pre><code>## [1] 1.272727</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="kw">var</span>(dataset1))</code></pre></div>
-<pre><code>## [1] 1.128152</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(dataset1)</code></pre></div>
-<pre><code>## [1] 1.128152</code></pre>
-<p>Confidence interval (Taken from <em>Summary and Analysis of Extension Program Evaluation in R</em> by Salvatore S. Mangiafico)</p>
-<p>A confidence interval is a range in which it is estimated the true population value lies. A confidence interval is used to indicate how accurate a calculated statistic is likely to be. Confidence intervals can be calculated for a variety of statistics, such as the mean, median, or slope of a linear regression. This chapter will focus on confidences intervals for means.</p>
+<div id="confidence-interval" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> Confidence interval</h3>
+<p>(Taken from <em>Summary and Analysis of Extension Program Evaluation in R</em> by Salvatore S. Mangiafico)</p>
+<p>A confidence interval is a range in which it is estimated the true population value lies. A confidence interval is used to indicate how accurate a calculated statistic is likely to be. Confidence intervals can be calculated for a variety of statistics, such as the mean, median, or slope of a linear regression.</p>
 <p>Most of the statistics we use assume we are analyzing a sample which we are using to represent a larger population.</p>
-<p>Statistics and parameters</p>
-<p>When we calculate the sample mean, the result is a statistic. It’s an estimate of the population mean, but our calculated sample mean would vary depending on our sample. In theory, there is a mean for the population of interest, and we consider this population mean a parameter. Our goal in calculating the sample mean is estimating the population parameter.</p>
-<p>Point estimates and confidence intervals Our sample mean is a point estimate for the population parameter. A point estimate is a useful approximation for the parameter, but considering the confidence interval for the estimate gives us more information.</p>
+<div id="statistics-and-parameters" class="section level4">
+<h4><span class="header-section-number">4.2.3.1</span> Statistics and parameters</h4>
+<p>When we calculate the sample mean, the result is a statistic. It’s an estimate of the population mean, but our calculated sample mean would vary depending on our sample.</p>
+<p>In theory, there is a mean for the population of interest, and we consider this population mean a parameter. Our goal in calculating the sample mean is estimating the population parameter.</p>
+</div>
+<div id="point-estimates-and-confidence-intervals" class="section level4">
+<h4><span class="header-section-number">4.2.3.2</span> Point estimates and confidence intervals</h4>
+<p>Our sample mean is a point estimate for the population parameter. A point estimate is a useful approximation for the parameter, but considering the confidence interval for the estimate gives us more information.</p>
 <p>As a definition of confidence intervals, if we were to sample the same population many times and calculated a sample mean and a 95% confidence interval each time, then 95% of those intervals would contain the actual population mean.</p>
 <p>if we want to compare the means of two groups to see if they are statistically different, we will use a t-test, or similar test, calculate a p-value, and draw a conclusion. An alternative approach would be to construct 95% or 99% confidence intervals about the mean for each group. If the confidence intervals of the two means don’t overlap, we are justified in calling them statistically different.</p>
-<p>Confidence intervals for means can be calculated by various methods.</p>
-<p>The traditional method is the most commonly encountered, and is appropriate for normally distributed data or with large sample sizes. It produces an interval that is symmetric about the mean.For skewed data, confidence intervals by bootstrapping may be more reliable.For routine use, I recommend using bootstrapped confidence intervals, particularly the BCa or percentile methods.</p>
+</div>
+<div id="methods" class="section level4">
+<h4><span class="header-section-number">4.2.3.3</span> Methods</h4>
+<ol style="list-style-type: decimal">
+<li><p>The traditional method is appropriate for normally distributed data or with large sample sizes. It produces an interval that is symmetric about the mean.</p></li>
+<li><p>For skewed data, confidence intervals by bootstrapping may be more reliable.For routine use, I recommend using bootstrapped confidence intervals, particularly the BCa or percentile methods.</p></li>
+</ol>
 <p>The <em>groupwiseMean</em> function in the <em>rcompanion</em> package can produce confidence intervals both by traditional and bootstrap methods, for grouped and ungrouped data.</p>
+<div id="the-traditional-method" class="section level5">
+<h5><span class="header-section-number">4.2.3.3.1</span> The traditional method</h5>
 <p>The data must be housed in a data frame. By default, the function reports confidence intervals by the traditional method.</p>
 <p>In the <em>groupwiseMean</em> function, the measurement and grouping variables can be indicated with formula notation, with the measurement variable on the left side of the tilde (~), and grouping variables on the right.</p>
 <p>The confidence level is indicated by, e.g., the conf = 0.95 argument. The digits option indicates the number of significant digits to which the output is rounded. Note that in the output, the means and other statistics are rounded to 3 significant figures.</p>
@@ -796,7 +829,9 @@ dataset3 =<span class="st"> </span><span class="kw">data.frame</span>(dataset1)
 <pre><code>##       type  n Mean Conf.level Trad.lower Trad.upper
 ## 1 dataset1 12    6       0.95       5.28       6.72
 ## 2 dataset2 12    6       0.95       3.99       8.01</code></pre>
-<p>Bootstrapped means by group</p>
+</div>
+<div id="the-bootstrapped-method" class="section level5">
+<h5><span class="header-section-number">4.2.3.3.2</span> The Bootstrapped method</h5>
 <p>In the groupwiseMean function, the type of confidence interval is requested by setting certain options to TRUE. These options are traditional, normal, basic, percentile and bca. The boot option reports an optional statistic, the mean by bootstrap. The R option indicates the number of iterations to calculate each bootstrap statistic.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">groupwiseMean</span>(data <span class="op">~</span><span class="st"> </span>type,
               <span class="dt">data   =</span> dataset,
@@ -810,11 +845,18 @@ dataset3 =<span class="st"> </span><span class="kw">data.frame</span>(dataset1)
               <span class="dt">percentile  =</span> <span class="ot">FALSE</span>,
               <span class="dt">bca         =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <pre><code>##       type  n Mean Boot.mean Conf.level Bca.lower Bca.upper
-## 1 dataset1 12    6         6       0.95      5.33      6.58
-## 2 dataset2 12    6         6       0.95      4.25      7.58</code></pre>
+## 1 dataset1 12    6         6       0.95      5.33      6.50
+## 2 dataset2 12    6         6       0.95      4.17      7.58</code></pre>
+</div>
+</div>
 </div>
 <div id="unusual-values" class="section level3">
-<h3><span class="header-section-number">4.2.6</span> Unusual values</h3>
+<h3><span class="header-section-number">4.2.4</span> Unusual values</h3>
+<p>For unusual values in the dataset, you can do one of the two things:</p>
+<ul>
+<li><p>drop the entire row with the strange values</p></li>
+<li><p>replace the unusual values with missing values</p></li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">unusual =<span class="st"> </span>diamonds <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(y <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span>y <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>)<span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">arrange</span>(y)

@@ -25,7 +25,7 @@
 <meta name="author" content="Juqiang Chen">
 
 
-<meta name="date" content="2019-10-28">
+<meta name="date" content="2019-12-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -106,20 +106,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>1.1</b> Installing R and R studio</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#install-and-library-packages"><i class="fa fa-check"></i><b>1.2</b> Install and library packages</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#programme"><i class="fa fa-check"></i><b>1.3</b> Programme</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#install-packages-and-library-packages"><i class="fa fa-check"></i><b>1.2</b> Install packages and library packages</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#data-and-workbook"><i class="fa fa-check"></i><b>1.3</b> Data and workbook</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Basic data structures in R</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#categorical-vs.numeric-variables"><i class="fa fa-check"></i><b>2.1</b> Categorical vs. numeric variables</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#types-of-variables-a-taxonomy"><i class="fa fa-check"></i><b>2.1</b> Types of variables: A taxonomy</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#categorical-variables-ordinal-vs.norminal"><i class="fa fa-check"></i><b>2.1.1</b> Categorical variables: ordinal vs. norminal</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#numeric-variables-discrete-or-continuous"><i class="fa fa-check"></i><b>2.1.2</b> Numeric variables: discrete or continuous</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#d-data-structure-vectors"><i class="fa fa-check"></i><b>2.2</b> 1D data structure: vectors</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#creating-vectors"><i class="fa fa-check"></i><b>2.2.1</b> Creating vectors</a></li>
-<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> creating list objects</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> Creating list objects</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#d-data-structures-matrice-and-data-frames"><i class="fa fa-check"></i><b>2.3</b> 2D data structures: matrice and data frames</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#what-if-i-want-to-change-column-names-or-add-variable-to-the-df"><i class="fa fa-check"></i><b>2.3.1</b> what if I want to change column names or add variable to the df?</a></li>
 <li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Subsetting dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.4</b> summary</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>3</b> What is EDA?</a><ul>
 <li class="chapter" data-level="3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#definition-from-wikipedia"><i class="fa fa-check"></i><b>3.1</b> Definition (from Wikipedia)</a></li>
@@ -127,20 +130,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.3" data-path="what-is-eda.html"><a href="what-is-eda.html#data-analysis-workflow"><i class="fa fa-check"></i><b>3.3</b> Data analysis workflow</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>4</b> Variation</a><ul>
-<li class="chapter" data-level="4.1" data-path="variation.html"><a href="variation.html#categorical-variable"><i class="fa fa-check"></i><b>4.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="4.1" data-path="variation.html"><a href="variation.html#categorical-variable"><i class="fa fa-check"></i><b>4.1</b> Categorical variable</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="variation.html"><a href="variation.html#absolute-v.s-relative-frequency"><i class="fa fa-check"></i><b>4.1.1</b> Absolute v.s relative frequency?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="variation.html"><a href="variation.html#frequency-distributions"><i class="fa fa-check"></i><b>4.1.2</b> Frequency distributions</a></li>
+</ul></li>
 <li class="chapter" data-level="4.2" data-path="variation.html"><a href="variation.html#continous-variable"><i class="fa fa-check"></i><b>4.2</b> Continous variable</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#five-number-summary"><i class="fa fa-check"></i><b>4.2.1</b> Five-number summary</a></li>
-<li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#boxplot-violin-plot"><i class="fa fa-check"></i><b>4.2.2</b> Boxplot &amp; violin plot</a></li>
-<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#qq-plots"><i class="fa fa-check"></i><b>4.2.3</b> QQ Plots</a></li>
-<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#how-does-the-shape-of-a-distribution-influence-the-measures-of-central-tendency"><i class="fa fa-check"></i><b>4.2.4</b> How does the shape of a distribution influence the Measures of Central Tendency?</a></li>
-<li class="chapter" data-level="4.2.5" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.5</b> Measures of Spread</a></li>
-<li class="chapter" data-level="4.2.6" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.6</b> Unusual values</a></li>
+<li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#central-tendency"><i class="fa fa-check"></i><b>4.2.1</b> Central tendency</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.2</b> Measures of Spread</a></li>
+<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#confidence-interval"><i class="fa fa-check"></i><b>4.2.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.4</b> Unusual values</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
-<li class="chapter" data-level="5.1" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>5.1</b> Categorical + continuous variable</a></li>
-<li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.2</b> Two categorical variables</a></li>
-<li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a></li>
+<li class="chapter" data-level="5.1" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.1</b> Two categorical variables</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="covariation.html"><a href="covariation.html#contingency-table"><i class="fa fa-check"></i><b>5.1.1</b> Contingency table</a></li>
+<li class="chapter" data-level="5.1.2" data-path="covariation.html"><a href="covariation.html#tile-plot"><i class="fa fa-check"></i><b>5.1.2</b> Tile plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>5.2</b> Categorical + continuous variable</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="covariation.html"><a href="covariation.html#summary-table"><i class="fa fa-check"></i><b>5.2.1</b> Summary table</a></li>
+<li class="chapter" data-level="5.2.2" data-path="covariation.html"><a href="covariation.html#central-tendency-mean-bar-plots"><i class="fa fa-check"></i><b>5.2.2</b> Central tendency (mean): Bar plots</a></li>
+<li class="chapter" data-level="5.2.3" data-path="covariation.html"><a href="covariation.html#distribution-density-plot"><i class="fa fa-check"></i><b>5.2.3</b> Distribution: density plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="covariation.html"><a href="covariation.html#scatter-plots"><i class="fa fa-check"></i><b>5.3.1</b> Scatter plots</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html"><i class="fa fa-check"></i><b>6</b> From data visualization to statistical modelling</a><ul>
 <li class="chapter" data-level="6.1" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#two-continuousnumerical-variables"><i class="fa fa-check"></i><b>6.1</b> Two continuous/numerical variables</a><ul>
@@ -174,28 +187,444 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="covariation" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Covariation</h1>
-<p>If variation describes the behaviors within a variable, covariation describes the behavior between variables.</p>
+<p>While the variation describes the behaviors within a variable, covariation describes the behavior between variables.</p>
 <p>Covariation is the tendency for the values of two or more variables to vary together in a related way.</p>
+<div id="two-categorical-variables" class="section level2">
+<h2><span class="header-section-number">5.1</span> Two categorical variables</h2>
+<div id="contingency-table" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Contingency table</h3>
+<p>To characterize covaritation of two categorical variable, we can use contingency table to display the frequency.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(diamonds<span class="op">$</span>cut, diamonds<span class="op">$</span>color)</code></pre></div>
+<pre><code>##            
+##                D    E    F    G    H    I    J
+##   Fair       163  224  312  314  303  175  119
+##   Good       662  933  909  871  702  522  307
+##   Very Good 1513 2400 2164 2299 1824 1204  678
+##   Premium   1603 2337 2331 2924 2360 1428  808
+##   Ideal     2834 3903 3826 4884 3115 2093  896</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(diamonds<span class="op">$</span>cut, diamonds<span class="op">$</span>color, diamonds<span class="op">$</span>clarity)</code></pre></div>
+<pre><code>## , ,  = I1
+## 
+##            
+##                D    E    F    G    H    I    J
+##   Fair         4    9   35   53   52   34   23
+##   Good         8   23   19   19   14    9    4
+##   Very Good    5   22   13   16   12    8    8
+##   Premium     12   30   34   46   46   24   13
+##   Ideal       13   18   42   16   38   17    2
+## 
+## , ,  = SI2
+## 
+##            
+##                D    E    F    G    H    I    J
+##   Fair        56   78   89   80   91   45   27
+##   Good       223  202  201  163  158   81   53
+##   Very Good  314  445  343  327  343  200  128
+##   Premium    421  519  523  492  521  312  161
+##   Ideal      356  469  453  486  450  274  110
+## 
+## , ,  = SI1
+## 
+##            
+##                D    E    F    G    H    I    J
+##   Fair        58   65   83   69   75   30   28
+##   Good       237  355  273  207  235  165   88
+##   Very Good  494  626  559  474  547  358  182
+##   Premium    556  614  608  566  655  367  209
+##   Ideal      738  766  608  660  763  504  243
+## 
+## , ,  = VS2
+## 
+##            
+##                D    E    F    G    H    I    J
+##   Fair        25   42   53   45   41   32   23
+##   Good       104  160  184  192  138  110   90
+##   Very Good  309  503  466  479  376  274  184
+##   Premium    339  629  619  721  532  315  202
+##   Ideal      920 1136  879  910  556  438  232
+## 
+## , ,  = VS1
+## 
+##            
+##                D    E    F    G    H    I    J
+##   Fair         5   14   33   45   32   25   16
+##   Good        43   89  132  152   77  103   52
+##   Very Good  175  293  293  432  257  205  120
+##   Premium    131  292  290  566  336  221  153
+##   Ideal      351  593  616  953  467  408  201
+## 
+## , ,  = VVS2
+## 
+##            
+##                D    E    F    G    H    I    J
+##   Fair         9   13   10   17   11    8    1
+##   Good        25   52   50   75   45   26   13
+##   Very Good  141  298  249  302  145   71   29
+##   Premium     94  121  146  275  118   82   34
+##   Ideal      284  507  520  774  289  178   54
+## 
+## , ,  = VVS1
+## 
+##            
+##                D    E    F    G    H    I    J
+##   Fair         3    3    5    3    1    1    1
+##   Good        13   43   35   41   31   22    1
+##   Very Good   52  170  174  190  115   69   19
+##   Premium     40  105   80  171  112   84   24
+##   Ideal      144  335  440  594  326  179   29
+## 
+## , ,  = IF
+## 
+##            
+##                D    E    F    G    H    I    J
+##   Fair         3    0    4    2    0    0    0
+##   Good         9    9   15   22    4    6    6
+##   Very Good   23   43   67   79   29   19    8
+##   Premium     10   27   31   87   40   23   12
+##   Ideal       28   79  268  491  226   95   25</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>cut <span class="op">+</span><span class="st"> </span>color, diamonds)</code></pre></div>
+<pre><code>##            color
+## cut            D    E    F    G    H    I    J
+##   Fair       163  224  312  314  303  175  119
+##   Good       662  933  909  871  702  522  307
+##   Very Good 1513 2400 2164 2299 1824 1204  678
+##   Premium   1603 2337 2331 2924 2360 1428  808
+##   Ideal     2834 3903 3826 4884 3115 2093  896</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>cut <span class="op">+</span><span class="st"> </span>color <span class="op">+</span><span class="st"> </span>clarity, diamonds)</code></pre></div>
+<pre><code>## , , clarity = I1
+## 
+##            color
+## cut            D    E    F    G    H    I    J
+##   Fair         4    9   35   53   52   34   23
+##   Good         8   23   19   19   14    9    4
+##   Very Good    5   22   13   16   12    8    8
+##   Premium     12   30   34   46   46   24   13
+##   Ideal       13   18   42   16   38   17    2
+## 
+## , , clarity = SI2
+## 
+##            color
+## cut            D    E    F    G    H    I    J
+##   Fair        56   78   89   80   91   45   27
+##   Good       223  202  201  163  158   81   53
+##   Very Good  314  445  343  327  343  200  128
+##   Premium    421  519  523  492  521  312  161
+##   Ideal      356  469  453  486  450  274  110
+## 
+## , , clarity = SI1
+## 
+##            color
+## cut            D    E    F    G    H    I    J
+##   Fair        58   65   83   69   75   30   28
+##   Good       237  355  273  207  235  165   88
+##   Very Good  494  626  559  474  547  358  182
+##   Premium    556  614  608  566  655  367  209
+##   Ideal      738  766  608  660  763  504  243
+## 
+## , , clarity = VS2
+## 
+##            color
+## cut            D    E    F    G    H    I    J
+##   Fair        25   42   53   45   41   32   23
+##   Good       104  160  184  192  138  110   90
+##   Very Good  309  503  466  479  376  274  184
+##   Premium    339  629  619  721  532  315  202
+##   Ideal      920 1136  879  910  556  438  232
+## 
+## , , clarity = VS1
+## 
+##            color
+## cut            D    E    F    G    H    I    J
+##   Fair         5   14   33   45   32   25   16
+##   Good        43   89  132  152   77  103   52
+##   Very Good  175  293  293  432  257  205  120
+##   Premium    131  292  290  566  336  221  153
+##   Ideal      351  593  616  953  467  408  201
+## 
+## , , clarity = VVS2
+## 
+##            color
+## cut            D    E    F    G    H    I    J
+##   Fair         9   13   10   17   11    8    1
+##   Good        25   52   50   75   45   26   13
+##   Very Good  141  298  249  302  145   71   29
+##   Premium     94  121  146  275  118   82   34
+##   Ideal      284  507  520  774  289  178   54
+## 
+## , , clarity = VVS1
+## 
+##            color
+## cut            D    E    F    G    H    I    J
+##   Fair         3    3    5    3    1    1    1
+##   Good        13   43   35   41   31   22    1
+##   Very Good   52  170  174  190  115   69   19
+##   Premium     40  105   80  171  112   84   24
+##   Ideal      144  335  440  594  326  179   29
+## 
+## , , clarity = IF
+## 
+##            color
+## cut            D    E    F    G    H    I    J
+##   Fair         3    0    4    2    0    0    0
+##   Good         9    9   15   22    4    6    6
+##   Very Good   23   43   67   79   29   19    8
+##   Premium     10   27   31   87   40   23   12
+##   Ideal       28   79  268  491  226   95   25</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ftable</span>(<span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>cut <span class="op">+</span><span class="st"> </span>color <span class="op">+</span><span class="st"> </span>clarity, diamonds))</code></pre></div>
+<pre><code>##                 clarity   I1  SI2  SI1  VS2  VS1 VVS2 VVS1   IF
+## cut       color                                                
+## Fair      D                4   56   58   25    5    9    3    3
+##           E                9   78   65   42   14   13    3    0
+##           F               35   89   83   53   33   10    5    4
+##           G               53   80   69   45   45   17    3    2
+##           H               52   91   75   41   32   11    1    0
+##           I               34   45   30   32   25    8    1    0
+##           J               23   27   28   23   16    1    1    0
+## Good      D                8  223  237  104   43   25   13    9
+##           E               23  202  355  160   89   52   43    9
+##           F               19  201  273  184  132   50   35   15
+##           G               19  163  207  192  152   75   41   22
+##           H               14  158  235  138   77   45   31    4
+##           I                9   81  165  110  103   26   22    6
+##           J                4   53   88   90   52   13    1    6
+## Very Good D                5  314  494  309  175  141   52   23
+##           E               22  445  626  503  293  298  170   43
+##           F               13  343  559  466  293  249  174   67
+##           G               16  327  474  479  432  302  190   79
+##           H               12  343  547  376  257  145  115   29
+##           I                8  200  358  274  205   71   69   19
+##           J                8  128  182  184  120   29   19    8
+## Premium   D               12  421  556  339  131   94   40   10
+##           E               30  519  614  629  292  121  105   27
+##           F               34  523  608  619  290  146   80   31
+##           G               46  492  566  721  566  275  171   87
+##           H               46  521  655  532  336  118  112   40
+##           I               24  312  367  315  221   82   84   23
+##           J               13  161  209  202  153   34   24   12
+## Ideal     D               13  356  738  920  351  284  144   28
+##           E               18  469  766 1136  593  507  335   79
+##           F               42  453  608  879  616  520  440  268
+##           G               16  486  660  910  953  774  594  491
+##           H               38  450  763  556  467  289  326  226
+##           I               17  274  504  438  408  178  179   95
+##           J                2  110  243  232  201   54   29   25</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(cut, color)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">count</span>( )<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(cut)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sum =</span> <span class="kw">sum</span>(n))<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">proportion =</span> n<span class="op">/</span>sum,
+         <span class="dt">percentage =</span> (n<span class="op">/</span>sum)<span class="op">*</span><span class="dv">100</span>)</code></pre></div>
+<pre><code>## # A tibble: 35 x 6
+## # Groups:   cut [5]
+##    cut   color     n   sum proportion percentage
+##    &lt;ord&gt; &lt;ord&gt; &lt;int&gt; &lt;int&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+##  1 Fair  D       163  1610     0.101       10.1 
+##  2 Fair  E       224  1610     0.139       13.9 
+##  3 Fair  F       312  1610     0.194       19.4 
+##  4 Fair  G       314  1610     0.195       19.5 
+##  5 Fair  H       303  1610     0.188       18.8 
+##  6 Fair  I       175  1610     0.109       10.9 
+##  7 Fair  J       119  1610     0.0739       7.39
+##  8 Good  D       662  4906     0.135       13.5 
+##  9 Good  E       933  4906     0.190       19.0 
+## 10 Good  F       909  4906     0.185       18.5 
+## # ... with 25 more rows</code></pre>
+</div>
+<div id="tile-plot" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Tile plot</h3>
+<p>You can visualize the frequency table with a tile plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds<span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">count</span>(color, cut)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(color, cut))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>n))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_count</span>(<span class="kw">aes</span>(cut, color))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-30-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;seriation&quot;)</span></code></pre></div>
+</div>
+</div>
 <div id="categorical-continuous-variable" class="section level2">
-<h2><span class="header-section-number">5.1</span> Categorical + continuous variable</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<h2><span class="header-section-number">5.2</span> Categorical + continuous variable</h2>
+<p>The covariation of a categorical and a continuous variable can be visualized and explored by treating the categorical variable as the group factor. Then we can apply all the methods we learned when dealing with a continuous variable.</p>
+<div id="summary-table" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Summary table</h3>
+<p>R offers a number of ways we can summarize the mean, sd of a continous variable as a function of one or more grouping variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># solution 1</span>
+<span class="kw">with</span>(diamonds, <span class="kw">tapply</span>(price, cut, mean))</code></pre></div>
+<pre><code>##      Fair      Good Very Good   Premium     Ideal 
+##  4358.758  3928.864  3981.760  4584.258  3457.542</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(diamonds, <span class="kw">tapply</span>(price, <span class="kw">list</span>(cut, color, clarity), mean))</code></pre></div>
+<pre><code>## , , I1
+## 
+##                  D        E        F        G        H        I        J
+## Fair      7383.000 2095.222 2543.514 3187.472 4212.962 3501.000 5795.043
+## Good      3490.750 4398.130 2569.526 3195.789 3849.714 4175.444 3794.500
+## Very Good 2622.800 3443.545 4252.923 3194.812 5258.833 6045.125 4478.375
+## Premium   3818.750 3199.267 3554.559 4051.522 3904.348 5044.625 4577.231
+## Ideal     3526.923 3559.389 3903.452 4044.438 5415.184 4103.294 9454.000
+## 
+## , , SI2
+## 
+##                  D        E        F        G        H        I        J
+## Fair      4355.143 4172.385 4520.112 5665.150 6022.407 6658.022 5131.815
+## Good      3595.296 3785.490 4426.786 4776.411 5529.778 6933.012 5306.113
+## Very Good 4425.459 4279.447 4249.758 4699.269 6112.414 6621.600 5992.898
+## Premium   4351.086 4489.931 4747.090 5617.205 6718.946 7148.484 7550.286
+## Ideal     3142.048 3891.303 4335.508 4612.086 5589.473 7191.912 6555.173
+## 
+## , , SI1
+## 
+##                  D        E        F        G        H        I        J
+## Fair      4273.345 3901.154 3784.687 3579.362 5195.800 4574.967 4553.929
+## Good      3021.173 3162.132 3261.454 4129.329 4179.285 4742.945 4627.625
+## Very Good 3234.931 3228.176 3574.292 3481.871 4933.945 5195.302 5026.544
+## Premium   3236.378 3362.625 4040.467 4303.348 5707.722 6092.093 5726.579
+## Ideal     2490.459 2883.808 3710.322 3441.108 4769.988 5178.565 5115.675
+## 
+## , , VS2
+## 
+##                  D        E        F        G        H        I        J
+## Fair      4512.880 3041.714 3400.472 5384.444 5110.927 3856.125 4067.826
+## Good      3588.462 3772.019 3790.543 4140.714 4433.043 5956.564 4803.167
+## Very Good 3145.194 3329.497 3995.944 4426.816 4620.221 5754.642 5325.549
+## Premium   2919.357 3070.394 4221.467 4556.255 5553.876 7156.346 6175.559
+## Ideal     2111.927 2163.324 3317.205 4310.035 4039.126 4663.384 4867.134
+## 
+## , , VS1
+## 
+##                  D        E        F        G        H        I        J
+## Fair      2921.200 3307.929 4103.061 3497.622 4604.750 4500.480 5906.188
+## Good      3556.581 3712.775 2787.508 4302.428 3819.117 4597.165 3662.827
+## Very Good 2955.480 3089.358 3880.802 3770.150 3750.198 5276.971 4339.592
+## Premium   4178.046 3721.695 4758.038 4435.823 3949.336 5339.367 5817.261
+## Ideal     2576.040 2175.798 3504.002 4116.918 3613.325 3944.422 4734.428
+## 
+## , , VVS2
+## 
+##                  D        E        F        G        H        I        J
+## Fair      3607.000 3119.308 4018.200 3099.059 3481.727 2994.625 2998.000
+## Good      2345.640 3390.154 3192.360 3310.467 2428.000 2758.000 4371.154
+## Very Good 2615.298 2041.685 3461.912 3711.785 2768.145 3059.887 5960.448
+## Premium   3888.436 2940.942 4099.466 4323.571 2651.263 3190.768 6423.353
+## Ideal     3619.014 2556.335 3323.629 3795.651 2591.156 2858.680 4121.926
+## 
+## , , VVS1
+## 
+##                  D        E        F        G        H        I        J
+## Fair      4473.000 4115.333 4679.800 2216.333 4115.000 4194.000 1691.000
+## Good      2586.231 1905.953 2189.514 2705.195 1719.710 2650.955 4633.000
+## Very Good 2987.731 1997.447 2826.540 2719.332 2042.191 2056.420 3175.526
+## Premium   3771.000 2699.857 3969.325 2933.655 1453.759 1831.083 7244.375
+## Ideal     2705.778 2205.519 2611.234 2909.199 1915.985 2034.397 2000.172
+## 
+## , , IF
+## 
+##                   D        E        F        G        H        I        J
+## Fair       1619.667       NA 2344.000 1488.000       NA       NA       NA
+## Good      10030.333 1519.222 3132.867 4060.136 5948.750 1749.333 2738.000
+## Very Good 10298.261 4332.744 4677.075 3525.241 2647.690 4093.895 1074.125
+## Premium    9056.500 4525.444 3617.581 3311.115 3384.750 2358.565 7026.000
+## Ideal      6567.179 3258.937 2153.709 2206.031 1982.765 1502.621 2489.000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># solution 2</span>
+<span class="co"># install.packages(&quot;doBy&quot;)</span>
+<span class="kw">library</span>(doBy)
+data =<span class="st"> </span><span class="kw">as.data.frame</span>(diamonds)
+<span class="kw">head</span>(<span class="kw">summaryBy</span>(price <span class="op">~</span><span class="st"> </span>cut <span class="op">+</span><span class="st"> </span>clarity <span class="op">+</span><span class="st"> </span>color , <span class="dt">data =</span> data, <span class="dt">FUN =</span> mean))</code></pre></div>
+<pre><code>##    cut clarity color price.mean
+## 1 Fair      I1     D   7383.000
+## 2 Fair      I1     E   2095.222
+## 3 Fair      I1     F   2543.514
+## 4 Fair      I1     G   3187.472
+## 5 Fair      I1     H   4212.962
+## 6 Fair      I1     I   3501.000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">summaryBy</span>(price  <span class="op">+</span><span class="st"> </span>carat <span class="op">~</span><span class="st"> </span>cut <span class="op">+</span><span class="st"> </span>clarity <span class="op">+</span><span class="st"> </span>color , <span class="dt">data =</span> data, <span class="dt">FUN =</span> mean))</code></pre></div>
+<pre><code>##    cut clarity color price.mean carat.mean
+## 1 Fair      I1     D   7383.000  1.8775000
+## 2 Fair      I1     E   2095.222  0.9688889
+## 3 Fair      I1     F   2543.514  1.0234286
+## 4 Fair      I1     G   3187.472  1.2264151
+## 5 Fair      I1     H   4212.962  1.4986538
+## 6 Fair      I1     I   3501.000  1.3229412</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">summaryBy</span>(price  <span class="op">+</span><span class="st"> </span>carat <span class="op">~</span><span class="st"> </span>cut <span class="op">+</span><span class="st">  </span>color , <span class="dt">data =</span> data, <span class="dt">FUN =</span> <span class="kw">c</span>(mean, sd)))</code></pre></div>
+<pre><code>##    cut color price.mean carat.mean price.sd  carat.sd
+## 1 Fair     D   4291.061  0.9201227 3286.114 0.4054185
+## 2 Fair     E   3682.312  0.8566071 2976.652 0.3645848
+## 3 Fair     F   3827.003  0.9047115 3223.303 0.4188899
+## 4 Fair     G   4239.255  1.0238217 3609.644 0.4927241
+## 5 Fair     H   5135.683  1.2191749 3886.482 0.5482389
+## 6 Fair     I   4685.446  1.1980571 3730.271 0.5219776</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># solution 3</span>
+diamonds<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(cut, clarity, color)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(price),
+            <span class="dt">sd =</span> <span class="kw">sd</span>(price))</code></pre></div>
+<pre><code>## # A tibble: 276 x 5
+## # Groups:   cut, clarity [40]
+##    cut   clarity color  mean    sd
+##    &lt;ord&gt; &lt;ord&gt;   &lt;ord&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 Fair  I1      D     7383  5899.
+##  2 Fair  I1      E     2095.  824.
+##  3 Fair  I1      F     2544. 2227.
+##  4 Fair  I1      G     3187. 2598.
+##  5 Fair  I1      H     4213. 3149.
+##  6 Fair  I1      I     3501  2157.
+##  7 Fair  I1      J     5795. 4594.
+##  8 Fair  SI2     D     4355. 3260.
+##  9 Fair  SI2     E     4172. 3055.
+## 10 Fair  SI2     F     4520. 3627.
+## # ... with 266 more rows</code></pre>
+</div>
+<div id="central-tendency-mean-bar-plots" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Central tendency (mean): Bar plots</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#bar plot</span>
+diamonds<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(cut)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(price))<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(cut, mean))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(cut)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(price))<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(cut, mean, <span class="dt">fill =</span> cut))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># xlim(4, 10) + ylim(4, 10)</span>
 
-<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(price))<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="dt">binwidth =</span> <span class="dv">500</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(price))<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="kw">aes</span>(<span class="dt">color =</span> cut), <span class="dt">binwidth =</span> <span class="dv">500</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># standardized count where the area under each frequency polygon is one</span>
-
-<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> price, <span class="dt">y =</span>  ..density..))<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="kw">aes</span>(<span class="dt">color =</span> cut), <span class="dt">binwidth =</span> <span class="dv">500</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-3.png" width="672" /></p>
+diamonds<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(cut)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(price),
+            <span class="dt">sd =</span> <span class="kw">sd</span>(price))<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(cut, mean))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> mean <span class="op">-</span><span class="st"> </span>sd,
+                    <span class="dt">ymax =</span> mean <span class="op">+</span><span class="st"> </span>sd),
+                <span class="dt">width =</span> .<span class="dv">2</span>, <span class="dt">size =</span> <span class="fl">0.7</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(.<span class="dv">9</span>))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-3.png" width="672" /> ### Spread: boxplot</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># boxplot</span>
 
 <span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(cut, price))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-4.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+</div>
+<div id="distribution-density-plot" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Distribution: density plot</h3>
+<p>We can color-code the density plot to represent the group factor.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+
+<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(price))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="dt">binwidth =</span> <span class="dv">500</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(price))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="kw">aes</span>(<span class="dt">color =</span> cut), <span class="dt">binwidth =</span> <span class="dv">500</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-34-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># standardized count where the area under each frequency polygon is one</span>
+
+<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> price, <span class="dt">y =</span>  ..density..))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_freqpoly</span>(<span class="kw">aes</span>(<span class="dt">color =</span> cut), <span class="dt">binwidth =</span> <span class="dv">500</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-34-3.png" width="672" /></p>
 <p>model = model name</p>
 <p>displ = engine displacement, in litres</p>
 <p>year = year of manufacture</p>
@@ -230,65 +659,58 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  Max.   :44.00</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(class, hwy, <span class="dt">FUN =</span> median), <span class="dt">y =</span> hwy))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mpg)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(class, hwy, <span class="dt">FUN =</span> median), <span class="dt">y =</span> hwy))<span class="op">+</span>
 <span class="st">  </span><span class="kw">coord_flip</span>()</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-25-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-35-2.png" width="672" /></p>
 </div>
-<div id="two-categorical-variables" class="section level2">
-<h2><span class="header-section-number">5.2</span> Two categorical variables</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_count</span>(<span class="kw">aes</span>(cut, color))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds<span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">count</span>(color, cut)</code></pre></div>
-<pre><code>## # A tibble: 35 x 3
-##    color cut           n
-##    &lt;ord&gt; &lt;ord&gt;     &lt;int&gt;
-##  1 D     Fair        163
-##  2 D     Good        662
-##  3 D     Very Good  1513
-##  4 D     Premium    1603
-##  5 D     Ideal      2834
-##  6 E     Fair        224
-##  7 E     Good        933
-##  8 E     Very Good  2400
-##  9 E     Premium    2337
-## 10 E     Ideal      3903
-## # ... with 25 more rows</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diamonds<span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">count</span>(color, cut)<span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(color, cut))<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>n))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-26-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;seriation&quot;)</span></code></pre></div>
 </div>
 <div id="two-continuous-variables" class="section level2">
 <h2><span class="header-section-number">5.3</span> Two continuous variables</h2>
+<div id="scatter-plots" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Scatter plots</h3>
+<p>The most common way we visualize two continuous variables is by using a scatter plot.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(carat, price))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add transparency</span>
 <span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(carat, price), <span class="dt">alpha =</span> <span class="dv">1</span><span class="op">/</span><span class="dv">100</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-36-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bin two variables</span>
 <span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bin2d</span>(<span class="kw">aes</span>(carat, price))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-3.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-36-3.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;hexbin&quot;)</span>
 <span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_hex</span>(<span class="kw">aes</span>(carat, price))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-4.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-36-4.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#bin one variable</span>
 <span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat, price))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="kw">cut_width</span>(carat, <span class="fl">0.1</span>)))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-5.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-36-5.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat, price))<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="kw">cut_width</span>(carat, <span class="fl">0.5</span>)))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-27-6.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-36-6.png" width="672" /> ### Bin one or both continuous variables</p>
+<p>Sometime we can bin one or both continuous variables to convert them into categorical variable(s). In those cases, we apply what we learn in dealing with categorical variables, such as tile plots or boxplots.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#bin one variable</span>
+<span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat, price))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="kw">cut_width</span>(carat, <span class="fl">0.1</span>)))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(diamonds,<span class="kw">aes</span>(carat, price))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="kw">cut_width</span>(carat, <span class="fl">0.5</span>)))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-37-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bin two variables</span>
+<span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bin2d</span>(<span class="kw">aes</span>(carat, price))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-37-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;hexbin&quot;)</span>
+<span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hex</span>(<span class="kw">aes</span>(carat, price))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-37-4.png" width="672" /></p>
 
+</div>
 </div>
 </div>
             </section>

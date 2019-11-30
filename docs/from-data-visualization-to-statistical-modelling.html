@@ -25,7 +25,7 @@
 <meta name="author" content="Juqiang Chen">
 
 
-<meta name="date" content="2019-10-28">
+<meta name="date" content="2019-12-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -106,20 +106,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>1.1</b> Installing R and R studio</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#install-and-library-packages"><i class="fa fa-check"></i><b>1.2</b> Install and library packages</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#programme"><i class="fa fa-check"></i><b>1.3</b> Programme</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#install-packages-and-library-packages"><i class="fa fa-check"></i><b>1.2</b> Install packages and library packages</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#data-and-workbook"><i class="fa fa-check"></i><b>1.3</b> Data and workbook</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Basic data structures in R</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#categorical-vs.numeric-variables"><i class="fa fa-check"></i><b>2.1</b> Categorical vs. numeric variables</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#types-of-variables-a-taxonomy"><i class="fa fa-check"></i><b>2.1</b> Types of variables: A taxonomy</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#categorical-variables-ordinal-vs.norminal"><i class="fa fa-check"></i><b>2.1.1</b> Categorical variables: ordinal vs. norminal</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#numeric-variables-discrete-or-continuous"><i class="fa fa-check"></i><b>2.1.2</b> Numeric variables: discrete or continuous</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#d-data-structure-vectors"><i class="fa fa-check"></i><b>2.2</b> 1D data structure: vectors</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#creating-vectors"><i class="fa fa-check"></i><b>2.2.1</b> Creating vectors</a></li>
-<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> creating list objects</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> Creating list objects</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#d-data-structures-matrice-and-data-frames"><i class="fa fa-check"></i><b>2.3</b> 2D data structures: matrice and data frames</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#what-if-i-want-to-change-column-names-or-add-variable-to-the-df"><i class="fa fa-check"></i><b>2.3.1</b> what if I want to change column names or add variable to the df?</a></li>
 <li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Subsetting dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.4</b> summary</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>3</b> What is EDA?</a><ul>
 <li class="chapter" data-level="3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#definition-from-wikipedia"><i class="fa fa-check"></i><b>3.1</b> Definition (from Wikipedia)</a></li>
@@ -127,20 +130,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.3" data-path="what-is-eda.html"><a href="what-is-eda.html#data-analysis-workflow"><i class="fa fa-check"></i><b>3.3</b> Data analysis workflow</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>4</b> Variation</a><ul>
-<li class="chapter" data-level="4.1" data-path="variation.html"><a href="variation.html#categorical-variable"><i class="fa fa-check"></i><b>4.1</b> Categorical variable</a></li>
+<li class="chapter" data-level="4.1" data-path="variation.html"><a href="variation.html#categorical-variable"><i class="fa fa-check"></i><b>4.1</b> Categorical variable</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="variation.html"><a href="variation.html#absolute-v.s-relative-frequency"><i class="fa fa-check"></i><b>4.1.1</b> Absolute v.s relative frequency?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="variation.html"><a href="variation.html#frequency-distributions"><i class="fa fa-check"></i><b>4.1.2</b> Frequency distributions</a></li>
+</ul></li>
 <li class="chapter" data-level="4.2" data-path="variation.html"><a href="variation.html#continous-variable"><i class="fa fa-check"></i><b>4.2</b> Continous variable</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#five-number-summary"><i class="fa fa-check"></i><b>4.2.1</b> Five-number summary</a></li>
-<li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#boxplot-violin-plot"><i class="fa fa-check"></i><b>4.2.2</b> Boxplot &amp; violin plot</a></li>
-<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#qq-plots"><i class="fa fa-check"></i><b>4.2.3</b> QQ Plots</a></li>
-<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#how-does-the-shape-of-a-distribution-influence-the-measures-of-central-tendency"><i class="fa fa-check"></i><b>4.2.4</b> How does the shape of a distribution influence the Measures of Central Tendency?</a></li>
-<li class="chapter" data-level="4.2.5" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.5</b> Measures of Spread</a></li>
-<li class="chapter" data-level="4.2.6" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.6</b> Unusual values</a></li>
+<li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#central-tendency"><i class="fa fa-check"></i><b>4.2.1</b> Central tendency</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.2</b> Measures of Spread</a></li>
+<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#confidence-interval"><i class="fa fa-check"></i><b>4.2.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.4</b> Unusual values</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
-<li class="chapter" data-level="5.1" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>5.1</b> Categorical + continuous variable</a></li>
-<li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.2</b> Two categorical variables</a></li>
-<li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a></li>
+<li class="chapter" data-level="5.1" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.1</b> Two categorical variables</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="covariation.html"><a href="covariation.html#contingency-table"><i class="fa fa-check"></i><b>5.1.1</b> Contingency table</a></li>
+<li class="chapter" data-level="5.1.2" data-path="covariation.html"><a href="covariation.html#tile-plot"><i class="fa fa-check"></i><b>5.1.2</b> Tile plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>5.2</b> Categorical + continuous variable</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="covariation.html"><a href="covariation.html#summary-table"><i class="fa fa-check"></i><b>5.2.1</b> Summary table</a></li>
+<li class="chapter" data-level="5.2.2" data-path="covariation.html"><a href="covariation.html#central-tendency-mean-bar-plots"><i class="fa fa-check"></i><b>5.2.2</b> Central tendency (mean): Bar plots</a></li>
+<li class="chapter" data-level="5.2.3" data-path="covariation.html"><a href="covariation.html#distribution-density-plot"><i class="fa fa-check"></i><b>5.2.3</b> Distribution: density plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="covariation.html"><a href="covariation.html#scatter-plots"><i class="fa fa-check"></i><b>5.3.1</b> Scatter plots</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html"><i class="fa fa-check"></i><b>6</b> From data visualization to statistical modelling</a><ul>
 <li class="chapter" data-level="6.1" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#two-continuousnumerical-variables"><i class="fa fa-check"></i><b>6.1</b> Two continuous/numerical variables</a><ul>
@@ -174,7 +187,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="from-data-visualization-to-statistical-modelling" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> From data visualization to statistical modelling</h1>
-<p>Patterns in the data provide clues about relationship or covariation.Now that we know how to visualize the various relationships, we can proceed to know more about how to formally test the relationship.</p>
+<p>Patterns in the data provide clues about relationship or covariation.Now that we know how to visualize the various relationships, we can proceed to learn more about how to formally test the relationship.</p>
 <p>Statistical models are tools for extracting patterns out of data.</p>
 <p>Statistics represent a common method of presenting information helping us to understand what the data are telling us.</p>
 <ul>
@@ -202,7 +215,7 @@ Figure 6.1: stats
 ## 6     2.883      55</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(faithful)<span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(eruptions, waiting))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-28-1.png" width="672" /> <em>Correlation</em> and <em>linear regression</em> each explore the relationship between two quantitative variables. (Salvatore S. Mangiafico)</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-38-1.png" width="672" /> <em>Correlation</em> and <em>linear regression</em> each explore the relationship between two quantitative variables. (Salvatore S. Mangiafico)</p>
 <p>Correlation determines if one variable varies systematically as another variable changes. It does not specify that one variable is the dependent variable and the other is the independent variable. Often, it is useful to look at which variables are correlated to others in a data set, and it is especially useful to see which variables correlate to a particular variable of interest.</p>
 <p>In contrast, linear regression specifies one variable as the independent variable and another as the dependent variable. The resultant model relates the variables with a linear relationship.</p>
 <p>The tests associated with linear regression are parametric and assume normality, homoscedasticity, and independence of residuals, as well as a linear relationship between the two variables.</p>
@@ -244,10 +257,10 @@ Figure 6.1: stats
 <span class="kw">library</span>(psych)
 <span class="kw">pairs</span>(<span class="dt">data=</span>faithful,
     <span class="op">~</span><span class="st"> </span>eruptions <span class="op">+</span><span class="st"> </span>waiting)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(<span class="dt">data=</span>iris,
     <span class="op">~</span><span class="st"> </span>Sepal.Length <span class="op">+</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>Petal.Length <span class="op">+</span>Petal.Width)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-39-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">corr.test</span>(faithful,
           <span class="dt">use    =</span> <span class="st">&quot;pairwise&quot;</span>,
           <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>,
@@ -272,19 +285,19 @@ Figure 6.1: stats
                    <span class="dt">method=</span><span class="st">&quot;pearson&quot;</span>,
                    <span class="dt">histogram=</span><span class="ot">TRUE</span>,
                    <span class="dt">pch=</span><span class="dv">16</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-3.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-39-3.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart.Correlation</span>(faithful,
                    <span class="dt">method=</span><span class="st">&quot;kendall&quot;</span>,
                    <span class="dt">histogram=</span><span class="ot">TRUE</span>,
                    <span class="dt">pch=</span><span class="dv">16</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-4.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-39-4.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart.Correlation</span>(faithful,
                    <span class="dt">method=</span><span class="st">&quot;spearman&quot;</span>,
                    <span class="dt">histogram=</span><span class="ot">TRUE</span>,
                    <span class="dt">pch=</span><span class="dv">16</span>)</code></pre></div>
 <pre><code>## Warning in cor.test.default(as.numeric(x), as.numeric(y), method = method):
 ## Cannot compute exact p-value with ties</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-29-5.png" width="672" /> The statistics r, rho, and tau are used as effect sizes for Pearson, Spearman, and Kendall regression, respectively. These statistics vary from –1 to 1, with 0 indicating no correlation, 1 indicating a perfect positive correlation, and –1 indicating a perfect negative correlation. Like other effect size statistics, these statistics are not affected by sample size.</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-39-5.png" width="672" /> The statistics r, rho, and tau are used as effect sizes for Pearson, Spearman, and Kendall regression, respectively. These statistics vary from –1 to 1, with 0 indicating no correlation, 1 indicating a perfect positive correlation, and –1 indicating a perfect negative correlation. Like other effect size statistics, these statistics are not affected by sample size.</p>
 <p>Interpretation of effect sizes necessarily varies by discipline and the expectations of the experiment. They should not be considered universal. An interpretation of r is given by Cohen (1988). It is probably reasonable to use similar interpretations for rho and tau.</p>
 <ul>
 <li><p>small: 0.10 – &lt; 0.30</p></li>
@@ -382,14 +395,14 @@ Figure 6.1: stats
 <span class="kw">abline</span>(model,
        <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>,
        <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">residuals</span>(model)
 
 
 <span class="kw">library</span>(rcompanion)
 
 <span class="kw">plotNormalHistogram</span>(x)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-31-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-41-2.png" width="672" /></p>
 <p>The summary function for lm model objects includes estimates for model parameters (intercept and slope), as well as an r-squared value for the model and p-value for the model.</p>
 <p>How to read the model? The model produces a coefficient for the intercept (-1.87) and a coefficient for the slope (0.07);Each coefficient comes with three other numbers: its standard error, a t-value, and a p-value. The p-value tells us whether the coefficient is significantly different from zero.</p>
 <p>If the coefficient for a predictor is zero, there is no relation at all between the predictor and the dependent variable, in which case it is worthless as a predictor. In order to ascertain whether a coefficient is significantly different from zero, and hence potentially useful, a two-tailed t-test is carried out, using the t-value and <em>the associated degrees of freedom</em>.</p>
@@ -426,9 +439,9 @@ df<span class="op">$</span>class =<span class="st"> </span><span class="kw">as.f
 ## 25 25 25 25</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#visualization</span>
 <span class="kw">plot</span>(<span class="kw">density</span>(df<span class="op">$</span>chinese))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(df<span class="op">$</span>chinese)</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-42-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#formal tests</span>
 <span class="co">#null hypothesis: the distribution is normal</span>
 <span class="kw">shapiro.test</span>(df<span class="op">$</span>chinese)</code></pre></div>
@@ -436,59 +449,59 @@ df<span class="op">$</span>class =<span class="st"> </span><span class="kw">as.f
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  df$chinese
-## W = 0.99104, p-value = 0.748</code></pre>
+## W = 0.99287, p-value = 0.8799</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ks.test</span>(df<span class="op">$</span>chinese, <span class="st">&quot;pnorm&quot;</span>, <span class="kw">mean</span>(df<span class="op">$</span>chinese), <span class="kw">sd</span>(df<span class="op">$</span>chinese))</code></pre></div>
 <pre><code>## 
 ##  One-sample Kolmogorov-Smirnov test
 ## 
 ## data:  df$chinese
-## D = 0.055034, p-value = 0.9225
+## D = 0.047704, p-value = 0.9768
 ## alternative hypothesis: two-sided</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#one sample t-test: one group and a fixed value</span>
 <span class="kw">mean</span>(df<span class="op">$</span>chinese)</code></pre></div>
-<pre><code>## [1] 80.64783</code></pre>
+<pre><code>## [1] 80.51748</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(df<span class="op">$</span>chinese, <span class="dt">mu =</span> <span class="dv">78</span>)</code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
 ## data:  df$chinese
-## t = 6.5085, df = 99, p-value = 3.146e-09
+## t = 6.9555, df = 99, p-value = 3.828e-10
 ## alternative hypothesis: true mean is not equal to 78
 ## 95 percent confidence interval:
-##  79.84060 81.45505
+##  79.79931 81.23565
 ## sample estimates:
 ## mean of x 
-##  80.64783</code></pre>
+##  80.51748</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(df<span class="op">$</span>chinese, <span class="dt">mu =</span> <span class="dv">78</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
 ## data:  df$chinese
-## t = 6.5085, df = 99, p-value = 1.573e-09
+## t = 6.9555, df = 99, p-value = 1.914e-10
 ## alternative hypothesis: true mean is greater than 78
 ## 95 percent confidence interval:
-##  79.97234      Inf
+##  79.91651      Inf
 ## sample estimates:
 ## mean of x 
-##  80.64783</code></pre>
+##  80.51748</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(df<span class="op">$</span>chinese, <span class="dt">mu =</span> <span class="dv">78</span>, <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
 ## data:  df$chinese
-## t = 6.5085, df = 99, p-value = 1
+## t = 6.9555, df = 99, p-value = 1
 ## alternative hypothesis: true mean is less than 78
 ## 95 percent confidence interval:
-##      -Inf 81.32331
+##      -Inf 81.11845
 ## sample estimates:
 ## mean of x 
-##  80.64783</code></pre>
+##  80.51748</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(df<span class="op">$</span>chinese, <span class="dt">mu =</span> <span class="dv">78</span>)<span class="co"># skewed distributions</span></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon signed rank test with continuity correction
 ## 
 ## data:  df$chinese
-## V = 4134, p-value = 3.192e-08
+## V = 4260, p-value = 2.465e-09
 ## alternative hypothesis: true location is not equal to 78</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#probabilities of the things counted</span>
 count =<span class="st"> </span><span class="kw">c</span>(<span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">67</span>,<span class="dv">65</span>,<span class="dv">40</span>,<span class="dv">89</span>,<span class="dv">36</span>)
@@ -508,45 +521,45 @@ class2 =<span class="st"> </span>df[df<span class="op">$</span>class <span class
 ##  Welch Two Sample t-test
 ## 
 ## data:  class1 and class2
-## t = 0.025614, df = 46.994, p-value = 0.9797
+## t = 1.9713, df = 47.483, p-value = 0.05453
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -2.614256  2.681685
+##  -0.04379575  4.37193900
 ## sample estimates:
 ## mean of x mean of y 
-##  80.65144  80.61772</code></pre>
+##  81.57151  79.40744</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(class1,class2)<span class="co">#not normally distributed</span></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon rank sum test
 ## 
 ## data:  class1 and class2
-## W = 310, p-value = 0.9693
+## W = 433, p-value = 0.01895
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var.test</span>(class1,class2)<span class="co">#compare variance</span></code></pre></div>
 <pre><code>## 
 ##  F test to compare two variances
 ## 
 ## data:  class1 and class2
-## F = 0.74474, num df = 24, denom df = 24, p-value = 0.4757
+## F = 1.233, num df = 24, denom df = 24, p-value = 0.612
 ## alternative hypothesis: true ratio of variances is not equal to 1
 ## 95 percent confidence interval:
-##  0.3281842 1.6900235
+##  0.5433242 2.7979127
 ## sample estimates:
 ## ratio of variances 
-##          0.7447409</code></pre>
+##           1.232953</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#paired sample t-test</span>
 <span class="kw">t.test</span>(df<span class="op">$</span>chinese, df<span class="op">$</span>math, <span class="dt">paired =</span> T)</code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
 ## data:  df$chinese and df$math
-## t = 33.104, df = 99, p-value &lt; 2.2e-16
+## t = 44.201, df = 99, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  18.68595 21.06880
+##  20.05026 21.93500
 ## sample estimates:
 ## mean of the differences 
-##                19.87737</code></pre>
+##                20.99263</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(df<span class="op">$</span>chinese, df<span class="op">$</span>math, <span class="dt">paired =</span> T)</code></pre></div>
 <pre><code>## 
 ##  Wilcoxon signed rank test with continuity correction
@@ -561,8 +574,8 @@ class2 =<span class="st"> </span>df[df<span class="op">$</span>class <span class
 dif_class =<span class="st"> </span><span class="kw">aov</span> (chinese <span class="op">~</span><span class="st"> </span>class, <span class="dt">data =</span> df)
 <span class="kw">summary</span>(dif_class)</code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
-## class        3      2   0.673   0.039  0.989
-## Residuals   96   1636  17.047</code></pre>
+## class        3   65.2   21.73   1.694  0.174
+## Residuals   96 1231.7   12.83</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#How to report: there is a significant difference among different classes in terms of their Chinese scores, F (3, 96) = 0.87, p = .46.</span>
 
 <span class="co">#the problem of multiple comparision</span>
@@ -578,40 +591,46 @@ dif_class =<span class="st"> </span><span class="kw">aov</span> (chinese <span c
 ## Fit: aov(formula = chinese ~ class, data = df)
 ## 
 ## $class
-##            diff       lwr      upr     p adj
-## 2-1 -0.03371452 -3.087033 3.019604 0.9999913
-## 3-1  0.20894139 -2.844377 3.262260 0.9979522
-## 4-1 -0.18967268 -3.242991 2.863646 0.9984648
-## 3-2  0.24265590 -2.810662 3.295974 0.9968062
-## 4-2 -0.15595816 -3.209276 2.897360 0.9991437
-## 4-3 -0.39861407 -3.451932 2.654704 0.9862351</code></pre>
+##           diff       lwr      upr     p adj
+## 2-1 -2.1640716 -4.813023 0.484880 0.1491745
+## 3-1 -0.6634398 -3.312391 1.985512 0.9136071
+## 4-1 -1.3886077 -4.037559 1.260344 0.5207703
+## 3-2  1.5006319 -1.148320 4.149583 0.4527894
+## 4-2  0.7754640 -1.873488 3.424416 0.8698007
+## 4-3 -0.7251679 -3.374119 1.923784 0.8906122</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#diff= the difference in the means</span>
 <span class="co">#lwr = the lower end points of the confidence interval</span>
 <span class="co"># p adj = adjusted p value</span>
 
 <span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(dif_class))</code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-32-3.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-42-3.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#two-way ANOVA</span>
 m1 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>class, <span class="dt">data =</span> df)
 <span class="kw">summary</span>(m1)</code></pre></div>
-<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
-## sex          1   34.5   34.49   2.051  0.155
-## class        3    6.5    2.16   0.129  0.943
-## Residuals   95 1597.5   16.82</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
+## sex          1   39.0   39.03   3.084 0.0823 .
+## class        3   55.5   18.50   1.461 0.2300  
+## Residuals   95 1202.4   12.66                 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class="op">~</span><span class="st"> </span>sex <span class="op">*</span><span class="st"> </span>class, <span class="dt">data =</span> df)
 <span class="kw">summary</span>(m2)</code></pre></div>
-<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
-## sex          1   34.5   34.49   2.008  0.160
-## class        3    6.5    2.16   0.126  0.945
-## sex:class    3   17.7    5.89   0.343  0.794
-## Residuals   92 1579.8   17.17</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
+## sex          1   39.0   39.03   3.127 0.0803 .
+## class        3   55.5   18.50   1.482 0.2247  
+## sex:class    3   53.9   17.96   1.439 0.2367  
+## Residuals   92 1148.5   12.48                 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m3 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>class <span class="op">+</span><span class="st"> </span>sex<span class="op">:</span>class, <span class="dt">data =</span> df)<span class="co"># same as model2</span>
 <span class="kw">summary</span>(m3)</code></pre></div>
-<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
-## sex          1   34.5   34.49   2.008  0.160
-## class        3    6.5    2.16   0.126  0.945
-## sex:class    3   17.7    5.89   0.343  0.794
-## Residuals   92 1579.8   17.17</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
+## sex          1   39.0   39.03   3.127 0.0803 .
+## class        3   55.5   18.50   1.482 0.2247  
+## sex:class    3   53.9   17.96   1.439 0.2367  
+## Residuals   92 1148.5   12.48                 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">TukeyHSD</span>(m1)</code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
@@ -619,17 +638,17 @@ m1 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class
 ## Fit: aov(formula = chinese ~ sex + class, data = df)
 ## 
 ## $sex
-##          diff       lwr       upr     p adj
-## m-f -1.193985 -2.849224 0.4612534 0.1554158
+##          diff       lwr      upr     p adj
+## m-f -1.250558 -2.664252 0.163135 0.0822837
 ## 
 ## $class
-##            diff       lwr      upr     p adj
-## 2-1 -0.27251154 -3.305671 2.760648 0.9954039
-## 3-1 -0.02985564 -3.063015 3.003303 0.9999938
-## 4-1 -0.61950732 -3.652666 2.413652 0.9505316
-## 3-2  0.24265590 -2.790503 3.275815 0.9967407
-## 4-2 -0.34699578 -3.380155 2.686163 0.9906355
-## 4-3 -0.58965168 -3.622811 2.443507 0.9569106</code></pre>
+##           diff       lwr       upr     p adj
+## 2-1 -1.9639823 -4.595426 0.6674619 0.2137935
+## 3-1 -0.5633951 -3.194839 2.0680490 0.9436202
+## 4-1 -1.2885630 -3.920007 1.3428812 0.5775059
+## 3-2  1.4005872 -1.230857 4.0320314 0.5075306
+## 4-2  0.6754193 -1.956025 3.3068635 0.9077030
+## 4-3 -0.7251679 -3.356612 1.9062763 0.8886383</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">TukeyHSD</span>(m2)</code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
@@ -638,47 +657,47 @@ m1 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class
 ## 
 ## $sex
 ##          diff       lwr       upr     p adj
-## m-f -1.193985 -2.867363 0.4793924 0.1598288
+## m-f -1.250558 -2.655154 0.1540377 0.0803292
 ## 
 ## $class
-##            diff       lwr      upr     p adj
-## 2-1 -0.27251154 -3.339404 2.794381 0.9955431
-## 3-1 -0.02985564 -3.096748 3.037037 0.9999940
-## 4-1 -0.61950732 -3.686400 2.447385 0.9519481
-## 3-2  0.24265590 -2.824237 3.309549 0.9968397
-## 4-2 -0.34699578 -3.413888 2.719897 0.9909168
-## 4-3 -0.58965168 -3.656544 2.477241 0.9581527
+##           diff       lwr       upr     p adj
+## 2-1 -1.9639823 -4.578914 0.6509497 0.2087355
+## 3-1 -0.5633951 -3.178327 2.0515369 0.9425307
+## 4-1 -1.2885630 -3.903495 1.3263690 0.5719910
+## 3-2  1.4005872 -1.214345 4.0155192 0.5016692
+## 4-2  0.6754193 -1.939513 3.2903513 0.9059878
+## 4-3 -0.7251679 -3.340100 1.8897642 0.8866092
 ## 
 ## $`sex:class`
-##                diff       lwr      upr     p adj
-## m:1-f:1 -1.79388377 -7.041401 3.453633 0.9632447
-## f:2-f:1 -0.73319649 -5.980713 4.514320 0.9998598
-## m:2-f:1 -1.67531721 -7.423684 4.073050 0.9849885
-## f:3-f:1 -0.78786790 -6.035385 4.459649 0.9997732
-## m:3-f:1 -0.98667033 -6.735037 4.761696 0.9994501
-## f:4-f:1 -0.63253133 -5.654242 4.389179 0.9999303
-## m:4-f:1 -3.27199637 -9.909639 3.365646 0.7898166
-## f:2-m:1  1.06068728 -3.632834 5.754209 0.9967789
-## m:2-m:1  0.11856656 -5.128950 5.366083 1.0000000
-## f:3-m:1  1.00601586 -3.687506 5.699538 0.9976918
-## m:3-m:1  0.80721344 -4.440303 6.054730 0.9997335
-## f:4-m:1  1.16135244 -3.278275 5.600980 0.9920821
-## m:4-m:1 -1.47811261 -7.687058 4.730833 0.9955468
-## m:2-f:2 -0.94212072 -6.189638 4.305396 0.9992620
-## f:3-f:2 -0.05467141 -4.748193 4.638850 1.0000000
-## m:3-f:2 -0.25347384 -5.500991 4.994043 0.9999999
-## f:4-f:2  0.10066516 -4.338962 4.540292 1.0000000
-## m:4-f:2 -2.53879988 -8.747746 3.670146 0.9080953
-## f:3-m:2  0.88744930 -4.360068 6.134966 0.9995012
-## m:3-m:2  0.68864688 -5.059720 6.437014 0.9999504
-## f:4-m:2  1.04278588 -3.978925 6.064496 0.9981127
-## m:4-m:2 -1.59667917 -8.234321 5.040963 0.9952516
-## m:3-f:3 -0.19880242 -5.446319 5.048714 1.0000000
-## f:4-f:3  0.15533658 -4.284291 4.594964 1.0000000
-## m:4-f:3 -2.48412847 -8.693074 3.724817 0.9173014
-## f:4-m:3  0.35413900 -4.667571 5.375849 0.9999987
-## m:4-m:3 -2.28532605 -8.922968 4.352316 0.9618056
-## m:4-f:4 -2.63946505 -8.658780 3.379850 0.8725996</code></pre>
+##                diff       lwr       upr     p adj
+## m:1-f:1 -2.58229832 -7.056501 1.8919046 0.6282032
+## f:2-f:1 -3.63281829 -7.983287 0.7176500 0.1729605
+## m:2-f:1 -2.85455519 -6.927239 1.2181283 0.3769696
+## f:3-f:1 -1.65788677 -5.810801 2.4950280 0.9181857
+## m:3-f:1 -1.73803745 -5.982639 2.5065641 0.9074712
+## f:4-f:1 -1.21491459 -5.367829 2.9380001 0.9846559
+## m:4-f:1 -3.72869043 -7.973292 0.5159112 0.1283486
+## f:2-m:1 -1.05051997 -5.839076 3.7380364 0.9973267
+## m:2-m:1 -0.27225687 -4.809927 4.2654131 0.9999996
+## f:3-m:1  0.92441155 -3.685404 5.5342271 0.9984902
+## m:3-m:1  0.84426087 -3.848323 5.5368445 0.9992518
+## f:4-m:1  1.36738373 -3.242432 5.9771992 0.9833767
+## m:4-m:1 -1.14639212 -5.838976 3.5461915 0.9947772
+## m:2-f:2  0.77826310 -3.637451 5.1939772 0.9993459
+## f:3-f:2  1.97493152 -2.514888 6.4647513 0.8707891
+## m:3-f:2  1.89478084 -2.679979 6.4695402 0.9022694
+## f:4-f:2  2.41790370 -2.071916 6.9077234 0.7059934
+## m:4-f:2 -0.09587215 -4.670632 4.4788872 1.0000000
+## f:3-m:2  1.19666842 -3.024547 5.4178836 0.9872271
+## m:3-m:2  1.11651773 -3.194932 5.4279676 0.9925491
+## f:4-m:2  1.63964060 -2.581575 5.8608558 0.9285472
+## m:4-m:2 -0.87413525 -5.185585 3.4373146 0.9983801
+## m:3-f:3 -0.08015068 -4.467468 4.3071663 1.0000000
+## f:4-f:3  0.44297218 -3.855703 4.7416473 0.9999822
+## m:4-f:3 -2.07080367 -6.458121 2.3165133 0.8241941
+## f:4-m:3  0.52312287 -3.864194 4.9104398 0.9999519
+## m:4-m:3 -1.99065298 -6.464856 2.4835499 0.8639872
+## m:4-f:4 -2.51377585 -6.901093 1.8735411 0.6368298</code></pre>
 
 </div>
 </div>

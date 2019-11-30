@@ -1,12 +1,141 @@
 # Covariation
 
-If variation describes the behaviors within a variable, covariation describes the behavior between variables.
+While the variation describes the behaviors within a variable, covariation describes the behavior between variables.
 
 Covariation is the tendency for the values of two or more variables to vary together in a related way.
 
+```{r echo=FALSE, include=FALSE}
+library(tidyverse)
+```
 
+
+## Two categorical variables
+
+### Contingency table
+
+To characterize covaritation of two categorical variable, we can use contingency table to display the frequency.
+
+```{r}
+table(diamonds$cut, diamonds$color)
+
+table(diamonds$cut, diamonds$color, diamonds$clarity)
+
+xtabs(~ cut + color, diamonds)
+
+xtabs(~ cut + color + clarity, diamonds)
+
+ftable(xtabs(~ cut + color + clarity, diamonds))
+
+diamonds %>%
+  group_by(cut, color)%>%
+  count( )%>%
+  group_by(cut)%>%
+  mutate(sum = sum(n))%>%
+  mutate(proportion = n/sum,
+         percentage = (n/sum)*100)
+```
+
+### Tile plot
+
+You can visualize the frequency table with a tile plot.
+
+```{r}
+
+diamonds%>% 
+  count(color, cut)%>%
+  ggplot(aes(color, cut))+
+  geom_tile(aes(fill=n))
+
+ggplot(diamonds)+
+  geom_count(aes(cut, color))
+
+
+#install.packages("seriation")
+
+
+```
 
 ## Categorical + continuous variable
+
+The covariation of a categorical and a continuous variable can be visualized and explored by treating the categorical variable as the group factor. Then we can apply all the methods we learned when dealing with a continuous variable.
+
+### Summary table
+R offers a number of ways we can summarize the mean, sd of a continous variable as a function of one or more grouping variables.
+
+```{r}
+# solution 1
+with(diamonds, tapply(price, cut, mean))
+
+with(diamonds, tapply(price, list(cut, color, clarity), mean))
+
+
+# solution 2
+# install.packages("doBy")
+library(doBy)
+data = as.data.frame(diamonds)
+head(summaryBy(price ~ cut + clarity + color , data = data, FUN = mean))
+
+head(summaryBy(price  + carat ~ cut + clarity + color , data = data, FUN = mean))
+
+head(summaryBy(price  + carat ~ cut +  color , data = data, FUN = c(mean, sd)))
+
+# solution 3
+diamonds%>%
+  group_by(cut, clarity, color)%>%
+  summarise(mean = mean(price),
+            sd = sd(price))
+
+
+```
+
+### Central tendency (mean): Bar plots
+
+```{r}
+#bar plot
+diamonds%>%
+  group_by(cut)%>%
+  summarise(mean = mean(price))%>%
+  ggplot(aes(cut, mean))+
+  geom_bar(stat="identity")
+
+diamonds%>%
+  group_by(cut)%>%
+  summarise(mean = mean(price))%>%
+  ggplot(aes(cut, mean, fill = cut))+
+  geom_bar(stat="identity")
+
+# xlim(4, 10) + ylim(4, 10)
+
+diamonds%>%
+  group_by(cut)%>%
+  summarise(mean = mean(price),
+            sd = sd(price))%>%
+  ggplot(aes(cut, mean))+
+  geom_bar(stat="identity")+
+  geom_errorbar(aes(ymin = mean - sd,
+                    ymax = mean + sd),
+                width = .2, size = 0.7, position = position_dodge(.9))
+
+```
+### Spread: boxplot
+
+```{r}
+# boxplot
+
+ggplot(diamonds, aes(cut, price))+
+  geom_boxplot()
+
+
+
+```
+
+
+### Distribution: density plot 
+
+We can color-code the density plot to represent the group factor. 
+
+
+
 
 ```{r}
 library(tidyverse)
@@ -22,10 +151,7 @@ ggplot(diamonds, aes(price))+
 ggplot(diamonds, aes(x = price, y =  ..density..))+
   geom_freqpoly(aes(color = cut), binwidth = 500)
 
-# boxplot
 
-ggplot(diamonds, aes(cut, price))+
-  geom_boxplot()
 
 
 ```
@@ -63,25 +189,12 @@ ggplot(mpg)+
 
 ```
 
-## Two categorical variables
 
-```{r}
-ggplot(diamonds)+
-  geom_count(aes(cut, color))
-
-diamonds%>% 
-  count(color, cut)
-
-diamonds%>% 
-  count(color, cut)%>%
-  ggplot(aes(color, cut))+
-  geom_tile(aes(fill=n))
-
-#install.packages("seriation")
-
-
-```
 ## Two continuous variables
+
+### Scatter plots
+
+The most common way we visualize two continuous variables is by using a scatter plot.
 
 ```{r}
 ggplot(diamonds)+
@@ -108,13 +221,29 @@ ggplot(diamonds,aes(carat, price))+
 
 
 ```
+### Bin one or both continuous variables
+
+Sometime we can bin one or both continuous variables to convert them into categorical variable(s). In those cases, we apply what we learn in dealing with categorical variables, such as tile plots or boxplots.
+
+```{r}
 
 
+#bin one variable
+ggplot(diamonds,aes(carat, price))+
+  geom_boxplot(aes(group = cut_width(carat, 0.1)))
 
+ggplot(diamonds,aes(carat, price))+
+  geom_boxplot(aes(group = cut_width(carat, 0.5)))
 
+# bin two variables
+ggplot(diamonds)+
+  geom_bin2d(aes(carat, price))
 
+#install.packages("hexbin")
+ggplot(diamonds)+
+  geom_hex(aes(carat, price))
 
-
+```
 
 
 

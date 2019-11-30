@@ -1,6 +1,6 @@
 # From data visualization to statistical modelling
 
-Patterns in the data provide clues about relationship or covariation.Now that we know how to visualize the various relationships, we can proceed to know more about how to formally test the relationship.
+Patterns in the data provide clues about relationship or covariation.Now that we know how to visualize the various relationships, we can proceed to learn more about how to formally test the relationship.
 
 Statistical models are tools for extracting patterns out of data.
 

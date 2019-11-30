@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 5 source:https://www.abs.gov.au/websitedbs/a3121120.nsf/home/statistical+language+-+measures+of+central+tendency | A Introduction to Eploratory Data Analysis with R</title>
+  <meta name="description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 5 source:https://www.abs.gov.au/websitedbs/a3121120.nsf/home/statistical+language+-+measures+of+central+tendency | A Introduction to Eploratory Data Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 source:https://www.abs.gov.au/websitedbs/a3121120.nsf/home/statistical+language+-+measures+of+central+tendency | A Introduction to Eploratory Data Analysis with R" />
+  
+  <meta name="twitter:description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle." />
+  
+
+<meta name="author" content="Juqiang Chen">
+
+
+<meta name="date" content="2019-12-01">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="variation.html">
+<link rel="next" href="covariation.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Exploratory Data Analysis with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>1.1</b> Installing R and R studio</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#install-and-library-packages"><i class="fa fa-check"></i><b>1.2</b> Install and library packages</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#programme"><i class="fa fa-check"></i><b>1.3</b> Programme</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Basic data structures in R</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#types-of-variables-a-taxonomy"><i class="fa fa-check"></i><b>2.1</b> Types of variables: A taxonomy</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#categorical-variables-ordinal-vs.norminal"><i class="fa fa-check"></i><b>2.1.1</b> Categorical variables: ordinal vs. norminal</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#numeric-variables-discrete-or-continuous"><i class="fa fa-check"></i><b>2.1.2</b> Numeric variables: discrete or continuous</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#d-data-structure-vectors"><i class="fa fa-check"></i><b>2.2</b> 1D data structure: vectors</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#creating-vectors"><i class="fa fa-check"></i><b>2.2.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> Creating list objects</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#d-data-structures-matrice-and-data-frames"><i class="fa fa-check"></i><b>2.3</b> 2D data structures: matrice and data frames</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#what-if-i-want-to-change-column-names-or-add-variable-to-the-df"><i class="fa fa-check"></i><b>2.3.1</b> what if I want to change column names or add variable to the df?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Subsetting dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.4</b> summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>3</b> What is EDA?</a><ul>
+<li class="chapter" data-level="3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#definition-from-wikipedia"><i class="fa fa-check"></i><b>3.1</b> Definition (from Wikipedia)</a></li>
+<li class="chapter" data-level="3.2" data-path="what-is-eda.html"><a href="what-is-eda.html#the-objectives-of-eda"><i class="fa fa-check"></i><b>3.2</b> The objectives of EDA</a></li>
+<li class="chapter" data-level="3.3" data-path="what-is-eda.html"><a href="what-is-eda.html#data-analysis-workflow"><i class="fa fa-check"></i><b>3.3</b> Data analysis workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>4</b> Variation</a><ul>
+<li class="chapter" data-level="4.1" data-path="variation.html"><a href="variation.html#categorical-variable"><i class="fa fa-check"></i><b>4.1</b> Categorical variable</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="variation.html"><a href="variation.html#absolute-v.s-relative-frequency"><i class="fa fa-check"></i><b>4.1.1</b> Absolute v.s relative frequency?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="variation.html"><a href="variation.html#frequency-distributions"><i class="fa fa-check"></i><b>4.1.2</b> Frequency distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="variation.html"><a href="variation.html#continous-variable"><i class="fa fa-check"></i><b>4.2</b> Continous variable</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#central-tendency"><i class="fa fa-check"></i><b>4.2.1</b> Central tendency</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.2</b> Measures of Spread</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sourcehttpswww-abs-gov-auwebsitedbsa3121120-nsfhomestatisticallanguage-measuresofcentraltendency.html"><a href="sourcehttpswww-abs-gov-auwebsitedbsa3121120-nsfhomestatisticallanguage-measuresofcentraltendency.html"><i class="fa fa-check"></i><b>5</b> source:<a href="https://www.abs.gov.au/websitedbs/a3121120.nsf/home/statistical+language+-+measures+of+central+tendency" class="uri">https://www.abs.gov.au/websitedbs/a3121120.nsf/home/statistical+language+-+measures+of+central+tendency</a></a><ul>
+<li class="chapter" data-level="5.0.1" data-path="sourcehttpswww-abs-gov-auwebsitedbsa3121120-nsfhomestatisticallanguage-measuresofcentraltendency.html"><a href="sourcehttpswww-abs-gov-auwebsitedbsa3121120-nsfhomestatisticallanguage-measuresofcentraltendency.html#confidence-interval"><i class="fa fa-check"></i><b>5.0.1</b> Confidence interval</a></li>
+<li class="chapter" data-level="5.0.2" data-path="sourcehttpswww-abs-gov-auwebsitedbsa3121120-nsfhomestatisticallanguage-measuresofcentraltendency.html"><a href="sourcehttpswww-abs-gov-auwebsitedbsa3121120-nsfhomestatisticallanguage-measuresofcentraltendency.html#unusual-values"><i class="fa fa-check"></i><b>5.0.2</b> Unusual values</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>6</b> Covariation</a><ul>
+<li class="chapter" data-level="6.1" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>6.1</b> Categorical + continuous variable</a></li>
+<li class="chapter" data-level="6.2" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>6.2</b> Two categorical variables</a></li>
+<li class="chapter" data-level="6.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>6.3</b> Two continuous variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html"><i class="fa fa-check"></i><b>7</b> From data visualization to statistical modelling</a><ul>
+<li class="chapter" data-level="7.1" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#two-continuousnumerical-variables"><i class="fa fa-check"></i><b>7.1</b> Two continuous/numerical variables</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#t-testanova-categorical-independent-variable-continuous-dependent-variable"><i class="fa fa-check"></i><b>7.1.1</b> T-test/ANOVA: categorical (independent variable )+ continuous (dependent variable)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="statistical-modeling-and-model-interpretation.html"><a href="statistical-modeling-and-model-interpretation.html"><i class="fa fa-check"></i><b>8</b> Statistical Modeling and Model Interpretation</a><ul>
+<li class="chapter" data-level="8.1" data-path="statistical-modeling-and-model-interpretation.html"><a href="statistical-modeling-and-model-interpretation.html#parametric-statistical-tests"><i class="fa fa-check"></i><b>8.1</b> Parametric statistical tests</a></li>
+<li class="chapter" data-level="8.2" data-path="statistical-modeling-and-model-interpretation.html"><a href="statistical-modeling-and-model-interpretation.html#formal-tests-for-homogeneity-of-variance"><i class="fa fa-check"></i><b>8.2</b> formal tests for homogeneity of variance</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>9</b> Resources</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Introduction to Eploratory Data Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sourcehttpswww.abs.gov.auwebsitedbsa3121120.nsfhomestatisticallanguage-measuresofcentraltendency" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> source:<a href="https://www.abs.gov.au/websitedbs/a3121120.nsf/home/statistical+language+-+measures+of+central+tendency" class="uri">https://www.abs.gov.au/websitedbs/a3121120.nsf/home/statistical+language+-+measures+of+central+tendency</a></h1>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
+<img src="img/normal.jpg" alt="normal distribution" width="100%" />
+<p class="caption">
+Figure 5.1: normal distribution
+</p>
+</div>
+<div id="skewed-distributions" class="section level4">
+<h4><span class="header-section-number">5.0.0.1</span> Skewed distributions:</h4>
+<p>When a distribution is skewed, the mode remains the most commonly occurring value, the median remains the middle value in the distribution, but the mean is generally ‘pulled’ in the direction of the tails. In a skewed distribution, the median is often a preferred measure of central tendency, as the mean is not usually in the middle of the distribution.</p>
+<p>A distribution is said to be <em>positively or right skewed</em> when the tail on the right side of the distribution is longer than the left side. In a positively skewed distribution it is common for the mean to be ‘pulled’ toward the right tail of the distribution. Although there are exceptions to this rule, generally, most of the values, including the median value, tend to be less than the mean value.</p>
+The following graph shows a larger retirement age data set with a distribution which is right skewed. The data has been grouped into classes, as the variable being measured (retirement age) is continuous. The mode is 54 years, the modal class is 54-56 years, the median is 56 years and the mean is 57.2 years.
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
+<img src="img/right.jpg" alt="right skewed distribution" width="100%" />
+<p class="caption">
+Figure 5.2: right skewed distribution
+</p>
+</div>
+<p>A distribution is said to be negatively or left skewed when the tail on the left side of the distribution is longer than the right side. In a negatively skewed distribution, it is common for the mean to be ‘pulled’ toward the left tail of the distribution. Although there are exceptions to this rule, generally, most of the values, including the median value, tend to be greater than the mean value.</p>
+<p>The following graph shows a larger retirement age dataset with a distribution which left skewed. The mode is 65 years, the modal class is 63-65 years, the median is 63 years and the mean is 61.8 years.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
+<img src="img/left.jpg" alt="left skewed distribution" width="100%" />
+<p class="caption">
+Figure 5.3: left skewed distribution
+</p>
+</div>
+</div>
+<div id="qq-plots" class="section level4">
+<h4><span class="header-section-number">5.0.0.2</span> QQ Plots</h4>
+<p>QQ Plots (Quantile-Quantile plots) are plots of two quantiles against each other. A quantile is a fraction where certain values fall below that quantile. For example, the median is a quantile where 50% of the data fall below that point and 50% lie above it. The purpose of QQ plots is to find out <em>if two sets of data come from the same distribution</em>.</p>
+<p>A 45 degree angle is plotted on the Q Q plot; if the two data sets come from a common distribution, the points will fall on that reference line.(from Wikipedia)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution 1</span>
+<span class="kw">qplot</span>(<span class="dt">sample =</span> carat, <span class="dt">data =</span> diamonds)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># solution 2</span>
+<span class="kw">ggplot</span>(diamonds)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_qq</span>(<span class="kw">aes</span>(<span class="dt">sample =</span> carat))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_qq_line</span>(<span class="kw">aes</span>(<span class="dt">sample =</span> carat))</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
+</div>
+<div id="confidence-interval" class="section level3">
+<h3><span class="header-section-number">5.0.1</span> Confidence interval</h3>
+<p>(Taken from <em>Summary and Analysis of Extension Program Evaluation in R</em> by Salvatore S. Mangiafico)</p>
+<p>A confidence interval is a range in which it is estimated the true population value lies. A confidence interval is used to indicate how accurate a calculated statistic is likely to be. Confidence intervals can be calculated for a variety of statistics, such as the mean, median, or slope of a linear regression.</p>
+<p>Most of the statistics we use assume we are analyzing a sample which we are using to represent a larger population.</p>
+<div id="statistics-and-parameters" class="section level4">
+<h4><span class="header-section-number">5.0.1.1</span> Statistics and parameters</h4>
+<p>When we calculate the sample mean, the result is a statistic. It’s an estimate of the population mean, but our calculated sample mean would vary depending on our sample.</p>
+<p>In theory, there is a mean for the population of interest, and we consider this population mean a parameter. Our goal in calculating the sample mean is estimating the population parameter.</p>
+</div>
+<div id="point-estimates-and-confidence-intervals" class="section level4">
+<h4><span class="header-section-number">5.0.1.2</span> Point estimates and confidence intervals</h4>
+<p>Our sample mean is a point estimate for the population parameter. A point estimate is a useful approximation for the parameter, but considering the confidence interval for the estimate gives us more information.</p>
+<p>As a definition of confidence intervals, if we were to sample the same population many times and calculated a sample mean and a 95% confidence interval each time, then 95% of those intervals would contain the actual population mean.</p>
+<p>if we want to compare the means of two groups to see if they are statistically different, we will use a t-test, or similar test, calculate a p-value, and draw a conclusion. An alternative approach would be to construct 95% or 99% confidence intervals about the mean for each group. If the confidence intervals of the two means don’t overlap, we are justified in calling them statistically different.</p>
+</div>
+<div id="methods" class="section level4">
+<h4><span class="header-section-number">5.0.1.3</span> Methods</h4>
+<ol style="list-style-type: decimal">
+<li><p>The traditional method is appropriate for normally distributed data or with large sample sizes. It produces an interval that is symmetric about the mean.</p></li>
+<li><p>For skewed data, confidence intervals by bootstrapping may be more reliable.For routine use, I recommend using bootstrapped confidence intervals, particularly the BCa or percentile methods.</p></li>
+</ol>
+<p>The <em>groupwiseMean</em> function in the <em>rcompanion</em> package can produce confidence intervals both by traditional and bootstrap methods, for grouped and ungrouped data.</p>
+<div id="the-traditional-method" class="section level5">
+<h5><span class="header-section-number">5.0.1.3.1</span> The traditional method</h5>
+<p>The data must be housed in a data frame. By default, the function reports confidence intervals by the traditional method.</p>
+<p>In the <em>groupwiseMean</em> function, the measurement and grouping variables can be indicated with formula notation, with the measurement variable on the left side of the tilde (~), and grouping variables on the right.</p>
+<p>The confidence level is indicated by, e.g., the conf = 0.95 argument. The digits option indicates the number of significant digits to which the output is rounded. Note that in the output, the means and other statistics are rounded to 3 significant figures.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;rcompanion&quot;)</span>
+<span class="kw">library</span>(rcompanion)
+
+dataset3 =<span class="st"> </span><span class="kw">data.frame</span>(dataset1)
+
+<span class="kw">groupwiseMean</span>(dataset1 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>,
+              <span class="dt">data   =</span> dataset3,
+              <span class="dt">conf   =</span> <span class="fl">0.95</span>,
+              <span class="dt">digits =</span> <span class="dv">3</span>)</code></pre></div>
+<pre><code>##    .id  n Mean Conf.level Trad.lower Trad.upper
+## 1 &lt;NA&gt; 12    6       0.95       5.28       6.72</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">groupwiseMean</span>(data <span class="op">~</span><span class="st"> </span>type,
+              <span class="dt">data   =</span> dataset,
+              <span class="dt">conf   =</span> <span class="fl">0.95</span>,
+              <span class="dt">digits =</span> <span class="dv">3</span>)</code></pre></div>
+<pre><code>##       type  n Mean Conf.level Trad.lower Trad.upper
+## 1 dataset1 12    6       0.95       5.28       6.72
+## 2 dataset2 12    6       0.95       3.99       8.01</code></pre>
+</div>
+<div id="the-bootstrapped-method" class="section level5">
+<h5><span class="header-section-number">5.0.1.3.2</span> The Bootstrapped method</h5>
+<p>In the groupwiseMean function, the type of confidence interval is requested by setting certain options to TRUE. These options are traditional, normal, basic, percentile and bca. The boot option reports an optional statistic, the mean by bootstrap. The R option indicates the number of iterations to calculate each bootstrap statistic.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">groupwiseMean</span>(data <span class="op">~</span><span class="st"> </span>type,
+              <span class="dt">data   =</span> dataset,
+              <span class="dt">conf   =</span> <span class="fl">0.95</span>,
+              <span class="dt">digits =</span> <span class="dv">3</span>,
+              <span class="dt">R      =</span> <span class="dv">10000</span>,
+              <span class="dt">boot        =</span> <span class="ot">TRUE</span>,
+              <span class="dt">traditional =</span> <span class="ot">FALSE</span>,
+              <span class="dt">normal      =</span> <span class="ot">FALSE</span>,
+              <span class="dt">basic       =</span> <span class="ot">FALSE</span>,
+              <span class="dt">percentile  =</span> <span class="ot">FALSE</span>,
+              <span class="dt">bca         =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>##       type  n Mean Boot.mean Conf.level Bca.lower Bca.upper
+## 1 dataset1 12    6      6.00       0.95      5.33      6.50
+## 2 dataset2 12    6      5.99       0.95      4.25      7.59</code></pre>
+</div>
+</div>
+</div>
+<div id="unusual-values" class="section level3">
+<h3><span class="header-section-number">5.0.2</span> Unusual values</h3>
+<p>For unusual values in the dataset, you can do two things:</p>
+<ul>
+<li><p>drop the entire row with the strange values</p></li>
+<li><p>replace the unusual values with missing values</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">unusual =<span class="st"> </span>diamonds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(y <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span>y <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">arrange</span>(y)
+
+unusual</code></pre></div>
+<pre><code>## # A tibble: 9 x 10
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  1    Very Good H     VS2      63.3    53  5139  0      0    0   
+## 2  1.14 Fair      G     VS1      57.5    67  6381  0      0    0   
+## 3  1.56 Ideal     G     VS2      62.2    54 12800  0      0    0   
+## 4  1.2  Premium   D     VVS1     62.1    59 15686  0      0    0   
+## 5  2.25 Premium   H     SI2      62.8    59 18034  0      0    0   
+## 6  0.71 Good      F     SI2      64.1    60  2130  0      0    0   
+## 7  0.71 Good      F     SI2      64.1    60  2130  0      0    0   
+## 8  0.51 Ideal     E     VS1      61.8    55  2075  5.15  31.8  5.12
+## 9  2    Premium   H     SI2      58.9    57 12210  8.09  58.9  8.06</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># drop the entire row with the strange values</span>
+diamonds_new =<span class="st"> </span>diamonds<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="kw">between</span>(y,<span class="dv">3</span>,<span class="dv">20</span>))
+
+<span class="kw">head</span>(<span class="kw">arrange</span>(diamonds_new,y))</code></pre></div>
+<pre><code>## # A tibble: 6 x 10
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1   0.2 Premium   D     VS2      62.3    60   367  3.73  3.68  2.31
+## 2   0.2 Premium   F     VS2      62.6    59   367  3.73  3.71  2.33
+## 3   0.2 Very Good E     VS2      63.4    59   367  3.74  3.71  2.36
+## 4   0.2 Premium   D     VS2      61.7    60   367  3.77  3.72  2.31
+## 5   0.2 Ideal     E     VS2      62.2    57   367  3.76  3.73  2.33
+## 6   0.2 Premium   E     SI2      60.2    62   345  3.79  3.75  2.27</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># replace the unusual values with missing values</span>
+diamonds_replace =<span class="st"> </span>diamonds <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">y2 =</span> <span class="kw">ifelse</span>(y<span class="op">&lt;</span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span>y<span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>, <span class="ot">NA</span>, y))
+
+<span class="kw">head</span>(<span class="kw">arrange</span>(diamonds_replace, y ))</code></pre></div>
+<pre><code>## # A tibble: 6 x 11
+##   carat cut       color clarity depth table price     x     y     z    y2
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  1    Very Good H     VS2      63.3    53  5139     0     0     0    NA
+## 2  1.14 Fair      G     VS1      57.5    67  6381     0     0     0    NA
+## 3  1.56 Ideal     G     VS2      62.2    54 12800     0     0     0    NA
+## 4  1.2  Premium   D     VVS1     62.1    59 15686     0     0     0    NA
+## 5  2.25 Premium   H     SI2      62.8    59 18034     0     0     0    NA
+## 6  0.71 Good      F     SI2      64.1    60  2130     0     0     0    NA</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="variation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="covariation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-Variation.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

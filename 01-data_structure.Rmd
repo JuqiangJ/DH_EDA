@@ -1,41 +1,43 @@
 
 # Basic data structures in R {#intro}
 
-Before we get our hands dirty in doing actual data analysis, it is desirable to first think about what types of variables and data structures we are dealing with. 
+Before we jump into actual data analysis, it is desirable to first think about what are common variable types and how they are stored in R.  
 
 A *variable* is any characteristics, number, or quantity that can be measured or counted. A variable may also be called a *data item*. Age, sex, business income and expenses, country of birth, capital expenditure, class grades, eye colour and vehicle type are examples of variables. It is called a variable because the value may vary between data units in a population, and may change in value over time.(Australian Bureau of Statistics, ABS)
 
-Before we talk about data structures in R, let's first think about how data can be categorized. 
 
-## Categorical vs. numeric variables
+## Types of variables: A taxonomy
 
-Categorical variables have values that describe a 'quality' or 'characteristic' of a data unit, like 'what type' or 'which category'. Categorical variables fall into mutually exclusive (in one category or in another) and exhaustive (include all possible options) categories. Therefore, categorical variables are *qualitative variables* and tend to be represented by a non-numeric value.
+### Categorical variables: ordinal vs. norminal
 
-Categorical variables may be further described as ordinal or nominal:
+Categorical variables have values that describe a 'quality' or 'type' or 'category'.Therefore, categorical variables are *qualitative variables* and tend to be represented by a non-numeric value. Categorical variables should be exclusive (in one category or in another) and exhaustive (include all possible options). 
 
-An *ordinal variable* is a categorical variable. Observations can take a value that can be logically ordered or ranked. The categories associated with ordinal variables can be ranked higher or lower than another, but do not necessarily establish a numeric difference between each category.In other words, the interval between levels of the variables are unknown. Examples of ordinal categorical variables include academic grades (i.e. A, B, C), clothing size (i.e. small, medium, large, extra large) and attitudes (i.e. strongly agree, agree, disagree, strongly disagree).
+Categorical variables may be further divided as being ordinal or nominal:
+
+An *ordinal variable* can be logically ordered or ranked. The categories associated with ordinal variables can be ranked higher or lower than another, but do not necessarily establish a numeric difference between each category.In other words, the interval between levels of the variables are unknown. Examples of ordinal categorical variables include academic grades (i.e. A, B, C), clothing size (i.e. small, medium, large, extra large) and attitudes (i.e. strongly agree, agree, disagree, strongly disagree).
 
 > For example, when doing a survey, participants will be asked to rate. The subjective measurements of this kind are often ordinal variables. E.g. a Likert ranking scale; level of education (“< high school”, “high school”, “associate’s degree”). 
 
-We can assign numbers to levels of an ordinal variable, and can order them, but we should bear in mind that these variable are not numeric. For example, “strongly agree” and “neutral” cannot average out to an “agree.”, even though you can assign 5 to "strong agree" and 3 to "neutral".
+We can assign numbers to different levels of an ordinal variable, but we should bear in mind that these variable are not numeric. For example, “strongly agree” and “neutral” cannot average out to an “agree”, even though you may assign 5 to "strong agree" and 3 to "neutral".
 
-A *nominal variable* is a categorical variable. Observations can take a value that is not able to be organised in a logical sequence. Examples of nominal categorical variables include sex, business type, eye colour, religion and brand.
+A *nominal variable* is not able to be organised in a logical sequence. Examples of nominal categorical variables include sex, business type, eye colour, religion and brand.
 
 The data collected for a categorical variable are *qualitative data*.
 
+### Numeric variables: discrete or continuous
 
-*Numeric variables* have values that describe a measurable quantity as a number, like 'how many' or 'how much'. Therefore numeric variables are *quantitative variables*.(ABS) It is also called **Interval/ratio variables** and the interval between numbers is equal:  the interval between 1 kg and 2 kg is the same as between 3 kg and 4 kg.
+*Numeric variables* have values that describe a measurable quantity as a number, like 'how many' or 'how much'. Therefore, numeric variables are *quantitative variables*.(ABS) It is also called **Interval/ratio variables** and the interval between numbers is equal:  the interval between 1 kg and 2 kg is the same as between 3 kg and 4 kg.
 
-Numeric variables may be further described as either continuous or discrete:
+Numeric variables may be further divided as being either continuous or discrete:
 
-A *continuous variable *is a numeric variable. Observations can take any value between a certain set of real numbers. The value given to an observation for a continuous variable can include values as small as the instrument of measurement allows. Examples of continuous variables include height, time, age, and temperature.(ABS)
+A *discrete variable* consists of counts from a set of distinct whole values. A discrete variable cannot take the value of a fraction between one value and the next closest value. Examples of discrete variables include the number of registered cars, number of business locations, and number of children in a family, all of of which measured as whole units (i.e. 1, 2, 3 cars).(ABS)
 
-A *discrete variable* is a numeric variable. Observations can take a value based on a count from a set of distinct whole values. A discrete variable cannot take the value of a fraction between one value and the next closest value. Examples of discrete variables include the number of registered cars, number of business locations, and number of children in a family, all of of which measured as whole units (i.e. 1, 2, 3 cars).(ABS)
+A *continuous variable * can take any value between a certain set of real numbers. The value given to an observation for a continuous variable can include values as small as the instrument of measurement allows. Examples of continuous variables include height, time, age, and temperature.(ABS)
 
 The data collected for a numeric variable are *quantitative data*.
 
 The variable type will determine (1) statistical analysis; (2) the way we summarize data with statistics and plots. 
-```{r variable_type, fig.cap='Download R', out.width='100%', fig.asp=.75, fig.align='center'}
+```{r variable_type, fig.cap='Taxonomy of variables', out.width='100%', fig.asp=.75, fig.align='center', echo=FALSE}
 
 knitr::include_graphics("img/variable.jpg")
 
@@ -47,7 +49,7 @@ Variables can be stored in R in different data types.
 
 - Interval data are stored as numbers either as *integer* or *numeric* (real or decimal). 
 
-If you have only one variable, you can store it in a vector. However, more often than not, you have a bunch of variables that should be stored or imported as a matrix or data frame.
+If you have only one variable, you can store it in a vector. However, more often than not, you have a bunch of variables that need to be stored or imported as a matrix or data frame.
 
 ## 1D data structure: vectors
 
@@ -118,7 +120,7 @@ round(sd(a), 2)
 
 ```
 
-### creating list objects
+### Creating list objects
 
 We can put vectors of different types (e.g., number, logic or character) and lengths in a list object.
 
@@ -139,7 +141,7 @@ Most of us have had some experience with the Excel spreadsheet. Data in a spread
 
 **A matrix **is a collection of data elements arranged in a two-dimensional rectangular layout in which all the elements must be of the same type (e.g., numeric or character). 
 
-**Dataframe** is similar to matrix in shape but only differs in that different types of data can co-exist in different columns. Thus, in data analysis, we use dataframes more often than matrix.
+**Dataframe** is similar to matrix in shape but only differs in that different types of data (e.g. numeric, factor, character) can co-exist in different columns. Thus, in data analysis, we use dataframes more often than matrix.
 
 
 
@@ -219,7 +221,7 @@ df2[c(1,2,3), ] #select the first three rows
 df2[seq(1, 40, 2), ] #select every other rows from 1 to 40 rows 
 
 ```
-## summary
+## Summary
 
 | Dimensions | Homogenous | Heterogeneous |
 |-----------:|:----------:|:--------------|
