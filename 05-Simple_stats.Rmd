@@ -54,8 +54,10 @@ ggplot(faithful)+
 
 The tests associated with linear regression are parametric and assume normality, homoscedasticity, and independence of residuals, as well as a linear relationship between the two variables.
 
-```{r echo=FALSE}
-library(psych)
+### Correlation matrix
+
+```{r }
+
 pairs(data=faithful,
     ~ eruptions + waiting)
 
@@ -67,6 +69,14 @@ corr.test(faithful,
           method = "pearson",
           adjust = "none")
 
+
+
+
+```
+
+### Pearson, Spearman, and Kendall regression
+
+```{r}
 # library(PerformanceAnalytics)
 chart.Correlation(faithful,
                    method="pearson",
@@ -82,10 +92,8 @@ chart.Correlation(faithful,
                    method="spearman",
                    histogram=TRUE,
                    pch=16)
-
-
 ```
-### Pearson, Spearman, and Kendall regression
+
 
 #### Effect size
 
@@ -145,7 +153,7 @@ cor.test( ~ eruptions + waiting,
          method = "spearman")
 
 ```
-#### Linear regression
+### Linear regression
 
 Linear regression is a very common approach to model the relationship between two interval/ratio variables. The outcome of linear regression includes estimating the *intercept* and the *slope* of the linear model.  
 
@@ -210,7 +218,8 @@ x = residuals(model)
 plotNormalHistogram(x)
 ```
 
-### Categorical (independent variable ) + continuous (dependent variable)
+## Categorical(independent) with continuous(dependent)
+
 ```{r echo=FALSE}
 # simulating the data
 id = seq(from = 1, to = 100)
@@ -226,10 +235,10 @@ df$class = as.factor(df$class)
 ```
 
 
-#### T-tests
+### T-tests
 T-tests are commonly used to compare the means of two samples or between one sample and a fixed value. In other words, the independent variable should be categorical and have two levels.
 
-##### Requirements:
+#### Requirements:
 1. Observations between groups are independent.That is, not paired or repeated measures data
 
 2. Data for each population are normally distributed.Moderate skewness is permissible if the data distribution is unimodal without outliers.
@@ -255,7 +264,7 @@ var.test(class1,class2)#compare variance
 ```
 
 
-##### One-sample t-test
+#### One-sample t-test
 ```{r}
 #one sample t-test: one group and a fixed value
 
@@ -268,28 +277,28 @@ wilcox.test(df$chinese, mu = 78)# skewed distributions
 ```
 
 
-##### Independent sample t-test
+#### Independent sample t-test
 ```{r}
 t.test(class1,class2)
 
 ```
 
 
-##### Paired sample t-test
+#### Paired sample t-test
 ```{r}
 t.test(df$chinese, df$math, paired = T)
 ```
 
 
 
-##### wilcox.test
+#### wilcox.test
 
 ```{r}
 wilcox.test(class1,class2)#not normally distributed
 
 wilcox.test(df$chinese, df$math, paired = T)
 ```
-#### ANOVA
+### ANOVA
 
 When the independent variable has more than two levels, we need to use ANOVA.
 
@@ -326,6 +335,8 @@ In the general linear model approach, residuals are normally distributed;groups 
 Observations among groups are independent. That is, not paired or repeated measures data
 
 Moderate deviation from normally-distributed residuals is permissible
+
+
 ```{r}
 #two-way ANOVA
 m1 <- aov(chinese ~ sex + class, data = df)
@@ -342,7 +353,9 @@ TukeyHSD(m2)
 
 ```
 
-#### Chisquare t-test
+## Two categorical variables 
+
+### Chisquare t-test
 
 When our data involves two categorical variables, and we want to know if these two variables are related or independent to each other, we can use the chisquare test.
 

@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 8 Resources | A Introduction to Eploratory Data Analysis with R</title>
+  <title>Chapter 8 Resources for EDA | A Introduction to Eploratory Data Analysis with R</title>
   <meta name="description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 8 Resources | A Introduction to Eploratory Data Analysis with R" />
+  <meta property="og:title" content="Chapter 8 Resources for EDA | A Introduction to Eploratory Data Analysis with R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Resources | A Introduction to Eploratory Data Analysis with R" />
+  <meta name="twitter:title" content="Chapter 8 Resources for EDA | A Introduction to Eploratory Data Analysis with R" />
   
   <meta name="twitter:description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle." />
   
@@ -50,6 +50,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -100,9 +137,8 @@
 <li class="chapter" data-level="4.2" data-path="variation.html"><a href="variation.html#continous-variable"><i class="fa fa-check"></i><b>4.2</b> Continous variable</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#central-tendency"><i class="fa fa-check"></i><b>4.2.1</b> Central tendency</a></li>
 <li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.2</b> Measures of Spread</a></li>
-<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#distributions"><i class="fa fa-check"></i><b>4.2.3</b> Distributions</a></li>
-<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#confidence-interval"><i class="fa fa-check"></i><b>4.2.4</b> Confidence interval</a></li>
-<li class="chapter" data-level="4.2.5" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.5</b> Unusual values</a></li>
+<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#confidence-interval"><i class="fa fa-check"></i><b>4.2.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.4</b> Unusual values</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
@@ -113,12 +149,10 @@
 <li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>5.2</b> Categorical + continuous variable</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="covariation.html"><a href="covariation.html#summary-table"><i class="fa fa-check"></i><b>5.2.1</b> Summary table</a></li>
 <li class="chapter" data-level="5.2.2" data-path="covariation.html"><a href="covariation.html#central-tendency-mean-bar-plots"><i class="fa fa-check"></i><b>5.2.2</b> Central tendency (mean): Bar plots</a></li>
-<li class="chapter" data-level="5.2.3" data-path="covariation.html"><a href="covariation.html#spread-boxplot"><i class="fa fa-check"></i><b>5.2.3</b> Spread: boxplot</a></li>
-<li class="chapter" data-level="5.2.4" data-path="covariation.html"><a href="covariation.html#distribution-density-plot"><i class="fa fa-check"></i><b>5.2.4</b> Distribution: density plot</a></li>
+<li class="chapter" data-level="5.2.3" data-path="covariation.html"><a href="covariation.html#distribution-density-plot"><i class="fa fa-check"></i><b>5.2.3</b> Distribution: density plot</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="covariation.html"><a href="covariation.html#scatter-plots"><i class="fa fa-check"></i><b>5.3.1</b> Scatter plots</a></li>
-<li class="chapter" data-level="5.3.2" data-path="covariation.html"><a href="covariation.html#bin-one-or-both-continuous-variables"><i class="fa fa-check"></i><b>5.3.2</b> Bin one or both continuous variables</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html"><i class="fa fa-check"></i><b>6</b> From data visualization to statistical modelling</a><ul>
@@ -155,7 +189,7 @@
 <li class="chapter" data-level="7.3.5" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#formal-tests-for-homogeneity-of-variance"><i class="fa fa-check"></i><b>7.3.5</b> formal tests for homogeneity of variance</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>8</b> Resources</a></li>
+<li class="chapter" data-level="8" data-path="resources-for-eda.html"><a href="resources-for-eda.html"><i class="fa fa-check"></i><b>8</b> Resources for EDA</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -176,12 +210,16 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="resources" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> Resources</h1>
+<div id="resources-for-eda" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Resources for EDA</h1>
 <ul>
 <li>Choose the best graph for data presentation</li>
 </ul>
 <p><a href="http://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/DataPresentation/DataPresentation7.html#headingtaglink_6" class="uri">http://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/DataPresentation/DataPresentation7.html#headingtaglink_6</a></p>
+<ul>
+<li>Summary and Analysis of Extension Program Evaluation in R. Very comprehensive and a good companion book for stats modeling with R. (Many definitions and examples of the present tutorial are taken from this handbook.)</li>
+</ul>
+<p><a href="https://rcompanion.org/handbook/index.html" class="uri">https://rcompanion.org/handbook/index.html</a></p>
 
 </div>
             </section>

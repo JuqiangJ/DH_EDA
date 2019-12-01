@@ -6,10 +6,15 @@ if(!require(psych)){install.packages("psych")}
 if(!require(rcompanion)){install.packages("rcompanion")}
 if(!require(car)){install.packages("car")}
 if(!require(lawstat)){install.packages("lawstat")}
+if(!require(nortest)){install.packages("nortest")}
+if(!require(fBasics)){install.packages("fBasics")}
+library(fBasics)
+library(nortest)
 library(psych)
 library(rcompanion)
 library(car)
 library(lawstat)
+library(tidyverse)
 ```
 
 
@@ -72,7 +77,7 @@ There are a variety of formal tests for detecting outliers, but they will not be
 
 ## Assessing model assumptions
 
-### normality of residuals
+### Normality of residuals
 There are formal tests to assess the normality of residuals.  
 
 Common tests include 
@@ -92,13 +97,12 @@ In each case, the null hypothesis is that the data distribution is not different
 
 
 ```{r}
-library(tidyverse)
-# head(diamonds)
 
+# head(diamonds)
 # summary(diamonds)
 
 test_data = diamonds%>%
-  filter(cut %in% c("Fair", "Ideal" ),
+  dplyr::filter(cut %in% c("Fair", "Ideal" ),
          carat == 0.7,
          color %in% c("G", "F" ),
          clarity %in% c("SI1", "VS2" ))
@@ -126,11 +130,7 @@ shapiro.test(x)
 
 
 # Anderson-Darling normality test
- 
-
-if(!require(nortest)){install.packages("nortest")}
-
-library(nortest)
+# library(nortest)
 
 x = residuals(model)
 
@@ -138,8 +138,6 @@ ad.test(x)
 
 
 # One-sample Kolmogorov-Smirnov test
- 
-
 x = residuals(model)
 
 ks.test(x,
@@ -148,11 +146,8 @@ ks.test(x,
         sd   = sd(x))
 
 # D'Agostino Normality Test
- 
 
-if(!require(fBasics)){install.packages("fBasics")}
-
-library(fBasics)
+# library(fBasics)
 
 x = residuals(model)
 
