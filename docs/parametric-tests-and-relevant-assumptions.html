@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 7 Parametric tests and relevant assumptions | A Introduction to Eploratory Data Analysis with R</title>
+  <meta name="description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 7 Parametric tests and relevant assumptions | A Introduction to Eploratory Data Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Parametric tests and relevant assumptions | A Introduction to Eploratory Data Analysis with R" />
+  
+  <meta name="twitter:description" content="This is an introduction to Eploratory Data Analysis with R tutorial for DH summer school 2019 at Newcastle." />
+  
+
+<meta name="author" content="Juqiang Chen">
+
+
+<meta name="date" content="2019-12-01">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="from-data-visualization-to-statistical-modelling.html">
+<link rel="next" href="resources.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Exploratory Data Analysis with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>1.1</b> Installing R and R studio</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#install-packages-and-library-packages"><i class="fa fa-check"></i><b>1.2</b> Install packages and library packages</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#data-and-workbook"><i class="fa fa-check"></i><b>1.3</b> Data and workbook</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Basic data structures in R</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#types-of-variables-a-taxonomy"><i class="fa fa-check"></i><b>2.1</b> Types of variables: A taxonomy</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#categorical-variables-ordinal-vs.norminal"><i class="fa fa-check"></i><b>2.1.1</b> Categorical variables: ordinal vs. norminal</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#numeric-variables-discrete-or-continuous"><i class="fa fa-check"></i><b>2.1.2</b> Numeric variables: discrete or continuous</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#d-data-structure-vectors"><i class="fa fa-check"></i><b>2.2</b> 1D data structure: vectors</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#creating-vectors"><i class="fa fa-check"></i><b>2.2.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#creating-list-objects"><i class="fa fa-check"></i><b>2.2.2</b> Creating list objects</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#d-data-structures-matrice-and-data-frames"><i class="fa fa-check"></i><b>2.3</b> 2D data structures: matrice and data frames</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#what-if-i-want-to-change-column-names-or-add-variable-to-the-df"><i class="fa fa-check"></i><b>2.3.1</b> what if I want to change column names or add variable to the df?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.3.2</b> Subsetting dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#summary"><i class="fa fa-check"></i><b>2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>3</b> What is EDA?</a><ul>
+<li class="chapter" data-level="3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#definition-from-wikipedia"><i class="fa fa-check"></i><b>3.1</b> Definition (from Wikipedia)</a></li>
+<li class="chapter" data-level="3.2" data-path="what-is-eda.html"><a href="what-is-eda.html#the-objectives-of-eda"><i class="fa fa-check"></i><b>3.2</b> The objectives of EDA</a></li>
+<li class="chapter" data-level="3.3" data-path="what-is-eda.html"><a href="what-is-eda.html#data-analysis-workflow"><i class="fa fa-check"></i><b>3.3</b> Data analysis workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>4</b> Variation</a><ul>
+<li class="chapter" data-level="4.1" data-path="variation.html"><a href="variation.html#categorical-variable"><i class="fa fa-check"></i><b>4.1</b> Categorical variable</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="variation.html"><a href="variation.html#absolute-v.s-relative-frequency"><i class="fa fa-check"></i><b>4.1.1</b> Absolute v.s relative frequency?</a></li>
+<li class="chapter" data-level="4.1.2" data-path="variation.html"><a href="variation.html#frequency-distributions"><i class="fa fa-check"></i><b>4.1.2</b> Frequency distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="variation.html"><a href="variation.html#continous-variable"><i class="fa fa-check"></i><b>4.2</b> Continous variable</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="variation.html"><a href="variation.html#central-tendency"><i class="fa fa-check"></i><b>4.2.1</b> Central tendency</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variation.html"><a href="variation.html#measures-of-spread"><i class="fa fa-check"></i><b>4.2.2</b> Measures of Spread</a></li>
+<li class="chapter" data-level="4.2.3" data-path="variation.html"><a href="variation.html#confidence-interval"><i class="fa fa-check"></i><b>4.2.3</b> Confidence interval</a></li>
+<li class="chapter" data-level="4.2.4" data-path="variation.html"><a href="variation.html#unusual-values"><i class="fa fa-check"></i><b>4.2.4</b> Unusual values</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>5</b> Covariation</a><ul>
+<li class="chapter" data-level="5.1" data-path="covariation.html"><a href="covariation.html#two-categorical-variables"><i class="fa fa-check"></i><b>5.1</b> Two categorical variables</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="covariation.html"><a href="covariation.html#contingency-table"><i class="fa fa-check"></i><b>5.1.1</b> Contingency table</a></li>
+<li class="chapter" data-level="5.1.2" data-path="covariation.html"><a href="covariation.html#tile-plot"><i class="fa fa-check"></i><b>5.1.2</b> Tile plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="covariation.html"><a href="covariation.html#categorical-continuous-variable"><i class="fa fa-check"></i><b>5.2</b> Categorical + continuous variable</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="covariation.html"><a href="covariation.html#summary-table"><i class="fa fa-check"></i><b>5.2.1</b> Summary table</a></li>
+<li class="chapter" data-level="5.2.2" data-path="covariation.html"><a href="covariation.html#central-tendency-mean-bar-plots"><i class="fa fa-check"></i><b>5.2.2</b> Central tendency (mean): Bar plots</a></li>
+<li class="chapter" data-level="5.2.3" data-path="covariation.html"><a href="covariation.html#distribution-density-plot"><i class="fa fa-check"></i><b>5.2.3</b> Distribution: density plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="covariation.html"><a href="covariation.html#two-continuous-variables"><i class="fa fa-check"></i><b>5.3</b> Two continuous variables</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="covariation.html"><a href="covariation.html#scatter-plots"><i class="fa fa-check"></i><b>5.3.1</b> Scatter plots</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html"><i class="fa fa-check"></i><b>6</b> From data visualization to statistical modelling</a><ul>
+<li class="chapter" data-level="6.1" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#two-continuous-variables-1"><i class="fa fa-check"></i><b>6.1</b> Two continuous variables</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#simple-linear-regression"><i class="fa fa-check"></i><b>6.1.1</b> Simple linear regression</a></li>
+<li class="chapter" data-level="6.1.2" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#correlation-vs.linear-regression"><i class="fa fa-check"></i><b>6.1.2</b> correlation vs. linear regression</a></li>
+<li class="chapter" data-level="6.1.3" data-path="from-data-visualization-to-statistical-modelling.html"><a href="from-data-visualization-to-statistical-modelling.html#categorical-independent-variable-continuous-dependent-variable"><i class="fa fa-check"></i><b>6.1.3</b> Categorical (independent variable ) + continuous (dependent variable)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html"><i class="fa fa-check"></i><b>7</b> Parametric tests and relevant assumptions</a><ul>
+<li class="chapter" data-level="7.1" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#parametric-statistical-tests"><i class="fa fa-check"></i><b>7.1</b> Parametric statistical tests</a></li>
+<li class="chapter" data-level="7.2" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#assumptions"><i class="fa fa-check"></i><b>7.2</b> Assumptions</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#random-sampling"><i class="fa fa-check"></i><b>7.2.1</b> Random sampling</a></li>
+<li class="chapter" data-level="7.2.2" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#independent-observations"><i class="fa fa-check"></i><b>7.2.2</b> Independent observations</a></li>
+<li class="chapter" data-level="7.2.3" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#normal-distribution-of-data-or-residuals"><i class="fa fa-check"></i><b>7.2.3</b> Normal distribution of data or residuals</a></li>
+<li class="chapter" data-level="7.2.4" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#homogeneity-of-variance"><i class="fa fa-check"></i><b>7.2.4</b> Homogeneity of variance</a></li>
+<li class="chapter" data-level="7.2.5" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#additivity-of-treatment-effects"><i class="fa fa-check"></i><b>7.2.5</b> Additivity of treatment effects</a></li>
+<li class="chapter" data-level="7.2.6" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#outliers"><i class="fa fa-check"></i><b>7.2.6</b> Outliers</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#assessing-model-assumptions"><i class="fa fa-check"></i><b>7.3</b> Assessing model assumptions</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#normality-of-residuals"><i class="fa fa-check"></i><b>7.3.1</b> normality of residuals</a></li>
+<li class="chapter" data-level="7.3.2" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#skew-and-kurtosis"><i class="fa fa-check"></i><b>7.3.2</b> Skew and kurtosis</a></li>
+<li class="chapter" data-level="7.3.3" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#visual-inspection-to-assess-the-normality-of-residuals"><i class="fa fa-check"></i><b>7.3.3</b> Visual inspection to assess the normality of residuals</a></li>
+<li class="chapter" data-level="7.3.4" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#visual-inspection-for-homogeneity-of-variance"><i class="fa fa-check"></i><b>7.3.4</b> Visual inspection for homogeneity of variance</a></li>
+<li class="chapter" data-level="7.3.5" data-path="parametric-tests-and-relevant-assumptions.html"><a href="parametric-tests-and-relevant-assumptions.html#formal-tests-for-homogeneity-of-variance"><i class="fa fa-check"></i><b>7.3.5</b> formal tests for homogeneity of variance</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>8</b> Resources</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Introduction to Eploratory Data Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="parametric-tests-and-relevant-assumptions" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Parametric tests and relevant assumptions</h1>
+<p>This section further illustrates assumptions of parametric tests and the methods to assess them.</p>
+<div id="parametric-statistical-tests" class="section level2">
+<h2><span class="header-section-number">7.1</span> Parametric statistical tests</h2>
+<p>T-test, analysis of variance, and linear regression are all parametric statistical tests. They are used when the dependent variable is an <em>interval/ratio data variable</em>, such as length, height, weight.</p>
+<p>Advantages:</p>
+<ul>
+<li><p>your audience will likely be familiar with the techniques and interpretation of the results.</p></li>
+<li><p>These tests are also often more flexible and more powerful than their nonparametric analogues.</p></li>
+</ul>
+<p>Drawback:</p>
+<ul>
+<li><p>all parametric tests assume something about the distribution of the underlying data. If these assumptions are violated, the resultant test statistics will not be valid, and the tests will not be as powerful as for cases when assumptions are met.</p></li>
+<li><p>Count/categorical data may not be appropriate for common parametric tests.</p></li>
+</ul>
+</div>
+<div id="assumptions" class="section level2">
+<h2><span class="header-section-number">7.2</span> Assumptions</h2>
+<div id="random-sampling" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Random sampling</h3>
+<p>The data captured in the sample are randomly chosen from the population as a whole. Selection bias will obviously affect the validity of the outcome of the analysis.</p>
+</div>
+<div id="independent-observations" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Independent observations</h3>
+<p>Tests will also assume that observations are independent of one another, except when the analysis takes non-independence into account.</p>
+<p>For example, in repeated measures experiments, the same subject is observed over time. Students with a high test score on one date to have a high test score on subsequent dates. In this case the observation on one date would not be independent of observations on other dates.The independence of observation is often assumed from good experimental design. Also, data or residuals can be plotted, for example to see if observations from one date are correlated to those for another date.</p>
+</div>
+<div id="normal-distribution-of-data-or-residuals" class="section level3">
+<h3><span class="header-section-number">7.2.3</span> Normal distribution of data or residuals</h3>
+<p>Parametric tests assume that the data come from a population of known distribution, such as normal distribution. That is, the data are normally distributed once the effects of the variables in the model are taken into account.</p>
+<p>Practically speaking, this means that the residuals from the analysis should be normally distributed. This will usually be assessed with a histogram of residuals, a density plot, or with quantile–quantile plot.</p>
+<p>A select number of tests (limited to one-sample t-test, two-sample t-test, and paired t-test) will require that data itself be normally distributed.For other tests, the distribution of the residuals will be investigated.</p>
+<p>Residuals, also commonly called errors, are the difference between the observations and the value predicted by the model. For example, if the calculated mean of a sample is 10, and one observation is 12, the residual for this observation is 2. Be careful not to get confused about this assumption. You may see discussion about how “data” should be normally distributed for parametric tests. This is usually wrong-headed. The t-test assumes that the observations for each group are normally distributed, but if there is a difference in the groups, we might expect a bi-modal distribution, not a simple normal distribution, for the combined data. This is why in most cases we look at the distribution of the residuals, not the raw data.</p>
+</div>
+<div id="homogeneity-of-variance" class="section level3">
+<h3><span class="header-section-number">7.2.4</span> Homogeneity of variance</h3>
+<p>Parametric analyses will also assume a homogeneity of variance among groups. That is, for Student’s t-test comparing two groups, each group should have the same variance.Homogeneity of variance is also called homoscedasticity.</p>
+</div>
+<div id="additivity-of-treatment-effects" class="section level3">
+<h3><span class="header-section-number">7.2.5</span> Additivity of treatment effects</h3>
+<p>Models for two-way analysis of variance and similar analyses are constructed as linear models in which the dependent variable is predicted as a linear combination of the independent variables.</p>
+<p>A violation of this assumption is sometimes indicated when a plot of residuals versus predicted values exhibits a curved pattern.</p>
+</div>
+<div id="outliers" class="section level3">
+<h3><span class="header-section-number">7.2.6</span> Outliers</h3>
+<p>Outliers are observations whose value is far outside what is expected. They can play havoc with parametric analyses since they affect the distribution of the data and strongly influence the mean.</p>
+<p>There are a variety of formal tests for detecting outliers, but they will not be discussed here. The best approach is one that looks at residuals after an analysis. Good tools are the “Residuals vs. leverage” plot and other plots in the “Other diagnostic plots” section below.</p>
+<blockquote>
+<p>Some parametric tests are somewhat robust to violations of certain assumptions. For example, the t-test is reasonably robust to violations of normality for symmetric distributions, but not to samples having unequal variances (unless Welch’s t-test is used). A one-way analysis of variance is likewise reasonably robust to violations in normality.</p>
+</blockquote>
+<blockquote>
+<p>…model assumptions should always be checked, but you may be able to tolerate small violations in the distribution of residuals or homoscedasticity. Large violations will make the test invalid, though. It is important to be honest with your assessments when checking model assumptions. It is better to transform data, change your model, use a robust method, or use a nonparametric test than to not have confidence in your analysis.</p>
+</blockquote>
+</div>
+</div>
+<div id="assessing-model-assumptions" class="section level2">
+<h2><span class="header-section-number">7.3</span> Assessing model assumptions</h2>
+<div id="normality-of-residuals" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> normality of residuals</h3>
+<p>There are formal tests to assess the normality of residuals.</p>
+<p>Common tests include</p>
+<ul>
+<li><p>Shapiro-Wilk</p></li>
+<li><p>Anderson–Darling</p></li>
+<li><p>Kolmogorov–Smirnov</p></li>
+<li><p>D’Agostino–Pearson</p></li>
+</ul>
+<p>However, their results are dependent on sample size. When the sample size is large, the tests may indicate a statistically significant departure from normality, even if that departure is small. And when sample sizes are small, they won’t detect departures from normality.</p>
+<p>In each case, the null hypothesis is that the data distribution is not different from normal. That is, a significant p-value (p &lt; 0.05) suggests that data are not normally distributed.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="co"># head(diamonds)</span>
+
+<span class="co"># summary(diamonds)</span>
+
+test_data =<span class="st"> </span>diamonds<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(cut <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Fair&quot;</span>, <span class="st">&quot;Ideal&quot;</span> ),
+         carat <span class="op">==</span><span class="st"> </span><span class="fl">0.7</span>,
+         color <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;G&quot;</span>, <span class="st">&quot;F&quot;</span> ),
+         clarity <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;SI1&quot;</span>, <span class="st">&quot;VS2&quot;</span> ))
+
+<span class="co"># table(test_data$cut)</span>
+
+<span class="kw">ggplot</span>(test_data,
+       <span class="kw">aes</span>(price, <span class="dt">fill =</span> cut)) <span class="op">+</span>
+<span class="st">       </span><span class="kw">geom_density</span>(<span class="dt">position=</span><span class="st">&quot;dodge&quot;</span>,
+                    <span class="dt">alpha =</span> <span class="fl">0.6</span>)</code></pre></div>
+<pre><code>## Warning: Width not defined. Set with `position_dodge(width = ?)`</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Define a linear model</span>
+
+model =<span class="st"> </span><span class="kw">lm</span>(price <span class="op">~</span><span class="st"> </span>cut <span class="op">+</span><span class="st"> </span>color,
+           <span class="dt">data =</span> test_data)
+
+ 
+<span class="co">#Shapiro–Wilk normality test</span>
+ 
+
+x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+<span class="kw">shapiro.test</span>(x)</code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  x
+## W = 0.96048, p-value = 0.0006383</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Anderson-Darling normality test</span>
+ 
+
+<span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(nortest)){<span class="kw">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)}</code></pre></div>
+<pre><code>## Loading required package: nortest</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nortest)
+
+x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+<span class="kw">ad.test</span>(x)</code></pre></div>
+<pre><code>## 
+##  Anderson-Darling normality test
+## 
+## data:  x
+## A = 1.7123, p-value = 0.0002071</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># One-sample Kolmogorov-Smirnov test</span>
+ 
+
+x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+<span class="kw">ks.test</span>(x,
+        <span class="st">&quot;pnorm&quot;</span>,
+        <span class="dt">mean =</span> <span class="kw">mean</span>(x),
+        <span class="dt">sd   =</span> <span class="kw">sd</span>(x))</code></pre></div>
+<pre><code>## Warning in ks.test(x, &quot;pnorm&quot;, mean = mean(x), sd = sd(x)): ties should not
+## be present for the Kolmogorov-Smirnov test</code></pre>
+<pre><code>## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  x
+## D = 0.096286, p-value = 0.1666
+## alternative hypothesis: two-sided</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># D&#39;Agostino Normality Test</span>
+ 
+
+<span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(fBasics)){<span class="kw">install.packages</span>(<span class="st">&quot;fBasics&quot;</span>)}</code></pre></div>
+<pre><code>## Loading required package: fBasics</code></pre>
+<pre><code>## Loading required package: timeDate</code></pre>
+<pre><code>## 
+## Attaching package: &#39;timeDate&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:PerformanceAnalytics&#39;:
+## 
+##     kurtosis, skewness</code></pre>
+<pre><code>## Loading required package: timeSeries</code></pre>
+<pre><code>## 
+## Attaching package: &#39;timeSeries&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:zoo&#39;:
+## 
+##     time&lt;-</code></pre>
+<pre><code>## The following object is masked from &#39;package:psych&#39;:
+## 
+##     outlier</code></pre>
+<pre><code>## 
+## Attaching package: &#39;fBasics&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:car&#39;:
+## 
+##     densityPlot</code></pre>
+<pre><code>## The following object is masked from &#39;package:psych&#39;:
+## 
+##     tr</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(fBasics)
+
+x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+<span class="kw">dagoTest</span>(x)</code></pre></div>
+<pre><code>## 
+## Title:
+##  D&#39;Agostino Normality Test
+## 
+## Test Results:
+##   STATISTIC:
+##     Chi2 | Omnibus: 10.2249
+##     Z3  | Skewness: 3.1412
+##     Z4  | Kurtosis: 0.5981
+##   P VALUE:
+##     Omnibus  Test: 0.006021 
+##     Skewness Test: 0.001683 
+##     Kurtosis Test: 0.5498 
+## 
+## Description:
+##  Sun Dec 01 18:18:54 2019 by user: Juqiang Chen</code></pre>
+</div>
+<div id="skew-and-kurtosis" class="section level3">
+<h3><span class="header-section-number">7.3.2</span> Skew and kurtosis</h3>
+<p>There are no definitive guidelines as to what range of skew or kurtosis are acceptable for considering residuals to be normally distributed. we can rely on skew and kurtosis calculations,or histograms and other plots.</p>
+<p>If the absolute value is &gt; 0.5, BE CAUTIOUS If the absolute value is &gt; 1.0, consider it not normally distributed. Some authors use 2.0 as a cutoff for normality, and others use a higher limit for kurtosis.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># library(psych)</span>
+
+x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+<span class="kw">describe</span>(x,
+         <span class="dt">type=</span><span class="dv">2</span>)    </code></pre></div>
+<pre><code>##    vars   n mean     sd median trimmed    mad     min    max  range skew
+## X1    1 134    0 284.79 -40.84   -20.5 262.42 -543.69 839.01 1382.7  0.7
+##    kurtosis   se
+## X1     0.18 24.6</code></pre>
+</div>
+<div id="visual-inspection-to-assess-the-normality-of-residuals" class="section level3">
+<h3><span class="header-section-number">7.3.3</span> Visual inspection to assess the normality of residuals</h3>
+<p>Usually, the best method to see if model residuals meet the assumptions of normal distribution and homoscedasticity are to plot them and inspect the plots visually.</p>
+<div id="histogram-with-normal-curve" class="section level4">
+<h4><span class="header-section-number">7.3.3.1</span> Histogram with normal curve</h4>
+<p>A histogram of the residuals should be approximately normal, without excessive skew or kurtosis.</p>
+<p>Adding a normal curve with the same mean and standard deviation as the data helps to assess the histogram.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+<span class="kw">library</span>(rcompanion)
+
+
+<span class="kw">plotNormalHistogram</span>(<span class="kw">residuals</span>(model))   </code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+</div>
+<div id="kernel-density-plot-with-normal-curve" class="section level4">
+<h4><span class="header-section-number">7.3.3.2</span> Kernel density plot with normal curve</h4>
+<p>A kernel density plot is similar to a histogram, but is smoothed into a curve. Sometimes a density plot gives a better representation of the distribution of data, because the appearance of the histogram depends upon how many bins are used.</p>
+<p>The plotNormalDensity function will produce this plot. Options include those for the plot function, as well as adjust, bw, and kernel which are passed to the density function. col1, col2, and col3 change plot colors, and lwd changes line thickness.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rcompanion)
+
+x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+<span class="kw">plotNormalDensity</span>(x,
+                  <span class="dt">adjust =</span> <span class="dv">1</span>)  ### Decrease this number</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">                                 ###  to make line less smooth</code></pre></div>
+</div>
+</div>
+<div id="visual-inspection-for-homogeneity-of-variance" class="section level3">
+<h3><span class="header-section-number">7.3.4</span> Visual inspection for homogeneity of variance</h3>
+<p>Patterns in the plot of residuals versus fitted values can indicate a lack of homoscedasticity or that errors are not independent of fitted values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">fitted</span>(model),
+     <span class="kw">residuals</span>(model))</code></pre></div>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-62-1.png" width="672" /> In the four plots below, A) Residuals.a show normally distributed and homoscedastic residuals, suggesting model assumptions were met. B) Residuals.b show a non-normal distribution of residuals. C) Residuals.c show that the residuals are not independent of the fitted values. In this case, the model needs to be modified in order to describe the data well. D) Residuals.d show heteroscedasticity, since variability in the residuals is greater for large fitted values than for small fitted values. (Adapted from similar plots in Tabachnick, 2001).
+<div class="figure" style="text-align: center">
+<img src="img/residual.png" alt="residual plot" width="100%" />
+<p class="caption">
+(#fig:residual plot)residual plot
+</p>
+</div>
+</div>
+<div id="formal-tests-for-homogeneity-of-variance" class="section level3">
+<h3><span class="header-section-number">7.3.5</span> formal tests for homogeneity of variance</h3>
+<p>In each case, the null hypothesis is that the variance among groups is not different. That is, a significant p-value (p &lt; 0.05) suggests that the variance among groups is different.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Define a linear model</span>
+
+model =<span class="st"> </span><span class="kw">lm</span>(price <span class="op">~</span><span class="st"> </span>cut <span class="op">+</span><span class="st"> </span>color,
+           <span class="dt">data =</span> test_data)</code></pre></div>
+<div id="bartletts-test-for-homogeneity-of-variance" class="section level4">
+<h4><span class="header-section-number">7.3.5.1</span> Bartlett’s test for homogeneity of variance</h4>
+<p>Bartlett’s test is known to be sensitive to non-normality in samples. That is, non-normal samples can result in a significant test due to the non-normality.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+<span class="kw">bartlett.test</span>(x <span class="op">~</span><span class="st"> </span><span class="kw">interaction</span>(cut, color),
+              <span class="dt">data =</span> test_data)</code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  x by interaction(cut, color)
+## Bartlett&#39;s K-squared = 39.068, df = 3, p-value = 1.679e-08</code></pre>
+</div>
+<div id="levenes-test-for-homogeneity-of-variance" class="section level4">
+<h4><span class="header-section-number">7.3.5.2</span> Levene’s test for homogeneity of variance</h4>
+<p>Levene’s test is an alternative to Bartlett’s that is supposedly less sensitive to departures from normality in the data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#library(car)</span>
+
+x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+<span class="kw">leveneTest</span>(x <span class="op">~</span><span class="st"> </span>cut <span class="op">*</span><span class="st"> </span>color,
+            <span class="dt">data=</span>test_data,
+            <span class="dt">center=</span>mean)       ### original Levene’s test</code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = mean)
+##        Df F value    Pr(&gt;F)    
+## group   3    8.76 2.468e-05 ***
+##       130                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="brownforsythe-or-robust-levenes-test" class="section level4">
+<h4><span class="header-section-number">7.3.5.3</span> Brown–Forsythe or robust Levene’s test</h4>
+<p>The Brown–Forsythe modification of Levene’s test makes it more robust to departures in normality of the data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+<span class="co">#library(car)</span>
+<span class="kw">leveneTest</span>(x <span class="op">~</span><span class="st"> </span>cut <span class="op">*</span><span class="st"> </span>color, <span class="dt">data=</span>test_data)</code></pre></div>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
+##        Df F value    Pr(&gt;F)    
+## group   3  8.5541 3.163e-05 ***
+##       130                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#library(lawstat)</span>
+<span class="kw">levene.test</span>(x, <span class="kw">interaction</span>(test_data<span class="op">$</span>cut, test_data<span class="op">$</span>color))</code></pre></div>
+<pre><code>## 
+##  Modified robust Brown-Forsythe Levene-type test based on the
+##  absolute deviations from the median
+## 
+## data:  x
+## Test Statistic = 0.51854, p-value = 0.6702</code></pre>
+</div>
+<div id="fligner-killeen-test" class="section level4">
+<h4><span class="header-section-number">7.3.5.4</span> Fligner-Killeen test</h4>
+<p>The Fligner-Killeen test is another test for homogeneity of variances that is robust to departures in normality of the data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">residuals</span>(model)
+
+<span class="kw">fligner.test</span>(x <span class="op">~</span><span class="st"> </span><span class="kw">interaction</span>(cut, color), <span class="dt">data=</span>test_data)</code></pre></div>
+<pre><code>## 
+##  Fligner-Killeen test of homogeneity of variances
+## 
+## data:  x by interaction(cut, color)
+## Fligner-Killeen:med chi-squared = 11.948, df = 3, p-value =
+## 0.007562</code></pre>
+<p>References: <a href="https://rcompanion.org/handbook/I_01.html" class="uri">https://rcompanion.org/handbook/I_01.html</a></p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="from-data-visualization-to-statistical-modelling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-functions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

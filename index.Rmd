@@ -54,7 +54,7 @@ Please type in:
 
 install.packages("tidyverse")
 
-*tidyverse* is a set of R packages for data science in R and it take a few minutes to download.
+*tidyverse* is a set of R packages for data science in R and it takes a few minutes to download.
 
 Once installed, they have to be loaded into the session to be used.
 

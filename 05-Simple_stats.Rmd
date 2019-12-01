@@ -1,5 +1,18 @@
 # From data visualization to statistical modelling
 
+
+```{r echo=FALSE, include=FALSE}
+if(!require(psych)){install.packages("psych")}
+if(!require(PerformanceAnalytics)){install.packages("PerformanceAnalytics")}
+if(!require(ggplot2)){install.packages("ggplot2")}
+if(!require(rcompanion)){install.packages("rcompanion")}
+
+library(psych)
+library(PerformanceAnalytics)
+library(rcompanion)
+library(MASS)
+```
+
 Patterns in the data provide clues about relationship or covariation.Now that we know how to visualize the various relationships, we can proceed to learn more about how to formally test the relationship.
 
 Statistical models are tools for extracting patterns out of data.
@@ -8,19 +21,20 @@ Statistics represent a common method of presenting information helping us to und
 
  - *Descriptive (or summary) statistics* summarise the raw data and allow data users to interpret a dataset more easily.Descriptive statistics can describe the shape, centre and spread of a dataset.
 
- - *Inferential statistics* are used to infer conclusions about a population from a sample of that population. Inferential statistics are the result of techniques that use the data collected from a sample to make generalisations about the whole population from which the sample was taken. Inferential statistics include *estimation* (An estimate is a value that is inferred for a population based on data collected from a sample of units from that population), and *hypothesis testing*.
+ - *Inferential statistics* are used to infer conclusions about a **population** from a **sample** of that population.  It includes *estimation* (An estimate is a value that is inferred for a population based on data collected from a sample of units from that population), and *hypothesis testing*.
  
- 
-```{r stats, fig.cap='stats', out.width='100%', fig.asp=.75, fig.align='center'}
+```{r stats, fig.cap='stats', out.width='100%', fig.asp=.75, fig.align='center', echo=FALSE}
 
 knitr::include_graphics("img/stats.png")
 
 #source:from slides, Dr.Russell Thomson, Statistical Consultant, Centre for Research in Mathematics and Graduate Research School
 
 ```
-## Two continuous/numerical variables
+## Two continuous variables
 
-The techique we used here is called *Simpler linear regression*, where there is one dependent variable (continuous) and one independent variable (continuous). When there are more than one independent variable (continuous), you need to look for something called *Multiple linear regression*. 
+### Simple linear regression
+
+The techique we used here is called *Simple linear regression*, where there is one dependent variable (continuous) and one independent variable (continuous). When there are more than one independent variable (continuous), you need to look for something called *Multiple linear regression*. 
 
 ```{r}
 
@@ -30,20 +44,17 @@ ggplot(faithful)+
   geom_point(aes(eruptions, waiting))
 
 ```
+
+### correlation vs. linear regression
 *Correlation* and *linear regression* each explore the relationship between two quantitative variables. (Salvatore S. Mangiafico)
 
-Correlation determines if one variable varies systematically as another variable changes.  It does not specify that one variable is the dependent variable and the other is the independent variable.  Often, it is useful to look at which variables are correlated to others in a data set, and it is especially useful to see which variables correlate to a particular variable of interest.
+ * Correlation determines if one variable varies systematically as another variable changes.  It does not specify that one variable is the dependent variable and the other is the independent variable.  Often, it is useful to look at which variables are correlated to others in a data set, and it is especially useful to see which variables correlate to a particular variable of interest.
 
-In contrast, linear regression specifies one variable as the independent variable and another as the dependent variable.  The resultant model relates the variables with a linear relationship. 
+ * In contrast, linear regression specifies one variable as the independent variable and another as the dependent variable.  The resultant model relates the variables with a linear relationship. 
 
 The tests associated with linear regression are parametric and assume normality, homoscedasticity, and independence of residuals, as well as a linear relationship between the two variables.
 
-```{r}
-if(!require(psych)){install.packages("psych")}
-if(!require(PerformanceAnalytics)){install.packages("PerformanceAnalytics")}
-if(!require(ggplot2)){install.packages("ggplot2")}
-if(!require(rcompanion)){install.packages("rcompanion")}
-
+```{r echo=FALSE}
 library(psych)
 pairs(data=faithful,
     ~ eruptions + waiting)
@@ -56,8 +67,7 @@ corr.test(faithful,
           method = "pearson",
           adjust = "none")
 
-library(PerformanceAnalytics)
-
+# library(PerformanceAnalytics)
 chart.Correlation(faithful,
                    method="pearson",
                    histogram=TRUE,
@@ -75,6 +85,10 @@ chart.Correlation(faithful,
 
 
 ```
+### Pearson, Spearman, and Kendall regression
+
+#### Effect size
+
 The statistics r, rho, and tau are used as effect sizes for Pearson, Spearman, and Kendall regression, respectively.  These statistics vary from –1 to 1, with 0 indicating no correlation, 1 indicating a perfect positive correlation, and –1 indicating a perfect negative correlation.  Like other effect size statistics, these statistics are not affected by sample size.
 
 Interpretation of effect sizes necessarily varies by discipline and the expectations of the experiment.  They should not be considered universal.  An interpretation of r is given by Cohen (1988).  It is probably reasonable to use similar interpretations for rho and tau.
@@ -85,33 +99,46 @@ Interpretation of effect sizes necessarily varies by discipline and the expectat
 
 - large: ≥ 0.50
 
+#### Pearson correlation
 The test used for *Pearson correlation* is a parametric analysis that requires that the relationship between the variables is linear, and that the data be bivariate normal.  Variables should be interval/ratio.  The test is sensitive to outliers.
 
 The correlation coefficient, r, can range from +1 to –1, with +1 being a perfect positive correlation and –1 being a perfect negative correlation.  An r of 0 represents no correlation whatsoever.  The hypothesis test determines if the r value is significantly different from 0.
-
-*Kendall correlation *is considered a nonparametric analysis.  It is a rank-based test that does not require assumptions about the distribution of the data.  Variables can be interval/ratio or ordinal.
-
-The correlation coefficient from the test is tau, which can range from +1 to –1, with +1 being a perfect positive correlation and –1 being a perfect negative correlation.  A tau of 0 represents no correlation whatsoever.  The hypothesis test determines if the tau value is significantly different from 0.
-
-As a technical note, the cor.test function in R calculates tau-b, which handles ties in ranks well.
-
-The test is relatively robust to outliers in the data.  The test is sometimes cited for being reliable when there are small number of samples or when there are many ties in ranks.
-
-*Spearman correlation* is considered a nonparametric analysis.  It is a rank-based test that does not require assumptions about the distribution of the data.  Variables can be interval/ratio or ordinal.
-
-The correlation coefficient from the test, rho, can range from +1 to –1, with +1 being a perfect positive correlation and –1 being a perfect negative correlation.  A rho of 0 represents no correlation whatsoever. The hypothesis test determines if the rho value is significantly different from 0.
-
-Spearman correlation is probably most often used with ordinal data.  It tests for a monotonic relationship between the variables.  It is relatively robust to outliers in the data. 
 
 ```{r}
 cor.test( ~ eruptions + waiting,
          data=faithful,
          method = "pearson")
 # the results report the p-value for the hypothesis test as well as the r value, written as cor, 0.849.
+```
 
+#### Kendall correlation
+
+*Kendall correlation *is considered a nonparametric analysis.  - It is a rank-based test that does not require assumptions about the distribution of the data.  
+ - Variables can be interval/ratio or ordinal.
+
+The correlation coefficient from the test is tau, which can range from +1 to –1, with +1 being a perfect positive correlation and –1 being a perfect negative correlation.  A tau of 0 represents no correlation whatsoever.  The hypothesis test determines if the tau value is significantly different from 0.
+
+As a technical note, the *cor.test* function in R calculates tau-b, which handles ties in ranks well.
+
+The test is relatively robust to outliers in the data.  The test is sometimes cited for being reliable when there are small number of samples or when there are many ties in ranks.
+
+```{r}
 cor.test( ~ eruptions + waiting,
          data=faithful,
          method = "kendall")
+```
+
+#### Spearman correlation
+*Spearman correlation* is considered a nonparametric analysis.
+
+ - It is a rank-based test that does not require assumptions about the distribution of the data.  
+ - Variables can be interval/ratio or ordinal.
+
+The correlation coefficient from the test, rho, can range from +1 to –1, with +1 being a perfect positive correlation and –1 being a perfect negative correlation.  A rho of 0 represents no correlation whatsoever. The hypothesis test determines if the rho value is significantly different from 0.
+
+Spearman correlation is probably most often used with ordinal data.  It tests for a monotonic relationship between the variables.  It is relatively robust to outliers in the data. 
+
+```{r}
 
 cor.test( ~ eruptions + waiting,
          data=faithful,
@@ -120,20 +147,23 @@ cor.test( ~ eruptions + waiting,
 ```
 #### Linear regression
 
-Linear regression is a very common approach to model the relationship between two interval/ratio variables.  The method assumes that there is a linear relationship between the dependent variable and the independent variable, and finds a best fit model for this relationship.
-
-Interpretation of coefficients
-The outcome of linear regression includes estimating the *intercept* and the *slope* of the linear model.  
+Linear regression is a very common approach to model the relationship between two interval/ratio variables. The outcome of linear regression includes estimating the *intercept* and the *slope* of the linear model.  
 
 Multiple, nominal, and ordinal independent variables
-If there are multiple independent variables of interval/ratio type in the model, then linear regression expands to multiple regression.  The polynomial regression example in this chapter is a form of multiple regression.
 
-If the independent variable were of nominal type, then the linear regression would become a *one-way analysis of variance*.
+ - If there are multiple independent variables of interval/ratio type in the model, then linear regression expands to multiple regression.  
 
-Handling independent variables of ordinal type can be complicated.  Often they are treated as either nominal type or interval/ratio type, although there are drawbacks to each approach.
+ - If the independent variable were of nominal type, then the linear regression would become a *one-way analysis of variance*.
+
+ - Handling independent variables of ordinal type can be complicated.  Often they are treated as either nominal type or interval/ratio type, although there are drawbacks to each approach.
 
 Assumptions
-Linear regression assumes a linear relationship between the two variables, normality of the residuals, independence of the residuals, and homoscedasticity of residuals.
+
+Linear regression assumes 
+ - a linear relationship between the two variables, 
+ - normality of the residuals, 
+ - independence of the residuals,
+ - homoscedasticity of residuals.
 
 Linear regression can be performed with the lm function, which was the same function we used for analysis of variance.
 ```{r}
@@ -141,6 +171,26 @@ model = lm(eruptions ~ waiting,
            data = faithful)
 
 summary(model)
+
+```
+
+The *summary* function for lm model objects includes estimates for model parameters (intercept and slope), as well as an r-squared value for the model and p-value for the model. 
+
+* How to read the model?
+
+The model produces a coefficient for the intercept (-1.87) and a coefficient  for the slope (0.07);
+
+Each coefficient comes with three other numbers: its standard error, a t-value, and a p-value. The p-value tells us whether the coefficient is significantly different from zero.
+
+If the coefficient for a predictor is zero, there is no relation at all between the predictor and the dependent variable, in which case it is worthless as a predictor. In order to ascertain whether a coefficient is significantly different from zero, and hence potentially useful, a two-tailed t-test is carried out, using the t-value and *the associated degrees of freedom*.
+
+The t-value itself is the value of the coefficient divided by its standard error. This standard error is a measure of how sure we are about the estimate of the coefficient. The smaller the standard error, the smaller the confidence interval around the estimate, the less likely it is that zero will be included in the acceptance region, and hence the smaller the probability that it might just as well be zero.
+
+The residual standard error is a measure of how unsuccessful the model is; it gauges the variability in the dependent variable that we can't handle through the predictor variables. The better a model is, the smaller its residual standard error will be.
+
+The multiple R-squared equals 0.8115. This R-squared is the squared correlation coefficient, r2, which quantifies, on a scale from 0 to 1, the proportion of the variance that the model explains.
+
+```{r}
 plot(eruptions ~ waiting,
      data=faithful,
      pch=16,
@@ -155,49 +205,13 @@ abline(model,
 x = residuals(model)
 
 
-library(rcompanion)
+#library(rcompanion)
 
 plotNormalHistogram(x)
 ```
 
- 
-
-The summary function for lm model objects includes estimates for model parameters (intercept and slope), as well as an r-squared value for the model and p-value for the model. 
-
-How to read the model?
-The model produces a coefficient for the intercept (-1.87) and a coefficient  for the slope (0.07);Each coefficient comes with three other numbers: its standard error, a t-value, and a p-value. The p-value tells us whether the coefficient is significantly different from zero.
-
-If the coefficient for a predictor is zero, there is no relation at all between the predictor and the dependent variable, in which case it is worthless as a predictor. In order to ascertain whether a coefficient is significantly different from zero, and hence potentially useful, a two-tailed t-test is carried out, using the t-value and *the associated degrees of freedom*.
-
-The t-value itself is the value of the coefficient divided by its standard error. This standard error is a measure of how sure we are about the estimate of the coefficient. The smaller the standard error, the smaller the confidence interval around the estimate, the less likely it is that zero will be included in the acceptance region, and hence the smaller the probability that it might just as well be zero.
-
-The residual standard error is a measure of how unsuccessful the model is; it gauges the variability in the dependent variable that we can't handle through the predictor variables. The better a model is, the smaller its residual standard error will be.
-
-The multiple R-squared equals 0.8115. This R-squared is the squared correlation coefficient, r2, which quantifies, on a scale from 0 to 1, the proportion of the variance that the model explains. 
-
-
-### T-test/ANOVA: categorical (independent variable )+ continuous (dependent variable)
-The two-sample unpaired t-test is a commonly used test that compares the means of two samples.
-
-•  Data for each population are normally distributed
-
-•  For Student's t-test, the two samples need to have the same variance.  However, Welch’s t-test, which is used by default in R, does not assume equal variances.
-
-•  Observations between groups are independent.  That is, not paired or repeated measures data
-
-•  Moderate skewness is permissible if the data distribution is unimodal without outliers
-
-Hypotheses
-•  Null hypothesis:  The means of the populations from which the data were sampled for each group are equal.
-
-•  Alternative hypothesis (two-sided): The means of the populations from which the data were sampled for each group are not equal.
-
- 
-
-Interpretation
-Reporting significant results as “Mean of variable Y for group A was different than that for group B.” is acceptable.
-
-```{r}
+### Categorical (independent variable ) + continuous (dependent variable)
+```{r echo=FALSE}
 # simulating the data
 id = seq(from = 1, to = 100)
 temp1 = c("f","m")
@@ -209,24 +223,41 @@ d = rep(c(1,3,2,4), times = 25)
 df = data.frame(id = id, sex = gender, chinese = a, math = b, english = c, class = d)
 df$class = as.factor(df$class)
 
-# test if chinese is significantly different from 
-#distribution tests
+```
 
-summary(df$class)
-#visualization
+
+#### T-tests
+T-tests are commonly used to compare the means of two samples or between one sample and a fixed value. In other words, the independent variable should be categorical and have two levels.
+
+##### Requirements:
+1. Observations between groups are independent.That is, not paired or repeated measures data
+
+2. Data for each population are normally distributed.Moderate skewness is permissible if the data distribution is unimodal without outliers.
+```{r}
+# distribution
 plot(density(df$chinese))
 qqnorm(df$chinese)
-
-
-#formal tests
-#null hypothesis: the distribution is normal
+# formal tests
+# null hypothesis: the distribution is normal
 shapiro.test(df$chinese)
 
 ks.test(df$chinese, "pnorm", mean(df$chinese), sd(df$chinese))
 
+```
 
+3. For Student's t-test, the two samples need to have the same variance.  However, Welch’s t-test, which is used by default in R, does not assume equal variances.
+```{r}
+#independent sample t-test---compare means
+class1 = df[df$class == 1, ]$chinese
+class2 = df[df$class == 2, ]$chinese
+
+var.test(class1,class2)#compare variance
+```
+
+
+##### One-sample t-test
+```{r}
 #one sample t-test: one group and a fixed value
-mean(df$chinese)
 
 t.test(df$chinese, mu = 78)
 
@@ -234,50 +265,68 @@ t.test(df$chinese, mu = 78, alternative = "greater")
 t.test(df$chinese, mu = 78, alternative = "less")
 
 wilcox.test(df$chinese, mu = 78)# skewed distributions
+```
 
-#probabilities of the things counted
-count = c(23, 45, 67,65,40,89,36)
-chisq.test(count)
 
-#testing two groups
-#independent sample t-test v.s. paired sample t-test
-#independent sample t-test---compare means
-class1 = df[df$class == 1, ]$chinese
-class2 = df[df$class == 2, ]$chinese
+##### Independent sample t-test
+```{r}
 t.test(class1,class2)
 
+```
+
+
+##### Paired sample t-test
+```{r}
+t.test(df$chinese, df$math, paired = T)
+```
+
+
+
+##### wilcox.test
+
+```{r}
 wilcox.test(class1,class2)#not normally distributed
 
-var.test(class1,class2)#compare variance
-
-
-#paired sample t-test
-t.test(df$chinese, df$math, paired = T)
-
 wilcox.test(df$chinese, df$math, paired = T)
+```
+#### ANOVA
 
-#Analysis of Variance: ANOVA
+When the independent variable has more than two levels, we need to use ANOVA.
 
-#Question: is there a difference between four classes?
+We can use *avo* function in R or build a linear model.
 
+```{r}
 dif_class = aov (chinese ~ class, data = df)
 summary(dif_class)
-#How to report: there is a significant difference among different classes in terms of their Chinese scores, F (3, 96) = 0.87, p = .46.
 
-#the problem of multiple comparision
-#Bonferroni correction: a/n
-#Tukey's Honestly Significant difference: assuming the means for each level of the factor should be based on equal numbers of observation.
+```
+How to report: 
+There is a significant difference among different classes in terms of their Chinese scores, F (3, 96) = 0.87, p = .46.
 
+After we run the model, it is very likely that we need to conduct pairwised comparison. However, we cannot simple use multiple t-tests but we need to correct the alpha value.
 
+There are different ways to do the correction:
+
+- Bonferroni correction: a/n
+- Tukey's Honestly Significant difference: assuming the means for each level of the factor should be based on equal numbers of observation.
+
+```{r}
 #how is the difference like?
 TukeyHSD(dif_class)
 
-#diff= the difference in the means
-#lwr = the lower end points of the confidence interval
+# diff= the difference in the means
+# lwr = the lower end points of the confidence interval
 # p adj = adjusted p value
 
 plot(TukeyHSD(dif_class))
+```
 
+In the general linear model approach, residuals are normally distributed;groups should have the same variance, or homoscedasticity. 
+
+Observations among groups are independent. That is, not paired or repeated measures data
+
+Moderate deviation from normally-distributed residuals is permissible
+```{r}
 #two-way ANOVA
 m1 <- aov(chinese ~ sex + class, data = df)
 summary(m1)
@@ -290,26 +339,23 @@ summary(m3)
 
 TukeyHSD(m1)
 TukeyHSD(m2)
+
 ```
- 
 
+#### Chisquare t-test
 
- 
+When our data involves two categorical variables, and we want to know if these two variables are related or independent to each other, we can use the chisquare test.
 
+The null hypothesis of the independence assumption is to be rejected if the p-value of the following Chi-squared test statistics is less than a given significance level α.
 
+Here is an example:
+In the dataset *survey*, the Smoke column records the students smoking habit, while the Exer column records their exercise level. 
+The allowed values in Smoke are "Heavy", "Regul" (regularly), "Occas" (occasionally) and "Never". As for Exer, they are "Freq" (frequently), "Some" and "None".
 
+```{r}
+tbl = table(survey$Smoke, survey$Exer)
 
+chisq.test(tbl) 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
+As the p-value 0.4828 is greater than the .05 significance level, we do not reject the null hypothesis that the smoking habit is independent of the exercise level of the students.
