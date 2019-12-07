@@ -63,9 +63,23 @@ Once installed, they have to be loaded into the session to be used.
 Please type in 
 
 library(tidyverse)
+
+If you have problems with installing R, please create an account for R studion clould.
+
+https://rstudio.cloud/
+
+and you can use this link to access the project
+
+https://rstudio.cloud/project/782390
+
+In this way you can follow the workshop on the cloud without having to download R locally.
  
 ## Data and workbook
 Please download the data and workbook with this link.
 
 https://drive.google.com/open?id=18xwfD7f-eekQ60W-2IZ2wBkCX2GL08_u
  
+## Worshop survey
+Please let me know how do you feel about the workshop by doing this SHORT survey.
+
+https://surveyswesternsydney.au1.qualtrics.com/jfe/form/SV_1C8fmEW2lRzMAF7
