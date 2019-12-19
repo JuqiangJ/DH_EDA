@@ -25,7 +25,7 @@
 <meta name="author" content="Juqiang Chen">
 
 
-<meta name="date" content="2019-12-07">
+<meta name="date" content="2019-12-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -461,13 +461,13 @@ Figure 6.1: stats
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  df$chinese
-## W = 0.98679, p-value = 0.4236</code></pre>
+## W = 0.98571, p-value = 0.3566</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ks.test</span>(df<span class="op">$</span>chinese, <span class="st">&quot;pnorm&quot;</span>, <span class="kw">mean</span>(df<span class="op">$</span>chinese), <span class="kw">sd</span>(df<span class="op">$</span>chinese))</code></pre></div>
 <pre><code>## 
 ##  One-sample Kolmogorov-Smirnov test
 ## 
 ## data:  df$chinese
-## D = 0.051023, p-value = 0.957
+## D = 0.059435, p-value = 0.8717
 ## alternative hypothesis: two-sided</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>For Student’s t-test, the two samples need to have the same variance. However, Welch’s t-test, which is used by default in R, does not assume equal variances.</li>
@@ -481,13 +481,13 @@ class2 =<span class="st"> </span>df[df<span class="op">$</span>class <span class
 ##  F test to compare two variances
 ## 
 ## data:  class1 and class2
-## F = 0.76619, num df = 24, denom df = 24, p-value = 0.5191
+## F = 1.6497, num df = 24, denom df = 24, p-value = 0.2273
 ## alternative hypothesis: true ratio of variances is not equal to 1
 ## 95 percent confidence interval:
-##  0.3376368 1.7387010
+##  0.7269864 3.7437034
 ## sample estimates:
 ## ratio of variances 
-##          0.7661915</code></pre>
+##           1.649734</code></pre>
 </div>
 <div id="one-sample-t-test" class="section level4">
 <h4><span class="header-section-number">6.2.1.2</span> One-sample t-test</h4>
@@ -498,43 +498,43 @@ class2 =<span class="st"> </span>df[df<span class="op">$</span>class <span class
 ##  One Sample t-test
 ## 
 ## data:  df$chinese
-## t = 4.0826, df = 99, p-value = 9.038e-05
+## t = 4.7923, df = 99, p-value = 5.804e-06
 ## alternative hypothesis: true mean is not equal to 78
 ## 95 percent confidence interval:
-##  78.90053 80.60363
+##  79.18028 80.84827
 ## sample estimates:
 ## mean of x 
-##  79.75208</code></pre>
+##  80.01428</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(df<span class="op">$</span>chinese, <span class="dt">mu =</span> <span class="dv">78</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
 ## data:  df$chinese
-## t = 4.0826, df = 99, p-value = 4.519e-05
+## t = 4.7923, df = 99, p-value = 2.902e-06
 ## alternative hypothesis: true mean is greater than 78
 ## 95 percent confidence interval:
-##  79.03951      Inf
+##  79.31639      Inf
 ## sample estimates:
 ## mean of x 
-##  79.75208</code></pre>
+##  80.01428</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(df<span class="op">$</span>chinese, <span class="dt">mu =</span> <span class="dv">78</span>, <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
 ## data:  df$chinese
-## t = 4.0826, df = 99, p-value = 1
+## t = 4.7923, df = 99, p-value = 1
 ## alternative hypothesis: true mean is less than 78
 ## 95 percent confidence interval:
-##      -Inf 80.46466
+##      -Inf 80.71216
 ## sample estimates:
 ## mean of x 
-##  79.75208</code></pre>
+##  80.01428</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(df<span class="op">$</span>chinese, <span class="dt">mu =</span> <span class="dv">78</span>)<span class="co"># skewed distributions</span></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon signed rank test with continuity correction
 ## 
 ## data:  df$chinese
-## V = 3614, p-value = 0.0001821
+## V = 3771, p-value = 1.849e-05
 ## alternative hypothesis: true location is not equal to 78</code></pre>
 </div>
 <div id="independent-sample-t-test" class="section level4">
@@ -544,13 +544,13 @@ class2 =<span class="st"> </span>df[df<span class="op">$</span>class <span class
 ##  Welch Two Sample t-test
 ## 
 ## data:  class1 and class2
-## t = 0.096, df = 47.173, p-value = 0.9239
+## t = -0.63224, df = 45.278, p-value = 0.5304
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -2.521572  2.774315
+##  -3.196186  1.668777
 ## sample estimates:
 ## mean of x mean of y 
-##  79.97693  79.85056</code></pre>
+##  79.47697  80.24067</code></pre>
 </div>
 <div id="paired-sample-t-test" class="section level4">
 <h4><span class="header-section-number">6.2.1.4</span> Paired sample t-test</h4>
@@ -559,13 +559,13 @@ class2 =<span class="st"> </span>df[df<span class="op">$</span>class <span class
 ##  Paired t-test
 ## 
 ## data:  df$chinese and df$math
-## t = 32.903, df = 99, p-value &lt; 2.2e-16
+## t = 40.353, df = 99, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  17.82363 20.11132
+##  19.61140 21.63976
 ## sample estimates:
 ## mean of the differences 
-##                18.96748</code></pre>
+##                20.62558</code></pre>
 </div>
 <div id="wilcox.test" class="section level4">
 <h4><span class="header-section-number">6.2.1.5</span> wilcox.test</h4>
@@ -574,7 +574,7 @@ class2 =<span class="st"> </span>df[df<span class="op">$</span>class <span class
 ##  Wilcoxon rank sum test
 ## 
 ## data:  class1 and class2
-## W = 323, p-value = 0.8475
+## W = 297, p-value = 0.773
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(df<span class="op">$</span>chinese, df<span class="op">$</span>math, <span class="dt">paired =</span> T)</code></pre></div>
 <pre><code>## 
@@ -592,8 +592,8 @@ class2 =<span class="st"> </span>df[df<span class="op">$</span>class <span class
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dif_class =<span class="st"> </span><span class="kw">aov</span> (chinese <span class="op">~</span><span class="st"> </span>class, <span class="dt">data =</span> df)
 <span class="kw">summary</span>(dif_class)</code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
-## class        3   10.8   3.598   0.191  0.903
-## Residuals   96 1812.6  18.881</code></pre>
+## class        3   34.5   11.51   0.644  0.588
+## Residuals   96 1714.4   17.86</code></pre>
 <p>How to report: There is a significant difference among different classes in terms of their Chinese scores, F (3, 96) = 0.87, p = .46.</p>
 <p>After we run the model, it is very likely that we need to conduct pairwised comparison. However, we cannot simple use multiple t-tests but we need to correct the alpha value.</p>
 <p>There are different ways to do the correction:</p>
@@ -610,12 +610,12 @@ class2 =<span class="st"> </span>df[df<span class="op">$</span>class <span class
 ## 
 ## $class
 ##            diff       lwr      upr     p adj
-## 2-1 -0.12637144 -3.339770 3.087027 0.9996081
-## 3-1 -0.78601266 -3.999411 2.427386 0.9189250
-## 4-1  0.01299149 -3.200407 3.226390 0.9999996
-## 3-2 -0.65964121 -3.873040 2.553758 0.9498600
-## 4-2  0.13936293 -3.074036 3.352762 0.9994748
-## 4-3  0.79900415 -2.414395 4.012403 0.9152688</code></pre>
+## 2-1  0.76370420 -2.361498 3.888907 0.9191350
+## 3-1 -0.01161454 -3.136817 3.113588 0.9999997
+## 4-1  1.39714388 -1.728058 4.522346 0.6478474
+## 3-2 -0.77531874 -3.900521 2.349884 0.9157821
+## 4-2  0.63343968 -2.491763 3.758642 0.9516030
+## 4-3  1.40875842 -1.716444 4.533961 0.6417724</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># diff= the difference in the means</span>
 <span class="co"># lwr = the lower end points of the confidence interval</span>
 <span class="co"># p adj = adjusted p value</span>
@@ -629,23 +629,23 @@ class2 =<span class="st"> </span>df[df<span class="op">$</span>class <span class
 m1 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>class, <span class="dt">data =</span> df)
 <span class="kw">summary</span>(m1)</code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
-## sex          1    8.0   7.975   0.420  0.518
-## class        3   13.3   4.444   0.234  0.872
-## Residuals   95 1802.1  18.969</code></pre>
+## sex          1    0.4   0.379   0.021  0.885
+## class        3   35.6  11.869   0.658  0.580
+## Residuals   95 1713.0  18.031</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class="op">~</span><span class="st"> </span>sex <span class="op">*</span><span class="st"> </span>class, <span class="dt">data =</span> df)
 <span class="kw">summary</span>(m2)</code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
-## sex          1    8.0   7.975   0.421  0.518
-## class        3   13.3   4.444   0.235  0.872
-## sex:class    3   61.3  20.417   1.079  0.362
-## Residuals   92 1740.8  18.922</code></pre>
+## sex          1    0.4   0.379   0.021  0.886
+## class        3   35.6  11.869   0.643  0.589
+## sex:class    3   14.5   4.838   0.262  0.853
+## Residuals   92 1698.5  18.462</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m3 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>class <span class="op">+</span><span class="st"> </span>sex<span class="op">:</span>class, <span class="dt">data =</span> df)<span class="co"># same as model2</span>
 <span class="kw">summary</span>(m3)</code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
-## sex          1    8.0   7.975   0.421  0.518
-## class        3   13.3   4.444   0.235  0.872
-## sex:class    3   61.3  20.417   1.079  0.362
-## Residuals   92 1740.8  18.922</code></pre>
+## sex          1    0.4   0.379   0.021  0.886
+## class        3   35.6  11.869   0.643  0.589
+## sex:class    3   14.5   4.838   0.262  0.853
+## Residuals   92 1698.5  18.462</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">TukeyHSD</span>(m1)</code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
@@ -654,16 +654,16 @@ m1 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class
 ## 
 ## $sex
 ##          diff       lwr      upr     p adj
-## m-f 0.5658192 -1.166597 2.298235 0.5182926
+## m-f -0.123184 -1.810542 1.564174 0.8850721
 ## 
 ## $class
-##            diff       lwr      upr     p adj
-## 2-1  0.07732345 -3.144159 3.298806 0.9999106
-## 3-1 -0.78601266 -4.007495 2.435470 0.9194291
-## 4-1  0.05825702 -3.163225 3.279739 0.9999617
-## 3-2 -0.86333611 -4.084819 2.358146 0.8965114
-## 4-2 -0.01906643 -3.240549 3.202416 0.9999987
-## 4-3  0.84426968 -2.377213 4.065752 0.9024467</code></pre>
+##             diff       lwr      upr     p adj
+## 2-1  0.783413646 -2.357430 3.924257 0.9145077
+## 3-1 -0.006687175 -3.147530 3.134156 0.9999999
+## 4-1  1.411925967 -1.728917 4.552769 0.6436723
+## 3-2 -0.790100821 -3.930944 2.350742 0.9125370
+## 4-2  0.628512320 -2.512331 3.769356 0.9532751
+## 4-3  1.418613142 -1.722230 4.559456 0.6401878</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">TukeyHSD</span>(m2)</code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
@@ -672,47 +672,47 @@ m1 &lt;-<span class="st"> </span><span class="kw">aov</span>(chinese <span class
 ## 
 ## $sex
 ##          diff       lwr      upr     p adj
-## m-f 0.5658192 -1.165167 2.296805 0.5178231
+## m-f -0.123184 -1.831271 1.584903 0.8864196
 ## 
 ## $class
-##            diff       lwr      upr     p adj
-## 2-1  0.07732345 -3.142019 3.296666 0.9999103
-## 3-1 -0.78601266 -4.005355 2.433330 0.9191489
-## 4-1  0.05825702 -3.161086 3.277600 0.9999616
-## 3-2 -0.86333611 -4.082679 2.356006 0.8961619
-## 4-2 -0.01906643 -3.238409 3.200276 0.9999987
-## 4-3  0.84426968 -2.375073 4.063612 0.9021148
+##             diff       lwr      upr     p adj
+## 2-1  0.783413646 -2.396527 3.963355 0.9171646
+## 3-1 -0.006687175 -3.186628 3.173254 0.9999999
+## 4-1  1.411925967 -1.768015 4.591867 0.6523152
+## 3-2 -0.790100821 -3.970042 2.389840 0.9152503
+## 4-2  0.628512320 -2.551429 3.808453 0.9547830
+## 4-3  1.418613142 -1.761328 4.598554 0.6488846
 ## 
 ## $`sex:class`
 ##                diff       lwr      upr     p adj
-## m:1-f:1 -0.01226682 -5.634215 5.609681 1.0000000
-## f:2-f:1 -0.27027672 -5.778639 5.238085 0.9999999
-## m:2-f:1  0.21563225 -6.584037 7.015302 1.0000000
-## f:3-f:1 -2.93351039 -9.294019 3.426998 0.8407064
-## m:3-f:1  0.40968800 -5.212260 6.031636 0.9999984
-## f:4-f:1  0.56683366 -5.497673 6.631340 0.9999909
-## m:4-f:1 -0.43618944 -6.200890 5.328511 0.9999979
-## f:2-m:1 -0.25800990 -4.893987 4.377967 0.9999997
-## m:2-m:1  0.22789908 -5.886489 6.342287 1.0000000
-## f:3-m:1 -2.92124357 -8.543192 2.700705 0.7420905
-## m:3-m:1  0.42195482 -4.348426 5.192336 0.9999938
-## f:4-m:1  0.57910049 -4.705640 5.863841 0.9999729
-## m:4-m:1 -0.42392262 -5.361736 4.513891 0.9999949
-## m:2-f:2  0.48590897 -5.524207 6.496024 0.9999966
-## f:3-f:2 -2.66323367 -8.171596 2.845128 0.8057012
-## m:3-f:2  0.67996472 -3.956013 5.315942 0.9998060
-## f:4-f:2  0.83711038 -4.326631 6.000852 0.9996226
-## m:4-f:2 -0.16591272 -4.974005 4.642180 1.0000000
-## f:3-m:2 -3.14914265 -9.948812 3.650527 0.8378233
-## m:3-m:2  0.19405575 -5.920332 6.308444 1.0000000
-## f:4-m:2  0.35120141 -6.172423 6.874826 0.9999998
-## m:4-m:2 -0.65182169 -6.897717 5.594074 0.9999806
-## m:3-f:3  3.34319839 -2.278750 8.965147 0.5918365
-## f:4-f:3  3.50034405 -2.564163 9.564851 0.6281360
-## m:4-f:3  2.49732095 -3.267379 8.262021 0.8794544
-## f:4-m:3  0.15714566 -5.127594 5.441886 1.0000000
-## m:4-m:3 -0.84587744 -5.783691 4.091936 0.9994572
-## m:4-f:4 -1.00302310 -6.439377 4.433331 0.9991184</code></pre>
+## m:1-f:1 -0.51008912 -5.879907 4.859729 0.9999898
+## f:2-f:1 -0.01509347 -5.533219 5.503032 1.0000000
+## m:2-f:1  0.90883730 -4.043832 5.861506 0.9991490
+## f:3-f:1  0.34492104 -4.788373 5.478215 0.9999991
+## m:3-f:1 -0.86544310 -6.108469 4.377582 0.9995748
+## f:4-f:1  1.25085045 -4.118968 6.620669 0.9961086
+## m:4-f:1  1.11130442 -3.926032 6.148640 0.9972307
+## f:2-m:1  0.49499565 -5.328225 6.318216 0.9999953
+## m:2-m:1  1.41892641 -3.871548 6.709401 0.9908015
+## f:3-m:1  0.85501016 -4.604926 6.314946 0.9997000
+## m:3-m:1 -0.35535399 -5.918582 5.207874 0.9999993
+## f:4-m:1  1.76093957 -3.921942 7.443821 0.9786628
+## m:4-m:1  1.62139354 -3.748425 6.991212 0.9815885
+## m:2-f:2  0.92393077 -4.517014 6.364876 0.9994876
+## f:3-f:2  0.36001451 -5.245845 5.965874 0.9999993
+## m:3-f:2 -0.85034963 -6.556861 4.856161 0.9997844
+## f:4-f:2  1.26594392 -4.557277 7.089165 0.9974757
+## m:4-f:2  1.12639789 -4.391727 6.644523 0.9983082
+## f:3-m:2 -0.56391625 -5.614152 4.486319 0.9999692
+## m:3-m:2 -1.77428040 -6.936014 3.387453 0.9621391
+## f:4-m:2  0.34201315 -4.948462 5.632488 0.9999993
+## m:4-m:2  0.20246712 -4.750202 5.155136 1.0000000
+## m:3-f:3 -1.21036415 -6.545649 4.124921 0.9967004
+## f:4-f:3  0.90592941 -4.554006 6.365865 0.9995601
+## m:4-f:3  0.76638337 -4.366911 5.899677 0.9997816
+## f:4-m:3  2.11629355 -3.446935 7.679522 0.9356674
+## m:4-m:3  1.97674752 -3.266278 7.219773 0.9385226
+## m:4-f:4 -0.13954603 -5.509364 5.230272 1.0000000</code></pre>
 </div>
 </div>
 <div id="two-categorical-variables-1" class="section level2">
